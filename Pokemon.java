@@ -58,16 +58,25 @@ public class Pokemon
         this.number = number;
         this.level = 50; //set level
         //sets name
+
         //sets type1
+
         //sets type2
+
         //sets special defense
+
         //sets speed
+
         //sets hp
+
         //sets attack
+
         //sets special attack
+
+        //sets defense
+
+
         int numberForFile = number -1;
-
-
         //gets damage against types
         try { // bug
             double damage = 0;
@@ -249,21 +258,6 @@ public class Pokemon
             this.againstWater = damage;
         }catch(Exception e) {
             System.out.println("error getting data");}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     public int getNumber()
     {
