@@ -1,4 +1,5 @@
 import java.io.ObjectInputFilter;
+import java.util.ArrayList;
 
 public class Pokemon {
     private String name;
@@ -18,6 +19,6 @@ public class Pokemon {
 
     // Doesn't exist..
     private Ability ability;
-    private ArrayList<Move> = new ArrayList<>();
+    private ArrayList<Move> = new ArrayList<Move>();
     private Item heldItem;
 }
