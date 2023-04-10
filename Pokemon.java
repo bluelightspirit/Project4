@@ -1,6 +1,7 @@
 import java.io.ObjectInputFilter;
 
-public class Pokemon {
+public class Pokemon
+{
     private String name;
     private int hp;
     private int attack;
@@ -11,15 +12,15 @@ public class Pokemon {
     private int specialDefense;
 
     private int speed;
-    private int level;
+    private int level; //figure out later
 
     // intellij said to import ObjectInputFilter
     private ObjectInputFilter.Status status;
 
     // Doesn't exist..
-    private Ability ability;
+    private Ability ability;//probably get rid of
     // private ArrayList<Move> = new ArrayList<>();
-    private Item heldItem;
+    private Item heldItem;//probably get rid of
 
     private double againstBug;
     private double againstDark;
