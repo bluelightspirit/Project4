@@ -13,6 +13,8 @@ public class Pokemon
     private int specialAttack;
     private int defense;
     private int number;
+    private String type1;
+    private String type2;
 
     // this had no variable type?
     private int specialDefense;
@@ -23,11 +25,9 @@ public class Pokemon
     // intellij said to import ObjectInputFilter
     private ObjectInputFilter.Status status;
 
-    // Doesn't exist..
     //private Ability ability;//probably get rid of
     // private ArrayList<Move> = new ArrayList<>();
    // private Item heldItem;//probably get rid of
-
     private double againstBug;
     private double againstDark;
     private double againstDragon;
@@ -46,37 +46,110 @@ public class Pokemon
     private double againstRock;
     private double againstSteel;
     private double againstWater;
-
-
-
-
-
-
-
     public Pokemon(int number)//makes pokemon from number
     {
+        int numberForFile = number -1;
         this.number = number;
         this.level = 50; //set level
         //sets name
-
+        try {
+            String names = "";
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("name.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                names =  fIn.nextLine();
+                count++;}
+            this.name= names;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets type1
-
+        try {
+            String types = "";
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("type1.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                types =  fIn.nextLine();
+                count++;}
+            this.type1= types;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets type2
-
+        try {
+            String types = "";
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("type2.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                types =  fIn.nextLine();
+                count++;}
+            this.type2= types;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets special defense
-
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("specialDefense.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.specialDefense = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets speed
-
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("speed.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.speed = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets hp
-
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("hp.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.hp = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets attack
-
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("attack.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.attack = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets special attack
-
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("specialAttack.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.specialAttack = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //sets defense
-
-
-        int numberForFile = number -1;
+        try {
+            int damage = 0;
+            int count = 0;
+            Scanner fIn = new Scanner(new FileInputStream("defense.txt"));
+            while(fIn.hasNextDouble()&&count < numberForFile) {
+                damage =  fIn.nextInt();
+                count++;}
+            this.defense = damage;
+        }catch(Exception e) {
+            System.out.println("error getting data");}
         //gets damage against types
         try { // bug
             double damage = 0;
