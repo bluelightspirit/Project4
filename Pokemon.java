@@ -19,6 +19,6 @@ public class Pokemon {
 
     // Doesn't exist..
     private Ability ability;
-    private ArrayList<Move> = new ArrayList<Move>();
+    //private ArrayList<Move> = new ArrayList<Move>();
     private Item heldItem;
 }
