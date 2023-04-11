@@ -1,14 +1,21 @@
-/**
- * CPSC 220 - Fall 2022
- * Move
- * <p>
- * I pledge
- *
- * @author Gary Young
- * @version 4/10/2023
- * Move does
- */
-public class Move {
-    public static void main(String[] args) {
+import java.io.ObjectInputFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.stream.Stream;
+public class Move
+{
+    private String name,type,attackType;
+    private int power, pp, accuracy;
+   /* public static void main(String[] args) {
+    }*/
+    public Move()
+    {
+
     }
+
 }
