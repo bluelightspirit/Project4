@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 public class Move
 {
-    private String name,type,attackType;
+    private String moveName,moveType,attackType;
     private int power, pp, accuracy;
    /* public static void main(String[] args) {
     }*/
