@@ -1,8 +1,4 @@
-import java.io.ObjectInputFilter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -22,15 +18,31 @@ public class Move
         this.attackType = getDataFromFile("attackType.txt", numberForFile);
 
     }
-   /* public Move(String name)
+    public Move(String name)
     {
-        try (Stream<String> lines = Files.lines(Paths.get("moveName.txt"))) {
-
+        int numberForFile = 0;
+        try {
+            Scanner in = new Scanner(new FileReader("moveName.txt"));
+            String findName = "";
+            while(in.hasNext() && !findName.equals(name))
+            {
+                findName = in.nextLine();
+                if(!findName.equals(name))
+                {
+                    numberForFile++;
+                }
+            }
         }catch(Exception e)
         {
-            System.out.println("Error finding move");
+            System.out.println("Error finding move name");
         }
-    }*/
+        this.power = Integer.parseInt(getDataFromFile("power.txt", numberForFile));
+        this.pp =  Integer.parseInt(getDataFromFile("pp.txt", numberForFile));
+        this.accuracy = Integer.parseInt(getDataFromFile("accuracy.txt", numberForFile));
+        this.moveName = getDataFromFile("moveName.txt", numberForFile);
+        this.moveType = getDataFromFile("moveType.txt", numberForFile);
+        this.attackType = getDataFromFile("attackType.txt", numberForFile);
+    }
     public String getDataFromFile(String fileName, int number) {
         try {
             String line;
