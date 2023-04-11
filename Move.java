@@ -24,7 +24,12 @@ public class Move
     }
    /* public Move(String name)
     {
+        try (Stream<String> lines = Files.lines(Paths.get("moveName.txt"))) {
 
+        }catch(Exception e)
+        {
+            System.out.println("Error finding move");
+        }
     }*/
     public String getDataFromFile(String fileName, int number) {
         try {
