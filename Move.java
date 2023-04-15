@@ -51,9 +51,23 @@ public class Move
         {
             System.out.println("Error finding move name");
         }
-        this.power = Integer.parseInt(getDataFromFile("power.txt", numberForFile));
+        String tempPower = getDataFromFile("power.txt", numberForFile);
+        if (tempPower.equals("-")) {
+            this.power = 1;
+            variablePower = true;
+        } else {
+            this.power = Integer.parseInt(tempPower);
+            variablePower = false;
+        }
         this.pp =  Integer.parseInt(getDataFromFile("pp.txt", numberForFile));
-        this.accuracy = Integer.parseInt(getDataFromFile("accuracy.txt", numberForFile));
+        String tempAccuracy = getDataFromFile("accuracy.txt", numberForFile);
+        if (tempAccuracy.equals("-")) {
+            this.power = 10000;
+            cannotMiss = true;
+        } else {
+            this.power = Integer.parseInt(tempAccuracy);
+            cannotMiss = false;
+        }
         this.moveName = getDataFromFile("moveName.txt", numberForFile);
         this.moveType = getDataFromFile("moveType.txt", numberForFile);
         this.attackType = getDataFromFile("attackType.txt", numberForFile);
