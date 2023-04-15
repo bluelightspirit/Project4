@@ -95,4 +95,51 @@ public class Pokemon
         return speed;
     }
 
+    public int getHp(){
+        return hp;
+    }
+
+    public double getWeakness(String type) {
+        switch (type) {
+            case "bug":
+                return againstBug;
+            case "dark":
+                return againstDark;
+            case "dragon":
+                return againstDragon;
+            case "electric":
+                return againstElectric;
+            case "fairy":
+                return againstFairy;
+            case "fight":
+                return againstFight;
+            case "fire":
+                return againstFire;
+            case "flying":
+                return againstFlying;
+            case "ghost":
+                return againstGhost;
+            case "grass":
+                return againstGrass;
+            case "ground":
+                return againstGround;
+            case "ice":
+                return againstIce;
+            case "normal":
+                return againstNormal;
+            case "poison":
+                return againstPoison;
+            case "psychic":
+                return againstPsychic;
+            case "rock":
+                return againstRock;
+            case "steel":
+                return againstSteel;
+            case "water":
+                return againstWater;
+            default:
+                return 1;
+        }
+    }
+
 }
