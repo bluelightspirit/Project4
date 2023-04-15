@@ -24,6 +24,7 @@ public class Pokemon
             againstWater;
     private final int IV = 15;
     private final int EV = 0;
+    private boolean burned;
     public Pokemon(int number)//makes pokemon from number
     {
         int numberForFile = number -1;
@@ -67,6 +68,8 @@ public class Pokemon
         defense = ((2*defense*IV+(EV/4)*level)/100)+5;
         specialDefense = ((2*specialDefense*IV+(EV/4)*level)/100)+5;
         speed = ((2*speed*IV+(EV/4)*level)/100)+5;
+
+        burned = false;
 
     }
 
@@ -113,6 +116,22 @@ public class Pokemon
 
     public int getSpecialAttack() {
         return specialAttack;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public boolean getBurned() {
+        return burned;
+    }
+
+    public String getType1() {
+        return type1;
+    }
+
+    public String getType2() {
+        return type2;
     }
 
     public double getWeakness(String type) {
