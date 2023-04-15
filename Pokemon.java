@@ -99,6 +99,22 @@ public class Pokemon
         return hp;
     }
 
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getSpecialDefense() {
+        return specialDefense;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
     public double getWeakness(String type) {
         switch (type) {
             case "bug":
