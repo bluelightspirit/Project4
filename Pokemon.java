@@ -22,6 +22,8 @@ public class Pokemon
             againstFight, againstFire, againstFlying, againstGhost, againstGrass, againstGround,
             againstIce, againstNormal, againstPoison, againstPsychic, againstRock, againstSteel,
             againstWater;
+    private final int IV = 15;
+    private final int EV = 0;
     public Pokemon(int number)//makes pokemon from number
     {
         int numberForFile = number -1;
@@ -58,6 +60,14 @@ public class Pokemon
         this.againstRock = Double.parseDouble(getDataFromFile("againstRock.txt", numberForFile));
         this.againstSteel = Double.parseDouble(getDataFromFile("againstSteel.txt", numberForFile));
         this.againstWater = Double.parseDouble(getDataFromFile("againstWater.txt", numberForFile));
+
+        hp = ((2*hp*IV+(EV/4)*level)/100)+level+10;
+        attack = ((2*attack*IV+(EV/4)*level)/100)+5;
+        specialAttack = ((2*specialAttack*IV+(EV/4)*level)/100)+5;
+        defense = ((2*defense*IV+(EV/4)*level)/100)+5;
+        specialDefense = ((2*specialDefense*IV+(EV/4)*level)/100)+5;
+        speed = ((2*speed*IV+(EV/4)*level)/100)+5;
+
     }
 
     public String getDataFromFile(String fileName, int number) {
@@ -79,6 +89,10 @@ public class Pokemon
     public String getName()
     {
         return name.toLowerCase();
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
 }
