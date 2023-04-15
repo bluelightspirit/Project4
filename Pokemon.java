@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class Pokemon
 {
     private String name, type1, type2;
-    private int hp, attack, defense, specialAttack, specialDefense, speed, level, number;
+    private int hp, tempHp, attack, defense, specialAttack, specialDefense, speed, level, number;
     // intellij said to import ObjectInputFilter
     private ObjectInputFilter.Status status;
 
@@ -24,7 +24,7 @@ public class Pokemon
             againstWater;
     private final int IV = 15;
     private final int EV = 0;
-    private boolean burned;
+    private boolean burned, fainted;
     public Pokemon(int number)//makes pokemon from number
     {
         int numberForFile = number -1;
@@ -63,6 +63,7 @@ public class Pokemon
         this.againstWater = Double.parseDouble(getDataFromFile("againstWater.txt", numberForFile));
 
         hp = ((2*hp*IV+(EV/4)*level)/100)+level+10;
+        tempHp = hp;
         attack = ((2*attack*IV+(EV/4)*level)/100)+5;
         specialAttack = ((2*specialAttack*IV+(EV/4)*level)/100)+5;
         defense = ((2*defense*IV+(EV/4)*level)/100)+5;
@@ -70,6 +71,7 @@ public class Pokemon
         speed = ((2*speed*IV+(EV/4)*level)/100)+5;
 
         burned = false;
+        fainted = false;
 
     }
 
