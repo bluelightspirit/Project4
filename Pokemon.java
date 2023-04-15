@@ -7,6 +7,7 @@ public class Pokemon
 {
     private final String name, type1, type2;
     private int hp, tempHp, attack, defense, specialAttack, specialDefense, speed, level, number;
+    private Move move1,move2,move3,move4;
     // intellij said to import ObjectInputFilter
     private ObjectInputFilter.Status status;
 
@@ -68,6 +69,10 @@ public class Pokemon
         burned = false;
         fainted = false;
 
+        move1 = null;
+        move2 = null;
+        move3 = null;
+        move4 = null;
     }
 
     public String getDataFromFile(String fileName, int number) {
@@ -184,6 +189,30 @@ public class Pokemon
 
     public boolean getFainted() {
         return fainted;
+    }
+
+    public void setMove(Move move, int moveNumber)
+    {
+        if(moveNumber == 1)
+        {
+            move1 = move;
+        }
+        else if(moveNumber == 2)
+        {
+            move2 = move;
+        }
+        else if(moveNumber == 3)
+        {
+            move3 = move;
+        }
+        else if(moveNumber == 4)
+        {
+            move4 = move;
+        }
+        else
+        {
+            return;
+        }
     }
 
 }
