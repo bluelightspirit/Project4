@@ -50,45 +50,60 @@ public class PokeFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+        // base frame for all panels
         JFrame frame = new PokeFrame();
 
+        // player panel & variables
         JPanel playerPokemonPanel = new JPanel();
+        int playerTempHp = 0;
+        String playerPokemonName = "charizard";
+        String playerPokemonNameCapsFirst = playerPokemonName.substring(0,1).toUpperCase().concat(playerPokemonName.substring(1));
+
+        // player label
         JLabel playerLabel = new JLabel();
-        int tempHp = 0;
-        playerLabel.setText("<html>Charizard <br />HP: " + tempHp + "</html>");
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />HP: " + playerTempHp + "</html>"));
         playerLabel.setForeground(Color.white);
-        ImageIcon icon = new ImageIcon(getSprite("charizard"));
-        playerLabel.setIcon(icon);
+        playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
+
+        // enemy panel & variables
+        JPanel enemyPokemonPanel = new JPanel();
+        int enemyTempHp = 0;
+        String enemyPokemonName = "pikachu";
+        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0,1).toUpperCase().concat(enemyPokemonName.substring(1));
+
+        // enemy label
+        JLabel enemyLabel = new JLabel();
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />HP: " + enemyTempHp + "</html>"));
+        enemyLabel.setForeground(Color.white);
+        enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
+
+
+        // add labels to panels
         playerPokemonPanel.add(playerLabel);
         playerPokemonPanel.setBackground(Color.blue);
-
-
-        JPanel enemyPokemonPanel = new JPanel();
-        JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>Pikachu<br />HP: " + tempHp + "</html>");
-        enemyLabel.setForeground(Color.white);
-        icon = new ImageIcon(getSprite("pikachu"));
-        enemyLabel.setIcon(icon);
         enemyPokemonPanel.add(enemyLabel);
         enemyPokemonPanel.setBackground(Color.red);
 
-
+        // move buttons
         JButton move1 = new JButton("Move 1");
         JButton move2 = new JButton("Move 2");
         JButton move3 = new JButton("Move 3");
         JButton move4 = new JButton("Move 4");
         JButton swap = new JButton("Swap");
 
+        // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
         movesPanel.add(move1); movesPanel.add(move2); movesPanel.add(move3); movesPanel.add(move4); movesPanel.add(swap);
         movesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         movesPanel.setBackground(Color.cyan);
 
+        // add panels to frame & set layout
         frame.setLayout(new GridLayout(3, 1));
         frame.add(enemyPokemonPanel);
         frame.add(playerPokemonPanel);
         frame.add(movesPanel);
 
+        // pack all panels & make it visible
         frame.pack();
         frame.setVisible(true);
     }
