@@ -2,14 +2,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.TileObserver;
 import java.io.IOException;
 import java.net.URL;
-import javax.swing.border.TitledBorder;
-import java.nio.Buffer;
-import java.awt.LayoutManager;
-import java.io.Serializable;
 
 
 public class PokeFrame extends JFrame {
@@ -51,7 +45,6 @@ public class PokeFrame extends JFrame {
 
     // get image from pokemon name given
     public static BufferedImage getSprite(String pokemonName) {
-        BufferedImage urlImage;
         String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
         return getImage(link);
     }
