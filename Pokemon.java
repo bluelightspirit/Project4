@@ -1,16 +1,11 @@
 import java.io.ObjectInputFilter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Pokemon
 {
-    private String name, type1, type2;
+    private final String name, type1, type2;
     private int hp, tempHp, attack, defense, specialAttack, specialDefense, speed, level, number;
     // intellij said to import ObjectInputFilter
     private ObjectInputFilter.Status status;
@@ -177,6 +172,18 @@ public class Pokemon
             default:
                 return 1;
         }
+    }
+
+    public boolean damage(int damage) {
+        tempHp -= damage;
+        if (tempHp <= 0) {
+            fainted = true;
+        }
+        return fainted;
+    }
+
+    public boolean getFainted() {
+        return fainted;
     }
 
 }
