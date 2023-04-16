@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -9,7 +11,9 @@ import java.math.RoundingMode;
 import java.net.URL;
 
 
-public class PokeGUI extends JFrame {
+public class PokeGUI extends JFrame implements ActionListener {
+    // essential variables
+    private JButton move1, move2, move3, move4, swap;
 
     // all accessible variables (would make more sense to have in Player or AI classes)
 
@@ -165,11 +169,18 @@ public class PokeGUI extends JFrame {
         enemyPokemonPanel.add(enemyHpBar, BorderLayout.EAST);
 
         // move buttons
-        JButton move1 = new JButton("Move 1");
-        JButton move2 = new JButton("Move 2");
-        JButton move3 = new JButton("Move 3");
-        JButton move4 = new JButton("Move 4");
-        JButton swap = new JButton("Swap");
+        move1 = new JButton("Move 1");
+        move2 = new JButton("Move 2");
+        move3 = new JButton("Move 3");
+        move4 = new JButton("Move 4");
+        swap = new JButton("Swap");
+
+        // actionListeners
+        move1.addActionListener(this);
+        move2.addActionListener(this);
+        move3.addActionListener(this);
+        move4.addActionListener(this);
+        swap.addActionListener(this);
 
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
@@ -241,5 +252,21 @@ public class PokeGUI extends JFrame {
     public static void main(String[] args) {
         // base frame for all panels
         new PokeGUI();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource(); // choice/button selected
+        if (src == move1) {
+            System.out.println("move 1 clicked!");
+        } else if (src == move2) {
+            System.out.println("move 2 clicked!");
+        } else if (src == move3) {
+            System.out.println("move 3 clicked!");
+        } else if (src == move4) {
+            System.out.println("move 4 clicked!");
+        } else if (src == swap) {
+            System.out.println("swap clicked!");
+        }
     }
 }
