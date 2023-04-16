@@ -10,10 +10,42 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.net.URL;
 
+import static java.awt.Color.RGBtoHSB;
+
 
 public class PokeGUI extends JFrame implements ActionListener {
+
+    public static void main(String[] args) {
+        // base frame for all panels
+        new PokeGUI();
+    }
+
     // essential variables
-    private JButton move1, move2, move3, move4, swap;
+    private final JButton move1;
+    private final JButton move2;
+    private final JButton move3;
+    private final JButton move4;
+    private final JButton swap;
+
+    private final Color bug = new Color(59, 153, 80);
+    private final Color dark = new Color(90, 89, 121);
+    private final Color dragon = new Color(97, 202, 217);
+    private final Color electric = new Color(251, 251, 114);
+    private final Color fairy = new Color(234, 19, 105);
+    private final Color fighting = new Color(239, 97, 56);
+    private final Color fire = new Color(253, 76, 90);
+    private final Color flying = new Color(147, 178, 199);
+    private final Color ghost = new Color(144, 103, 144);
+    private final Color grass = new Color(39, 203, 79);
+    private final Color ground = new Color(110, 73, 31);
+    private final Color ice = new Color(216, 240, 248);
+    private final Color normal = new Color(202, 152, 167);
+    private final Color poison = new Color(155, 105, 217);
+    private final Color psychic = new Color(248, 28, 145);
+    private final Color rock = new Color(139, 62, 33);
+    private final Color steel = new Color(66, 189, 148);
+    private final Color water = new Color(134, 168, 252);
+
 
     // all accessible variables (would make more sense to have in Player or AI classes)
 
@@ -160,7 +192,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         } else {
             enemyHpBar.setForeground(new Color(11,218,81));
         }
-        
+
         // add labels to panels
         playerPokemonPanel.add(playerLabel);
         playerPokemonPanel.setBackground(Color.blue);
@@ -181,6 +213,19 @@ public class PokeGUI extends JFrame implements ActionListener {
         move3.addActionListener(this);
         move4.addActionListener(this);
         swap.addActionListener(this);
+
+        // set color for buttons
+        move1.setBackground(bug);
+        move2.setBackground(dark);
+        move3.setBackground(dragon);
+        move4.setBackground(electric);
+        swap.setBackground(Color.LIGHT_GRAY);
+
+        // set text colors for buttons
+        setTextColors();
+
+        // add MouseListeners on hover
+        mouseHover();
 
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
@@ -237,7 +282,9 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // get image from Pokémon name given
     public static BufferedImage getSprite(String pokemonName) {
-        String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
+        String link = "https://img.pokemondb.net/artwork/vector/".concat(pokemonName + ".png");
+        // smaller sprite
+        // String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
         return getImage(link);
     }
 
@@ -249,11 +296,13 @@ public class PokeGUI extends JFrame implements ActionListener {
         return "<p style=\"color: #76ff7a\">It's pikachu's turn!</p>";
     }
 
-    public static void main(String[] args) {
-        // base frame for all panels
-        new PokeGUI();
+    // https://docs.oracle.com/en/java/javase/18/docs/api/java.desktop/java/awt/Color.html
+    public float getColorBrightness(Color color) {
+        float[] hsbArr = RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+        return hsbArr[2];
     }
 
+    // on button click do something
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
@@ -267,6 +316,194 @@ public class PokeGUI extends JFrame implements ActionListener {
             System.out.println("move 4 clicked!");
         } else if (src == swap) {
             System.out.println("swap clicked!");
+        }
+    }
+
+    // on mouse hover of button do something
+    public void mouseHover() {
+        // on hover change button color and text color
+        move1.addMouseListener(new java.awt.event.MouseAdapter() {
+            final Color originalBackground = move1.getBackground();
+            final Color originalForeground = move1.getForeground();
+
+            // when button is hovered
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to brighter color if brightness <= 75%
+                if (getColorBrightness(originalBackground) <= .75) {
+                    move1.setBackground(originalBackground.brighter());
+                    // else set it darker
+                } else {
+                    move1.setBackground(originalBackground.darker());
+                }
+
+                // set button text to opposite of previous colored text
+                if (originalForeground.equals(Color.white)) {
+                    move1.setForeground(Color.black);
+                } else {
+                    move1.setForeground(Color.white);
+                }
+            }
+
+            // after button is hovered
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to original
+                move1.setBackground(originalBackground);
+                // set button text to original
+                move1.setForeground(originalForeground);
+            }
+        });
+
+        move2.addMouseListener(new java.awt.event.MouseAdapter() {
+            final Color originalBackground = move2.getBackground();
+            final Color originalForeground = move2.getForeground();
+
+            // when button is hovered
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to brighter color if brightness <= 75%
+                if (getColorBrightness(originalBackground) <= .75) {
+                    move2.setBackground(originalBackground.brighter());
+                    // else set it darker
+                } else {
+                    move2.setBackground(originalBackground.darker());
+                }
+
+                // set button text to opposite of previous colored text
+                if (originalForeground.equals(Color.white)) {
+                    move2.setForeground(Color.black);
+                } else {
+                    move2.setForeground(Color.white);
+                }
+            }
+
+            // after button is hovered
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to original
+                move2.setBackground(originalBackground);
+                // set button text to original
+                move2.setForeground(originalForeground);
+            }
+        });
+
+        move3.addMouseListener(new java.awt.event.MouseAdapter() {
+            final Color originalBackground = move3.getBackground();
+            final Color originalForeground = move3.getForeground();
+
+            // when button is hovered
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to brighter color if brightness <= 75%
+                if (getColorBrightness(originalBackground) <= .75) {
+                    move3.setBackground(originalBackground.brighter());
+                    // else set it darker
+                } else {
+                    move3.setBackground(originalBackground.darker());
+                }
+
+                // set button text to opposite of previous colored text
+                if (originalForeground.equals(Color.white)) {
+                    move3.setForeground(Color.black);
+                } else {
+                    move3.setForeground(Color.white);
+                }
+            }
+
+            // after button is hovered
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to original
+                move3.setBackground(originalBackground);
+                // set button text to original
+                move3.setForeground(originalForeground);
+            }
+        });
+
+        move4.addMouseListener(new java.awt.event.MouseAdapter() {
+            final Color originalBackground = move4.getBackground();
+            final Color originalForeground = move4.getForeground();
+
+            // when button is hovered
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to brighter color if brightness <= 75%
+                if (getColorBrightness(originalBackground) <= .75) {
+                    move4.setBackground(originalBackground.brighter());
+                    // else set it darker
+                } else {
+                    move4.setBackground(originalBackground.darker());
+                }
+
+                // set button text to opposite of previous colored text
+                if (originalForeground.equals(Color.white)) {
+                    move4.setForeground(Color.black);
+                } else {
+                    move4.setForeground(Color.white);
+                }
+            }
+
+            // after button is hovered
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to original
+                move4.setBackground(originalBackground);
+                // set button text to original
+                move4.setForeground(originalForeground);
+            }
+        });
+
+        swap.addMouseListener(new java.awt.event.MouseAdapter() {
+            final Color originalBackground = swap.getBackground();
+            final Color originalForeground = swap.getForeground();
+
+            // when button is hovered
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to brighter color if brightness <= 75%
+                if (getColorBrightness(originalBackground) <= .75) {
+                    swap.setBackground(originalBackground.brighter());
+                    // else set it darker
+                } else {
+                    swap.setBackground(originalBackground.darker());
+                }
+
+                // set button text to opposite of previous colored text
+                if (originalForeground.equals(Color.white)) {
+                    swap.setForeground(Color.black);
+                } else {
+                    swap.setForeground(Color.white);
+                }
+            }
+
+            // after button is hovered
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                // tell java to look at the button
+                // set button background to original
+                swap.setBackground(originalBackground);
+                // set button text to original
+                swap.setForeground(originalForeground);
+            }
+        });
+    }
+
+    // set original text colors based on background brightness
+    public void setTextColors() {
+        if (getColorBrightness(move1.getBackground()) <= .50) {
+            move1.setForeground(Color.white);
+        }
+        if (getColorBrightness(move2.getBackground()) <= .50) {
+            move2.setForeground(Color.white);
+        }
+        if (getColorBrightness(move3.getBackground()) <= .50) {
+            move3.setForeground(Color.white);
+        }
+        if (getColorBrightness(move4.getBackground()) <= .50) {
+            move4.setForeground(Color.white);
+        }
+        if (getColorBrightness(swap.getBackground()) <= .50) {
+            swap.setForeground(Color.white);
         }
     }
 }
