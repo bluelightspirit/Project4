@@ -31,6 +31,8 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JLabel log;
     private final JProgressBar playerHpBar;
     private final JProgressBar enemyHpBar;
+    private final JLabel playerLabel;
+    private final JLabel enemyLabel;
     private final MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
 
     // color object variables based on type of move
@@ -57,13 +59,13 @@ public class PokeGUI extends JFrame implements ActionListener {
     /// all accessible variables
 
     // player variables
-    private String playerPokemonName;
+    private String playerPokemonName = "charizard";
     private int playerTempHp = 76;
     private int playerMaxHp;
     private int playerLevel = 20;
 
     // enemy variables
-    private String enemyPokemonName;
+    private String enemyPokemonName = "pikachu";
     private int enemyTempHp;
     private int enemyMaxHp;
     private int enemyLevel = 50;
@@ -175,13 +177,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         JPanel playerPokemonPanel = new JPanel();
         playerMaxHp = 150;
         playerPokemonName = "charizard";
-        String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
 
         // player label
-        JLabel playerLabel = new JLabel();
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + getPlayerTurn() + "</html>"));
-        playerLabel.setForeground(Color.white);
-        playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
+        playerLabel = new JLabel();
+        updatePlayerLabel(getPlayerTurn());
 
         // set text color to always be white & background outside of bar's highlight to be black
         UIManager.put("ProgressBar.selectionBackground", Color.WHITE);
@@ -203,13 +202,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyTempHp = 30;
         enemyMaxHp = 150;
         String enemyPokemonName = "pikachu";
-        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
 
         // enemy label
-        JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + getEnemyTurn() + "</html>"));
-        enemyLabel.setForeground(Color.white);
-        enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
+        enemyLabel = new JLabel();
+        updateEnemyLabel(getEnemyTurn());
 
         // enemy hp bar
         enemyHpBar = new JProgressBar();
@@ -327,7 +323,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // get string of enemy waiting or not
     public String getEnemyTurn() {
-        return "<p style=\"color: #76ff7a\">It's pikachu's turn!</p>";
+        return "<p style=\"color: #76ff7a\">MY TURN!</p>";
     }
 
     // https://docs.oracle.com/en/java/javase/18/docs/api/java.desktop/java/awt/Color.html
@@ -346,11 +342,15 @@ public class PokeGUI extends JFrame implements ActionListener {
             playerTempHp = playerTempHp - 2;
             updatePlayerHpBar();
             setLogText("-2 dmg for charizard!");
+            updatePlayerLabel(getEnemyTurn());
+            updateEnemyLabel(getPlayerTurn());
         } else if (src == move2) {
             System.out.println("move 2 clicked! -5 dmg for pikachu!");
             enemyTempHp = enemyTempHp - 5;
             updateEnemyHpBar();
             setLogText("-5 dmg for pikachu!");
+            updatePlayerLabel(getPlayerTurn());
+            updateEnemyLabel(getEnemyTurn());
         } else if (src == move3) {
             System.out.println("move 3 clicked!");
         } else if (src == move4) {
@@ -601,4 +601,23 @@ public class PokeGUI extends JFrame implements ActionListener {
             enemyHpBar.setForeground(new Color(11, 218, 81));
         }
     }
+
+    public void updatePlayerLabel(String turnInfo) {
+        String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + turnInfo + "</html>"));
+        playerLabel.setForeground(Color.white);
+        playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
+    }
+
+    public void updateEnemyLabel(String turnInfo) {
+        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
+        enemyLabel.setForeground(Color.white);
+        enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
+    }
+
+//    public void updateBothLabels() {
+//        updateEnemyLabel();
+//        updatePlayerLabel();
+//    }
 }
