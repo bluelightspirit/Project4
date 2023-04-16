@@ -3,25 +3,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.net.URL;
 
 
 public class PokeFrame extends JFrame {
     PokeFrame() {
+
+        // set title
         this.setTitle("Pokémane Battle Simulator");
+
+        // can't close or resize
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
+        // set icon
+        BufferedImage urlImage = getImage("https://cdn.discordapp.com/avatars/262317813396537345/7f5d50988b402fbd1c853e37ab3c27a1?size=1024");
+        ImageIcon image = new ImageIcon(urlImage);
+        this.setIconImage(image.getImage());
 
         // full screen
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        this.setUndecorated(true);
 
 //        this.setVisible(true);
-//        BufferedImage urlImage = getImage("https://cdn.discordapp.com/avatars/262317813396537345/7f5d50988b402fbd1c853e37ab3c27a1?size=1024");
-//
-//        ImageIcon image = new ImageIcon(urlImage);
-//        this.setIconImage(image.getImage());
 //        this.getContentPane().setBackground(new Color(255, 255, 255));
 //
 //        JLabel label = new JLabel();
@@ -62,7 +68,7 @@ public class PokeFrame extends JFrame {
 
         // player label
         JLabel playerLabel = new JLabel();
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />HP: " + playerTempHp + " / " + playerMaxHp + "</html>"));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + "Joey" + "</html>"));
         playerLabel.setForeground(Color.white);
         playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
 
@@ -71,18 +77,26 @@ public class PokeFrame extends JFrame {
         playerHpBar.setMinimum(0);
         playerHpBar.setMaximum(playerMaxHp);
         playerHpBar.setValue(playerTempHp);
+        playerHpBar.setPreferredSize(new Dimension(150, 15));
+        playerHpBar.setStringPainted(true);
+
+        // round progress bar percent using BigDecimal
+        BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
+        MathContext precision = new MathContext(4);
+        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2).stripTrailingZeros();
+        playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
         playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
 
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
-        int enemyTempHp = 8;
+        int enemyTempHp = 54;
         int enemyMaxHp = 150;
         String enemyPokemonName = "pikachu";
         String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0,1).toUpperCase().concat(enemyPokemonName.substring(1));
 
         // enemy label
         JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />HP: " + enemyTempHp + " / " + enemyMaxHp + "</html>"));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + "2" + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
 
@@ -91,6 +105,13 @@ public class PokeFrame extends JFrame {
         enemyHpBar.setMinimum(0);
         enemyHpBar.setMaximum(enemyMaxHp);
         enemyHpBar.setValue(enemyTempHp);
+        enemyHpBar.setPreferredSize(new Dimension(150, 15));
+        enemyHpBar.setStringPainted(true);
+
+        // round progress bar percent using BigDecimal
+        BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
+        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2).stripTrailingZeros();
+        enemyHpBar.setString("HP: " + enemyTempHp + " / " + enemyMaxHp + " (" + roundedEnemyPercentHp + "%)");
 
         // add labels to panels
         playerPokemonPanel.add(playerLabel);
