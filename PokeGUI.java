@@ -5,10 +5,58 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.net.URL;
 
 
 public class PokeGUI extends JFrame {
+
+    // all accessible variables (would make more sense to have in Player or AI classes)
+
+    // player
+    private String playerPokemonName;
+    private int playerTempHp;
+    private int playerMaxHp;
+    private int playerLevel = 20;
+
+    // enemy
+    private String enemyPokemonName;
+    private int enemyTempHp;
+    private int enemyMaxHp;
+    private int enemyLevel = 50;
+
+    public String getPlayerPokemonName() {
+        return playerPokemonName;
+    }
+
+    public String getEnemyPokemonName() {
+        return enemyPokemonName;
+    }
+
+    public int getPlayerTempHp() {
+        return playerTempHp;
+    }
+
+    public int getPlayerMaxHp() {
+        return playerMaxHp;
+    }
+
+    public int getPlayerLevel() {
+        return playerLevel;
+    }
+
+    public int getEnemyTempHp() {
+        return enemyTempHp;
+    }
+
+    public int getEnemyMaxHp() {
+        return enemyMaxHp;
+    }
+
+    public int getEnemyLevel() {
+        return enemyLevel;
+    }
+
     PokeGUI() {
 
         // set title
@@ -25,16 +73,23 @@ public class PokeGUI extends JFrame {
 
         // player panel & variables
         JPanel playerPokemonPanel = new JPanel();
-        int playerTempHp = 86;
-        int playerMaxHp = 150;
-        String playerPokemonName = "charizard";
+        playerTempHp = 76;
+        playerMaxHp = 150;
+        playerPokemonName = "charizard";
         String playerPokemonNameCapsFirst = playerPokemonName.substring(0,1).toUpperCase().concat(playerPokemonName.substring(1));
 
         // player label
         JLabel playerLabel = new JLabel();
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + "Joey" + "<br />" + getPlayerTurn() + "</html>"));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + getPlayerTurn() + "</html>"));
         playerLabel.setForeground(Color.white);
         playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
+
+        // set text color to always be white & background outside of bar's highlight to be black
+        UIManager.put("ProgressBar.selectionBackground", Color.WHITE);
+        UIManager.put("ProgressBar.selectionForeground", Color.WHITE);
+        UIManager.put("ProgressBar.background", Color.BLACK);
+        // foreground is changed depending on progressbar circumstances now to red, orange, or green
+        // UIManager.put("ProgressBar.foreground", Color.GREEN);
 
         // player hp bar
         JProgressBar playerHpBar = new JProgressBar();
@@ -46,21 +101,34 @@ public class PokeGUI extends JFrame {
 
         // round progress bar percent using BigDecimal
         BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
-        MathContext precision = new MathContext(4);
-        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2).stripTrailingZeros();
+        MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
+        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2,RoundingMode.HALF_UP);
         playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
+
+        // set color based on HP percentage
+        // > 25% - 50%: dark orange
+        if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
+            playerHpBar.setForeground(new Color(255,140,0));
+        // 0% - 25%: red / crimson
+        } else if (playerPercentHp.doubleValue() <= .25) {
+            playerHpBar.setForeground(new Color(220,20,60));
+        // > 50%: malachite / green
+        } else {
+            playerHpBar.setForeground(new Color(11,218,81));
+        }
+
         playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
 
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
-        int enemyTempHp = 54;
-        int enemyMaxHp = 150;
+        enemyTempHp = 30;
+        enemyMaxHp = 150;
         String enemyPokemonName = "pikachu";
         String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0,1).toUpperCase().concat(enemyPokemonName.substring(1));
 
         // enemy label
         JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + "2" + "<br />" + getEnemyTurn() + "</html>"));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + getEnemyTurn() + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
 
@@ -74,9 +142,21 @@ public class PokeGUI extends JFrame {
 
         // round progress bar percent using BigDecimal
         BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
-        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2).stripTrailingZeros();
+        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2,RoundingMode.HALF_UP);
         enemyHpBar.setString("HP: " + enemyTempHp + " / " + enemyMaxHp + " (" + roundedEnemyPercentHp + "%)");
 
+        // set color based on HP percentage
+        // > 25% - 50%: dark orange
+        if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
+            enemyHpBar.setForeground(new Color(255,140,0));
+        // 0% - 25%: red / crimson
+        } else if (enemyPercentHp.doubleValue() <= .25) {
+            enemyHpBar.setForeground(new Color(220,20,60));
+        // > 50%: malachite / green
+        } else {
+            enemyHpBar.setForeground(new Color(11,218,81));
+        }
+        
         // add labels to panels
         playerPokemonPanel.add(playerLabel);
         playerPokemonPanel.setBackground(Color.blue);
@@ -144,7 +224,7 @@ public class PokeGUI extends JFrame {
         }
     }
 
-    // get image from pokemon name given
+    // get image from Pokémon name given
     public static BufferedImage getSprite(String pokemonName) {
         String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
         return getImage(link);
