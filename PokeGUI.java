@@ -583,12 +583,15 @@ public class PokeGUI extends JFrame implements ActionListener {
         }
 
         // animation
-        javax.swing.Timer oneSecTimer = new javax.swing.Timer((int) delay, new ActionListener() {
+        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
+        slowFpsTimer.addActionListener(new ActionListener() {
+            // if temp hp = max hp or 0, force playerTempHp to stay the same
             public void actionPerformed(ActionEvent e) {
                 int playerAnimatedTempHp = playerHpBar.getValue();
-                // if temp hp = max hp or 0
+                // if temp hp = max hp or 0, force playerTempHp to stay the same
                 if (playerAnimatedTempHp == playerMaxHp || playerAnimatedTempHp == 0) {
                     playerTempHp = playerAnimatedTempHp;
+                    slowFpsTimer.stop();
                 }
 
                 if (playerAnimatedTempHp > playerTempHp) {
@@ -618,7 +621,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 }
             }
         });
-        oneSecTimer.restart();
+
+        slowFpsTimer.start();
 
     }
 
