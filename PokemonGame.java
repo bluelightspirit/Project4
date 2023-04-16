@@ -26,8 +26,9 @@ public class PokemonGame
         input = input.replace(" ", "_");
         input = input.toLowerCase();
         String fileName = "./PokemonData/"+ input + ".txt";
+        String filename = input + ".txt";
         System.out.println("Game file " + fileName + "was made");
-        PrintWriter print = new PrintWriter(fileName);
+        PrintWriter print = new PrintWriter(filename);
         int count = 0;
         //get list of pokemon and list of moves
         ArrayList<String> names = new ArrayList<String>();
@@ -73,6 +74,7 @@ public class PokemonGame
                  print.println(names.get(mov3));
                  print.println(names.get(mov4));
                  count++;
+                 break;
                 }
                 else {
                     while (!names.contains(response)) {
@@ -108,6 +110,7 @@ public class PokemonGame
                         print.println(names.get(mov3));
                         print.println(names.get(mov4));
                         count++;
+                        break;
                     }
                     while (!moveNames.contains(response) && count2 < 4) {
                         System.out.println("Enter name of move to be added");
@@ -119,6 +122,7 @@ public class PokemonGame
                         }
                     }
                     count++;
+                    break;
                 }
         }
 

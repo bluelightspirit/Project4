@@ -1,0 +1,502 @@
+Pound
+Karate Chop
+Double Slap
+Comet Punch
+Mega Punch
+Pay Day
+Fire Punch
+Ice Punch
+Thunder Punch
+Scratch
+Vise Grip
+Guillotine
+Cut
+Wing Attack
+Fly
+Bind
+Slam
+Vine Whip
+Stomp
+Double Kick
+Mega Kick
+Jump Kick
+Rolling Kick
+Headbutt
+Horn Attack
+Fury Attack
+Horn Drill
+Tackle
+Body Slam
+Wrap
+Take Down
+Thrash
+Double-Edge
+Poison Sting
+Twineedle
+Pin Missile
+Bite
+Peck
+Drill Peck
+Submission
+Low Kick
+Counter
+Seismic Toss
+Strength
+Razor Leaf
+Rock Throw
+Earthquake
+Fissure
+Dig
+Quick Attack
+Rage
+Bide
+Self-Destruct
+Egg Bomb
+Lick
+Bone Club
+Waterfall
+Clamp
+Skull Bash
+Spike Cannon
+Constrict
+High Jump Kick
+Barrage
+Leech Life
+Sky Attack
+Dizzy Punch
+Crabhammer
+Explosion
+Fury Swipes
+Bonemerang
+Rock Slide
+Hyper Fang
+Super Fang
+Slash
+Struggle
+Triple Kick
+Thief
+Flame Wheel
+Flail
+Reversal
+Mach Punch
+Feint Attack
+Bone Rush
+Outrage
+Rollout
+False Swipe
+Spark
+Fury Cutter
+Steel Wing
+Return
+Present
+Frustration
+Sacred Fire
+Magnitude
+Dynamic Punch
+Megahorn
+Pursuit
+Rapid Spin
+Iron Tail
+Metal Claw
+Vital Throw
+Cross Chop
+Crunch
+Extreme Speed
+Rock Smash
+Beat Up
+Fake Out
+Facade
+Focus Punch
+Smelling Salts
+Superpower
+Revenge
+Brick Break
+Knock Off
+Endeavor
+Secret Power
+Dive
+Arm Thrust
+Blaze Kick
+Ice Ball
+Needle Arm
+Poison Fang
+Crush Claw
+Meteor Mash
+Astonish
+Rock Tomb
+Shadow Punch
+Sky Uppercut
+Sand Tomb
+Bullet Seed
+Aerial Ace
+Icicle Spear
+Dragon Claw
+Bounce
+Poison Tail
+Covet
+Volt Tackle
+Leaf Blade
+Rock Blast
+Wake-Up Slap
+Hammer Arm
+Gyro Ball
+Natural Gift
+Feint
+Pluck
+Metal Burst
+U-turn
+Close Combat
+Payback
+Assurance
+Fling
+Punishment
+Last Resort
+Sucker Punch
+Flare Blitz
+Force Palm
+Poison Jab
+Night Slash
+Aqua Tail
+Seed Bomb
+X-Scissor
+Dragon Rush
+Drain Punch
+Brave Bird
+Giga Impact
+Bullet Punch
+Avalanche
+Ice Shard
+Shadow Claw
+Thunder Fang
+Ice Fang
+Fire Fang
+Shadow Sneak
+Psycho Cut
+Zen Headbutt
+Rock Climb
+Power Whip
+Rock Wrecker
+Cross Poison
+Gunk Shot
+Iron Head
+Magnet Bomb
+Stone Edge
+Bug Bite
+Wood Hammer
+Aqua Jet
+Attack Order
+Head Smash
+Double Hit
+Crush Grip
+Shadow Force
+Smack Down
+Storm Throw
+Heavy Slam
+Flame Charge
+Low Sweep
+Foul Play
+Chip Away
+Sky Drop
+Circle Throw
+Acrobatics
+Retaliate
+Bulldoze
+Dragon Tail
+Wild Charge
+Drill Run
+Dual Chop
+Heart Stamp
+Horn Leech
+Sacred Sword
+Razor Shell
+Heat Crash
+Steamroller
+Tail Slap
+Head Charge
+Gear Grind
+Bolt Strike
+Freeze Shock
+Icicle Crash
+V-create
+Fusion Bolt
+Flying Press
+Fell Stinger
+Phantom Force
+Petal Blizzard
+Play Rough
+Diamond Storm
+Nuzzle
+Hold Back
+Power-Up Punch
+Thousand Arrows
+Thousand Waves
+Land's Wrath
+Precipice Blades
+Dragon Ascent
+Hyperspace Fury
+Breakneck Blitz
+All-Out Pummeling
+Supersonic Skystrike
+Acid Downpour
+Tectonic Rage
+Continental Crush
+Savage Spin-Out
+Never-Ending Nightmare
+Corkscrew Crash
+Inferno Overdrive
+Hydro Vortex
+Bloom Doom
+Gigavolt Havoc
+Shattered Psyche
+Subzero Slammer
+Devastating Drake
+Black Hole Eclipse
+Twinkle Tackle
+Catastropika
+First Impression
+Spirit Shackle
+Darkest Lariat
+Ice Hammer
+High Horsepower
+Solar Blade
+Leafage
+Throat Chop
+Anchor Shot
+Lunge
+Fire Lash
+Power Trip
+Smart Strike
+Trop Kick
+Beak Blast
+Dragon Hammer
+Brutal Swing
+Sinister Arrow Raid
+Malicious Moonsault
+Soul-Stealing 7-Star Strike
+Pulverizing Pancake
+Psychic Fangs
+Stomping Tantrum
+Shadow Bone
+Accelerock
+Liquidation
+Spectral Thief
+Sunsteel Strike
+Zing Zap
+Multi-Attack
+Plasma Fists
+Searing Sunraze Smash
+Let's Snuggle Forever
+Splintered Stormshards
+Zippy Zap
+Floaty Fall
+Sizzly Slide
+Sappy Seed
+Veevee Volley
+Double Iron Bash
+Razor Wind
+Gust
+Sonic Boom
+Acid
+Ember
+Flamethrower
+Water Gun
+Hydro Pump
+Surf
+Ice Beam
+Blizzard
+Psybeam
+Bubble Beam
+Aurora Beam
+Hyper Beam
+Absorb
+Mega Drain
+Solar Beam
+Petal Dance
+Dragon Rage
+Fire Spin
+Thunder Shock
+Thunderbolt
+Thunder
+Confusion
+Psychic
+Night Shade
+Smog
+Sludge
+Fire Blast
+Swift
+Dream Eater
+Bubble
+Psywave
+Tri Attack
+Snore
+Aeroblast
+Powder Snow
+Sludge Bomb
+Mud-Slap
+Octazooka
+Zap Cannon
+Icy Wind
+Giga Drain
+Dragon Breath
+Hidden Power
+Twister
+Mirror Coat
+Ancient Power
+Shadow Ball
+Future Sight
+Whirlpool
+Uproar
+Spit Up
+Heat Wave
+Eruption
+Luster Purge
+Mist Ball
+Hyper Voice
+Blast Burn
+Hydro Cannon
+Weather Ball
+Air Cutter
+Overheat
+Silver Wind
+Water Spout
+Signal Beam
+Extrasensory
+Sheer Cold
+Muddy Water
+Frenzy Plant
+Mud Shot
+Magical Leaf
+Shock Wave
+Water Pulse
+Doom Desire
+Psycho Boost
+Brine
+Trump Card
+Wring Out
+Aura Sphere
+Dark Pulse
+Air Slash
+Bug Buzz
+Dragon Pulse
+Power Gem
+Vacuum Wave
+Focus Blast
+Energy Ball
+Earth Power
+Mud Bomb
+Mirror Shot
+Flash Cannon
+Draco Meteor
+Discharge
+Lava Plume
+Leaf Storm
+Grass Knot
+Chatter
+Judgment
+Charge Beam
+Roar of Time
+Spacial Rend
+Magma Storm
+Seed Flare
+Ominous Wind
+Psyshock
+Venoshock
+Flame Burst
+Sludge Wave
+Synchronoise
+Electro Ball
+Acid Spray
+Round
+Echoed Voice
+Clear Smog
+Stored Power
+Scald
+Hex
+Incinerate
+Final Gambit
+Inferno
+Water Pledge
+Fire Pledge
+Grass Pledge
+Volt Switch
+Struggle Bug
+Frost Breath
+Electroweb
+Leaf Tornado
+Night Daze
+Psystrike
+Hurricane
+Searing Shot
+Techno Blast
+Relic Song
+Secret Sword
+Glaciate
+Blue Flare
+Fiery Dance
+Ice Burn
+Snarl
+Fusion Flare
+Belch
+Parabolic Charge
+Freeze-Dry
+Disarming Voice
+Draining Kiss
+Fairy Wind
+Moonblast
+Boomburst
+Steam Eruption
+Hyperspace Hole
+Water Shuriken
+Mystical Fire
+Dazzling Gleam
+Infestation
+Oblivion Wing
+Light of Ruin
+Origin Pulse
+Breakneck Blitz
+All-Out Pummeling
+Supersonic Skystrike
+Acid Downpour
+Tectonic Rage
+Continental Crush
+Savage Spin-Out
+Never-Ending Nightmare
+Corkscrew Crash
+Inferno Overdrive
+Hydro Vortex
+Bloom Doom
+Gigavolt Havoc
+Shattered Psyche
+Subzero Slammer
+Devastating Drake
+Black Hole Eclipse
+Twinkle Tackle
+Sparkling Aria
+Pollen Puff
+Burn Up
+Revelation Dance
+Core Enforcer
+Clanging Scales
+Oceanic Operetta
+Guardian of Alola
+Stoked Sparksurfer
+Genesis Supernova
+Shell Trap
+Fleur Cannon
+Prismatic Laser
+Moongeist Beam
+Nature's Madness
+10,000,000 Volt Thunderbolt
+Mind Blown
+Photon Geyser
+Light That Burns the Sky
+Menacing Moonraze Maelstrom
+Clangorous Soulblaze
+Splishy Splash
+Pika Papow
+Bouncy Bubble
+Buzzy Buzz
+Glitzy Glow
+Baddy Bad
+Freezy Frost
+Sparkly Swirl
