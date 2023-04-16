@@ -26,7 +26,48 @@ public class PokemonGame
         input = input.toLowerCase();
         String fileName = "./PokemonData/"+ input + ".txt";
         System.out.println("Game file " + fileName + "was made");
+        int count = 0;
+        //get list of pokemon and list of moves
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> moveNames = new ArrayList<String>();
+        try
+        {
+            Scanner fIn = new Scanner(new FileInputStream("name.txt"));
+            while(fIn.hasNext())
+            {
+                names.add(fIn.nextLine());
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("error getting data");
+        }
+        try
+        {
+            Scanner fIn = new Scanner(new FileInputStream("moveNames.txt"));
+            while(fIn.hasNext())
+            {
+                moveNames.add(fIn.nextLine());
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("error getting data");
+        }
 
+
+
+        while(count < 6)
+        {
+            if(count < 3) //player pokemon
+            {
+
+            }
+            else //enemy pokemon
+            {
+
+            }
+        }
 
 
 
@@ -41,13 +82,15 @@ public class PokemonGame
         //in file it will have the 6 player pokemon with their moves
         /* example file entry for sylveon and vaporeon
             700
+            50
             Charm
             Baby-Doll Eyes
             Draining Kiss
             Moonblast
 
             134
-            Tackle
+            50
+           Tackle
             Water Pulse
             Hydro Pump
             Baby-Doll Eyes
