@@ -381,8 +381,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             updateEnemyLabel(getPlayerTurn());
         } else if (src == move4) {
             System.out.println("move 4 clicked! +30 dmg for pikachu!");
-            enemyTempHp = enemyTempHp + 22;
-            updatePlayerHpBar();
+            enemyTempHp = enemyTempHp + 30;
+            updateEnemyHpBar();
             setLogText("+30 dmg for pikachu!");
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
