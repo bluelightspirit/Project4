@@ -43,7 +43,7 @@ public class PokemonGame
             System.out.println("error getting data");
         }
         try {
-            Scanner fIn = new Scanner(new FileInputStream("moveNames.txt"));
+            Scanner fIn = new Scanner(new FileInputStream("moveName.txt"));
             while(fIn.hasNext()) {
                 moveNames.add(fIn.nextLine());
             }
@@ -69,10 +69,10 @@ public class PokemonGame
                     int mov4 = (int) (Math.random() * 502);
                     print.println(names.get(i));
                     print.println(50);
-                    print.println(names.get(mov1));
-                    print.println(names.get(mov2));
-                    print.println(names.get(mov3));
-                    print.println(names.get(mov4));
+                    print.println(moveNames.get(mov1));
+                    print.println(moveNames.get(mov2));
+                    print.println(moveNames.get(mov3));
+                    print.println(moveNames.get(mov4));
                     count++;
                     break;
                 } else {
@@ -101,10 +101,10 @@ public class PokemonGame
                         int mov2 = (int) (Math.random() * 502);
                         int mov3 = (int) (Math.random() * 502);
                         int mov4 = (int) (Math.random() * 502);
-                        print.println(names.get(mov1));
-                        print.println(names.get(mov2));
-                        print.println(names.get(mov3));
-                        print.println(names.get(mov4));
+                        print.println(moveNames.get(mov1));
+                        print.println(moveNames.get(mov2));
+                        print.println(moveNames.get(mov3));
+                        print.println(moveNames.get(mov4));
                         count++;
                         break;
                     }
