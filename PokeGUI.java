@@ -8,8 +8,8 @@ import java.math.MathContext;
 import java.net.URL;
 
 
-public class PokeFrame extends JFrame {
-    PokeFrame() {
+public class PokeGUI extends JFrame {
+    PokeGUI() {
 
         // set title
         this.setTitle("Pokémane Battle Simulator");
@@ -23,42 +23,6 @@ public class PokeFrame extends JFrame {
         ImageIcon image = new ImageIcon(urlImage);
         this.setIconImage(image.getImage());
 
-        // full screen
-//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        this.setUndecorated(true);
-
-//        this.setVisible(true);
-//        this.getContentPane().setBackground(new Color(255, 255, 255));
-//
-//        JLabel label = new JLabel();
-//        label.setText("test");
-//        ImageIcon icon2 = new ImageIcon(getImage("https://img.pokemondb.net/sprites/sword-shield/icon/venusaur.png"));
-//        label.setIcon(icon2);
-
-        // this.add(label);
-    }
-
-    // get image from link given
-    public static BufferedImage getImage(String url) {
-        BufferedImage urlImage;
-        try {
-            urlImage = ImageIO.read(new URL(url));
-            return urlImage;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    // get image from pokemon name given
-    public static BufferedImage getSprite(String pokemonName) {
-        String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
-        return getImage(link);
-    }
-
-    public static void main(String[] args) {
-        // base frame for all panels
-        JFrame frame = new PokeFrame();
-
         // player panel & variables
         JPanel playerPokemonPanel = new JPanel();
         int playerTempHp = 86;
@@ -68,7 +32,7 @@ public class PokeFrame extends JFrame {
 
         // player label
         JLabel playerLabel = new JLabel();
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + "Joey" + "</html>"));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + "Joey" + "<br />" + getPlayerTurn() + "</html>"));
         playerLabel.setForeground(Color.white);
         playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
 
@@ -96,7 +60,7 @@ public class PokeFrame extends JFrame {
 
         // enemy label
         JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + "2" + "</html>"));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + "2" + "<br />" + getEnemyTurn() + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
 
@@ -132,15 +96,70 @@ public class PokeFrame extends JFrame {
         movesPanel.add(move1); movesPanel.add(move2); movesPanel.add(move3); movesPanel.add(move4); movesPanel.add(swap);
         movesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         movesPanel.setBackground(Color.cyan);
+        movesPanel.setSize(movesPanel.getWidth(), 36);
+
+        // add label for log
+        JPanel logPanel = new JPanel();
+        JLabel log = new JLabel();
+        log.setText("Charizard launched fireball! (-12 HP for Pikachu)");
+        logPanel.add(log);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
         // add panels to frame & set layout
-        frame.setLayout(new GridLayout(3, 1));
-        frame.add(enemyPokemonPanel);
-        frame.add(playerPokemonPanel);
-        frame.add(movesPanel);
+        mainPanel.add(enemyPokemonPanel);
+        mainPanel.add(playerPokemonPanel);
+        mainPanel.add(movesPanel);
+        mainPanel.add(logPanel);
 
         // pack all panels & make it visible
-        frame.pack();
-        frame.setVisible(true);
+        this.setContentPane(mainPanel);
+        this.pack();
+        this.setVisible(true);
+
+        // full screen
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setUndecorated(true);
+
+//        this.setVisible(true);
+//        this.getContentPane().setBackground(new Color(255, 255, 255));
+//
+//        JLabel label = new JLabel();
+//        label.setText("test");
+//        ImageIcon icon2 = new ImageIcon(getImage("https://img.pokemondb.net/sprites/sword-shield/icon/venusaur.png"));
+//        label.setIcon(icon2);
+
+        // this.add(label);
+    }
+
+    // get image from link given
+    public static BufferedImage getImage(String url) {
+        BufferedImage urlImage;
+        try {
+            urlImage = ImageIO.read(new URL(url));
+            return urlImage;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // get image from pokemon name given
+    public static BufferedImage getSprite(String pokemonName) {
+        String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
+        return getImage(link);
+    }
+
+    public String getPlayerTurn() {
+        return "<p style=\"color: #fdfd96\">WAITING...</p>";
+    }
+
+    public String getEnemyTurn() {
+        return "<p style=\"color: #76ff7a\">It's pikachu's turn!</p>";
+    }
+
+    public static void main(String[] args) {
+        // base frame for all panels
+        new PokeGUI();
     }
 }
