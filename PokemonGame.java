@@ -50,7 +50,7 @@ public class PokemonGame
         catch(Exception e) {
             System.out.println("error getting data");
         }
-        //Scanner in = new Scanner(System.in);
+        //adds pokemon
         while(count < 6) {
             if(count < 3) {
                 System.out.println("Please enter name of pokemon to be added to your team. Or type R to let RNG decide pokemon");
@@ -67,6 +67,7 @@ public class PokemonGame
                  int mov3 =  (int)(Math.random() * 502);
                  int mov4 =  (int)(Math.random() * 502);
                  print.println(names.get(i));
+                 print.println(50);
                  print.println(names.get(mov1));
                  print.println(names.get(mov2));
                  print.println(names.get(mov3));
@@ -84,6 +85,15 @@ public class PokemonGame
                         response = in.next();
                     }
                     print.println(response);
+                    System.out.println("Enter level of pokemon between 1-100");
+                    int a = in.nextInt();
+                    if(a > 0 && a <= 100)
+                    {
+                        print.println(a);
+                    }
+                    else{
+                        print.println(50);
+                    }
                     // add response
                     System.out.println("Enter name of move to be added or type R to let RNG decide");
                     response = in.next();
