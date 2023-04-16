@@ -568,7 +568,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         }
     }
 
-    // set cursor
+    // set cursor to hand cursor on hover
     public void setCursor() {
         Cursor handCursor = new Cursor(HAND_CURSOR);
         move1.setCursor(handCursor);
