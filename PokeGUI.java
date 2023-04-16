@@ -60,7 +60,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // player variables
     private String playerPokemonName = "charizard";
-    private int playerTempHp = 76;
+    private int playerTempHp;
     private int playerMaxHp;
     private int playerLevel = 20;
 
@@ -193,6 +193,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerHpBar = new JProgressBar();
         playerHpBar.setMinimum(0);
         playerHpBar.setMaximum(playerMaxHp);
+        playerTempHp = 120;
         updatePlayerHpBar();
 
         playerPokemonPanel.add(playerHpBar, BorderLayout.EAST);
@@ -341,8 +342,8 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
-            System.out.println("move 1 clicked! -2 dmg for charizard!");
-            playerTempHp = playerTempHp - 2;
+            System.out.println("move 1 clicked! -22 dmg for charizard!");
+            playerTempHp = playerTempHp - 22;
             updatePlayerHpBar();
             setLogText("-2 dmg for charizard!");
             updatePlayerLabel(getEnemyTurn());
@@ -355,7 +356,12 @@ public class PokeGUI extends JFrame implements ActionListener {
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
         } else if (src == move3) {
-            System.out.println("move 3 clicked!");
+            System.out.println("move 3 clicked! +22 dmg for charizard!");
+            playerTempHp = playerTempHp + 22;
+            updatePlayerHpBar();
+            setLogText("+22 dmg for charizard!");
+            updatePlayerLabel(getEnemyTurn());
+            updateEnemyLabel(getPlayerTurn());
         } else if (src == move4) {
             System.out.println("move 4 clicked!");
         } else if (src == swap) {
@@ -561,26 +567,59 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // update temp hp in playerHpBar
     public void updatePlayerHpBar() {
-        playerHpBar.setValue(playerTempHp);
-        playerHpBar.setPreferredSize(new Dimension(150, 15));
-        playerHpBar.setStringPainted(true);
+        // playerTempHp = new player hp to aim for
 
-        // round progress bar percent using BigDecimal
-        BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
-        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
-        playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
+        long delay = 0;
 
-        // set color based on HP percentage
-        // > 25% - 50%: dark orange
-        if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
-            playerHpBar.setForeground(new Color(255, 140, 0));
-            // 0% - 25%: red / crimson
-        } else if (playerPercentHp.doubleValue() <= .25) {
-            playerHpBar.setForeground(new Color(220, 20, 60));
-            // > 50%: malachite / green
-        } else {
-            playerHpBar.setForeground(new Color(11, 218, 81));
+        // fix initial hp set and when hp is 100%
+        if (playerHpBar.getValue() == 0) {
+            if (playerTempHp > playerHpBar.getValue()) {
+                playerHpBar.setValue(1);
+            }
+        } else if (playerHpBar.getPercentComplete() == 1) {
+            if (playerTempHp < playerHpBar.getValue()) {
+                playerHpBar.setValue(playerHpBar.getValue()-1);
+            }
         }
+
+        // animation
+        javax.swing.Timer oneSecTimer = new javax.swing.Timer((int) delay, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int playerAnimatedTempHp = playerHpBar.getValue();
+                // if temp hp = max hp or 0
+                if (playerAnimatedTempHp == playerMaxHp || playerAnimatedTempHp == 0) {
+                    playerTempHp = playerAnimatedTempHp;
+                }
+
+                if (playerAnimatedTempHp > playerTempHp) {
+                    playerAnimatedTempHp--;
+                } else if (playerAnimatedTempHp < playerTempHp) {
+                    playerAnimatedTempHp++;
+                }
+                playerHpBar.setValue(playerAnimatedTempHp);
+                playerHpBar.setPreferredSize(new Dimension(150, 15));
+                playerHpBar.setStringPainted(true);
+
+                // round progress bar percent using BigDecimal
+                BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
+                BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+                playerHpBar.setString("HP: " + playerAnimatedTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
+
+                // set color based on HP percentage
+                // > 25% - 50%: dark orange
+                if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
+                    playerHpBar.setForeground(new Color(255, 140, 0));
+                    // 0% - 25%: red / crimson
+                } else if (playerPercentHp.doubleValue() <= .25) {
+                    playerHpBar.setForeground(new Color(220, 20, 60));
+                    // > 50%: malachite / green
+                } else {
+                    playerHpBar.setForeground(new Color(11, 218, 81));
+                }
+            }
+        });
+        oneSecTimer.restart();
+
     }
 
     // update temp hp in enemyHpBar
