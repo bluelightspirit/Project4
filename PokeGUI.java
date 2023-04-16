@@ -282,6 +282,9 @@ public class PokeGUI extends JFrame implements ActionListener {
         // add MouseListeners on hover
         mouseHover();
 
+        // change cursor on hover
+        setCursor();
+
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
         movesPanel.add(move1); movesPanel.add(move2); movesPanel.add(move3); movesPanel.add(move4); movesPanel.add(swap);
@@ -563,5 +566,15 @@ public class PokeGUI extends JFrame implements ActionListener {
         if (getColorBrightness(swap.getBackground()) <= .50) {
             swap.setForeground(Color.white);
         }
+    }
+
+    // set cursor
+    public void setCursor() {
+        Cursor handCursor = new Cursor(HAND_CURSOR);
+        move1.setCursor(handCursor);
+        move2.setCursor(handCursor);
+        move3.setCursor(handCursor);
+        move4.setCursor(handCursor);
+        swap.setCursor(handCursor);
     }
 }
