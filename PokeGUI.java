@@ -195,7 +195,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerHpBar.setMaximum(playerMaxHp);
         updatePlayerHpBar();
 
-        playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
+        playerPokemonPanel.add(playerHpBar, BorderLayout.EAST);
 
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
@@ -556,6 +556,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         swap.setCursor(handCursor);
     }
 
+    // update temp hp in playerHpBar
     public void updatePlayerHpBar() {
         playerHpBar.setValue(playerTempHp);
         playerHpBar.setPreferredSize(new Dimension(150, 15));
@@ -578,7 +579,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             playerHpBar.setForeground(new Color(11, 218, 81));
         }
     }
-    
+
+    // update temp hp in enemyHpBar
     public void updateEnemyHpBar() {
         enemyHpBar.setValue(enemyTempHp);
         enemyHpBar.setPreferredSize(new Dimension(150, 15));
@@ -602,6 +604,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         }
     }
 
+    // update label for player pokemon
     public void updatePlayerLabel(String turnInfo) {
         String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
         playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + turnInfo + "</html>"));
@@ -609,6 +612,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
     }
 
+    // update label for enemy/AI pokemon
     public void updateEnemyLabel(String turnInfo) {
         String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
         enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
@@ -616,6 +620,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
     }
 
+    // updates both enemy and player labels
 //    public void updateBothLabels() {
 //        updateEnemyLabel();
 //        updatePlayerLabel();
