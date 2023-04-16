@@ -310,6 +310,9 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // get image from Pokémon name given
     public static BufferedImage getSprite(String pokemonName) {
+        // PokeAPI sprite (https://github.com/PokeAPI/sprites)
+        // String link = "https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/back/25.png";
+        // bigger sprite
         String link = "https://img.pokemondb.net/artwork/vector/".concat(pokemonName + ".png");
         // smaller sprite
         // String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
