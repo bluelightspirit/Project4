@@ -12,9 +12,10 @@ import java.net.URL;
 
 import static java.awt.Color.RGBtoHSB;
 
-
+// main GUI class to handle everything GUI related, like JPanel, JFrame, buttons, & ActionListener
 public class PokeGUI extends JFrame implements ActionListener {
 
+    // main method to run constructor
     public static void main(String[] args) {
         // base frame for all panels
         new PokeGUI();
@@ -27,6 +28,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JButton move4;
     private final JButton swap;
 
+    // color object variables based on type of move
     private final Color bug = new Color(59, 153, 80);
     private final Color dark = new Color(90, 89, 121);
     private final Color dragon = new Color(97, 202, 217);
@@ -49,50 +51,59 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // all accessible variables (would make more sense to have in Player or AI classes)
 
-    // player
+    // player variables
     private String playerPokemonName;
     private int playerTempHp;
     private int playerMaxHp;
     private int playerLevel = 20;
 
-    // enemy
+    // enemy variables
     private String enemyPokemonName;
     private int enemyTempHp;
     private int enemyMaxHp;
     private int enemyLevel = 50;
 
+    // gets player's pokemon name
     public String getPlayerPokemonName() {
         return playerPokemonName;
     }
 
+    // gets enemy's pokemon name
     public String getEnemyPokemonName() {
         return enemyPokemonName;
     }
 
+    // gets player's temporary (current) hp
     public int getPlayerTempHp() {
         return playerTempHp;
     }
 
+    // gets player's max hp
     public int getPlayerMaxHp() {
         return playerMaxHp;
     }
 
+    // gets player's level
     public int getPlayerLevel() {
         return playerLevel;
     }
 
+    // gets enemy's temporary (current) hp
     public int getEnemyTempHp() {
         return enemyTempHp;
     }
 
+    // gets enemy's max hp
     public int getEnemyMaxHp() {
         return enemyMaxHp;
     }
 
+    // gets enemy's level
     public int getEnemyLevel() {
         return enemyLevel;
     }
 
+    // constructs multiple panels and merges them into one main panel using BoxLayout
     PokeGUI() {
 
         // set title
@@ -107,7 +118,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         ImageIcon image = new ImageIcon(urlImage);
         this.setIconImage(image.getImage());
 
-        // player panel & variables
+        // player panel & variable initialization
         JPanel playerPokemonPanel = new JPanel();
         playerTempHp = 76;
         playerMaxHp = 150;
@@ -200,14 +211,14 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyPokemonPanel.setBackground(Color.red);
         enemyPokemonPanel.add(enemyHpBar, BorderLayout.EAST);
 
-        // move buttons
+        // move buttons so buttons exist
         move1 = new JButton("Move 1");
         move2 = new JButton("Move 2");
         move3 = new JButton("Move 3");
         move4 = new JButton("Move 4");
         swap = new JButton("Swap");
 
-        // actionListeners
+        // actionListeners so clicking does something
         move1.addActionListener(this);
         move2.addActionListener(this);
         move3.addActionListener(this);
@@ -288,15 +299,18 @@ public class PokeGUI extends JFrame implements ActionListener {
         return getImage(link);
     }
 
+    // get string of player waiting or not
     public String getPlayerTurn() {
         return "<p style=\"color: #fdfd96\">WAITING...</p>";
     }
 
+    // get string of enemy waiting or not
     public String getEnemyTurn() {
         return "<p style=\"color: #76ff7a\">It's pikachu's turn!</p>";
     }
 
     // https://docs.oracle.com/en/java/javase/18/docs/api/java.desktop/java/awt/Color.html
+    // gets color brightness using RGBtoHSB from Color
     public float getColorBrightness(Color color) {
         float[] hsbArr = RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return hsbArr[2];
@@ -328,7 +342,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move1.setBackground(originalBackground.brighter());
@@ -347,7 +361,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to original
                 move1.setBackground(originalBackground);
                 // set button text to original
@@ -361,7 +375,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move2.setBackground(originalBackground.brighter());
@@ -380,7 +394,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to original
                 move2.setBackground(originalBackground);
                 // set button text to original
@@ -394,7 +408,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move3.setBackground(originalBackground.brighter());
@@ -413,7 +427,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to original
                 move3.setBackground(originalBackground);
                 // set button text to original
@@ -427,7 +441,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move4.setBackground(originalBackground.brighter());
@@ -446,7 +460,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to original
                 move4.setBackground(originalBackground);
                 // set button text to original
@@ -460,7 +474,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     swap.setBackground(originalBackground.brighter());
@@ -479,7 +493,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                // tell java to look at the button
+                
                 // set button background to original
                 swap.setBackground(originalBackground);
                 // set button text to original
