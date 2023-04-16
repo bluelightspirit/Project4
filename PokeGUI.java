@@ -298,6 +298,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         log.setText("Charizard launched fireball! (-12 HP for Pikachu)");
         logPanel.add(log);
 
+        // main panel BoxLayout before adding all panels in
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
