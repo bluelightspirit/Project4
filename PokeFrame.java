@@ -55,34 +55,49 @@ public class PokeFrame extends JFrame {
 
         // player panel & variables
         JPanel playerPokemonPanel = new JPanel();
-        int playerTempHp = 0;
+        int playerTempHp = 86;
+        int playerMaxHp = 150;
         String playerPokemonName = "charizard";
         String playerPokemonNameCapsFirst = playerPokemonName.substring(0,1).toUpperCase().concat(playerPokemonName.substring(1));
 
         // player label
         JLabel playerLabel = new JLabel();
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />HP: " + playerTempHp + "</html>"));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />HP: " + playerTempHp + " / " + playerMaxHp + "</html>"));
         playerLabel.setForeground(Color.white);
         playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
 
+        // player hp bar
+        JProgressBar playerHpBar = new JProgressBar();
+        playerHpBar.setMinimum(0);
+        playerHpBar.setMaximum(playerMaxHp);
+        playerHpBar.setValue(playerTempHp);
+        playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
+
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
-        int enemyTempHp = 0;
+        int enemyTempHp = 8;
+        int enemyMaxHp = 150;
         String enemyPokemonName = "pikachu";
         String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0,1).toUpperCase().concat(enemyPokemonName.substring(1));
 
         // enemy label
         JLabel enemyLabel = new JLabel();
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />HP: " + enemyTempHp + "</html>"));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />HP: " + enemyTempHp + " / " + enemyMaxHp + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
 
+        // enemy hp bar
+        JProgressBar enemyHpBar = new JProgressBar();
+        enemyHpBar.setMinimum(0);
+        enemyHpBar.setMaximum(enemyMaxHp);
+        enemyHpBar.setValue(enemyTempHp);
 
         // add labels to panels
         playerPokemonPanel.add(playerLabel);
         playerPokemonPanel.setBackground(Color.blue);
         enemyPokemonPanel.add(enemyLabel);
         enemyPokemonPanel.setBackground(Color.red);
+        enemyPokemonPanel.add(enemyHpBar, BorderLayout.EAST);
 
         // move buttons
         JButton move1 = new JButton("Move 1");
