@@ -49,7 +49,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final Color water = new Color(134, 168, 252);
 
 
-    // all accessible variables (would make more sense to have in Player or AI classes)
+    /// all accessible variables
 
     // player variables
     private String playerPokemonName;
@@ -63,6 +63,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     private int enemyMaxHp;
     private int enemyLevel = 50;
 
+    /// get methods (would make more sense to have in Player or AI classes)
     // gets player's pokemon name
     public String getPlayerPokemonName() {
         return playerPokemonName;
@@ -101,6 +102,49 @@ public class PokeGUI extends JFrame implements ActionListener {
     // gets enemy's level
     public int getEnemyLevel() {
         return enemyLevel;
+    }
+    
+    //// set methods that can be accessed by other classes
+    /// player
+    // set player pokemon name
+    public void setPlayerPokemonName(String pokeName) {
+        playerPokemonName = pokeName;
+    }
+
+    // set player level
+    public void setPlayerLevel(int pokeLevel) {
+        playerLevel = pokeLevel;
+    }
+
+    // set player max hp
+    public void setPlayerMaxHp(int pokeHp) {
+        playerMaxHp = pokeHp;
+    }
+
+    // set player temp hp
+    public void setPlayerTempHp(int pokeHp) {
+        playerTempHp = pokeHp;
+    }
+
+    // set player pokemon name
+    public void setEnemyPokemonName(String pokeName) {
+        enemyPokemonName = pokeName;
+    }
+
+    /// enemy
+    // set enemy level
+    public void setEnemyLevel(int pokeLevel) {
+        enemyLevel = pokeLevel;
+    }
+
+    // set enemy max hp
+    public void setEnemyMaxHp(int pokeHp) {
+        enemyMaxHp = pokeHp;
+    }
+
+    // set enemy temp hp
+    public void setEnemyTempHp(int pokeHp) {
+        enemyTempHp = pokeHp;
     }
 
     // constructs multiple panels and merges them into one main panel using BoxLayout
