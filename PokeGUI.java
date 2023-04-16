@@ -65,12 +65,6 @@ public class PokeGUI extends JFrame implements ActionListener {
     private int enemyLevel = 50;
 
     /// get methods (would make more sense to have in Player or AI classes)
-
-    // set log/console text on bottom panel
-    public void setLogText(String data) {
-        log.setText(data);
-    }
-
     // gets player's pokemon name
     public String getPlayerPokemonName() {
         return playerPokemonName;
@@ -111,7 +105,11 @@ public class PokeGUI extends JFrame implements ActionListener {
         return enemyLevel;
     }
 
-    //// set methods that can be accessed by other classes
+    //// set methods that can be accessed by other classes USEFULLY (example: mouseHover() is irrelevant to be accessed by other classes)
+    // set log/console text on bottom panel
+    public void setLogText(String data) {
+        log.setText(data);
+    }
     /// player
     // set player pokemon name
     public void setPlayerPokemonName(String pokeName) {
