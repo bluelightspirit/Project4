@@ -29,6 +29,9 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JButton move4;
     private final JButton swap;
     private final JLabel log;
+    private final JProgressBar playerHpBar;
+    private final JProgressBar enemyHpBar;
+    private final MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
 
     // color object variables based on type of move
     private final Color bug = new Color(59, 153, 80);
@@ -55,7 +58,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // player variables
     private String playerPokemonName;
-    private int playerTempHp;
+    private int playerTempHp = 76;
     private int playerMaxHp;
     private int playerLevel = 20;
 
@@ -170,7 +173,6 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // player panel & variable initialization
         JPanel playerPokemonPanel = new JPanel();
-        playerTempHp = 76;
         playerMaxHp = 150;
         playerPokemonName = "charizard";
         String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
@@ -189,30 +191,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         // UIManager.put("ProgressBar.foreground", Color.GREEN);
 
         // player hp bar
-        JProgressBar playerHpBar = new JProgressBar();
+        playerHpBar = new JProgressBar();
         playerHpBar.setMinimum(0);
         playerHpBar.setMaximum(playerMaxHp);
-        playerHpBar.setValue(playerTempHp);
-        playerHpBar.setPreferredSize(new Dimension(150, 15));
-        playerHpBar.setStringPainted(true);
-
-        // round progress bar percent using BigDecimal
-        BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
-        MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
-        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
-        playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
-
-        // set color based on HP percentage
-        // > 25% - 50%: dark orange
-        if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
-            playerHpBar.setForeground(new Color(255, 140, 0));
-            // 0% - 25%: red / crimson
-        } else if (playerPercentHp.doubleValue() <= .25) {
-            playerHpBar.setForeground(new Color(220, 20, 60));
-            // > 50%: malachite / green
-        } else {
-            playerHpBar.setForeground(new Color(11, 218, 81));
-        }
+        updatePlayerHpBar();
 
         playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
 
@@ -230,29 +212,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
 
         // enemy hp bar
-        JProgressBar enemyHpBar = new JProgressBar();
+        enemyHpBar = new JProgressBar();
         enemyHpBar.setMinimum(0);
         enemyHpBar.setMaximum(enemyMaxHp);
-        enemyHpBar.setValue(enemyTempHp);
-        enemyHpBar.setPreferredSize(new Dimension(150, 15));
-        enemyHpBar.setStringPainted(true);
-
-        // round progress bar percent using BigDecimal
-        BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
-        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
-        enemyHpBar.setString("HP: " + enemyTempHp + " / " + enemyMaxHp + " (" + roundedEnemyPercentHp + "%)");
-
-        // set color based on HP percentage
-        // > 25% - 50%: dark orange
-        if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
-            enemyHpBar.setForeground(new Color(255, 140, 0));
-            // 0% - 25%: red / crimson
-        } else if (enemyPercentHp.doubleValue() <= .25) {
-            enemyHpBar.setForeground(new Color(220, 20, 60));
-            // > 50%: malachite / green
-        } else {
-            enemyHpBar.setForeground(new Color(11, 218, 81));
-        }
+        updateEnemyHpBar();
 
         // add labels to panels
         playerPokemonPanel.add(playerLabel);
@@ -374,14 +337,20 @@ public class PokeGUI extends JFrame implements ActionListener {
         return hsbArr[2];
     }
 
-    // on button click do something
+    // on button click or press do something
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
-            System.out.println("move 1 clicked!");
+            System.out.println("move 1 clicked! -2 dmg for charizard!");
+            playerTempHp = playerTempHp - 2;
+            updatePlayerHpBar();
+            setLogText("-2 dmg for charizard!");
         } else if (src == move2) {
-            System.out.println("move 2 clicked!");
+            System.out.println("move 2 clicked! -5 dmg for pikachu!");
+            enemyTempHp = enemyTempHp - 5;
+            updateEnemyHpBar();
+            setLogText("-5 dmg for pikachu!");
         } else if (src == move3) {
             System.out.println("move 3 clicked!");
         } else if (src == move4) {
@@ -433,7 +402,6 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move2.setBackground(originalBackground.brighter());
@@ -556,7 +524,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // set button text to original
                 swap.setForeground(originalForeground);
             }
-
         });
     }
 
@@ -587,5 +554,51 @@ public class PokeGUI extends JFrame implements ActionListener {
         move3.setCursor(handCursor);
         move4.setCursor(handCursor);
         swap.setCursor(handCursor);
+    }
+
+    public void updatePlayerHpBar() {
+        playerHpBar.setValue(playerTempHp);
+        playerHpBar.setPreferredSize(new Dimension(150, 15));
+        playerHpBar.setStringPainted(true);
+
+        // round progress bar percent using BigDecimal
+        BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
+        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+        playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
+
+        // set color based on HP percentage
+        // > 25% - 50%: dark orange
+        if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
+            playerHpBar.setForeground(new Color(255, 140, 0));
+            // 0% - 25%: red / crimson
+        } else if (playerPercentHp.doubleValue() <= .25) {
+            playerHpBar.setForeground(new Color(220, 20, 60));
+            // > 50%: malachite / green
+        } else {
+            playerHpBar.setForeground(new Color(11, 218, 81));
+        }
+    }
+    
+    public void updateEnemyHpBar() {
+        enemyHpBar.setValue(enemyTempHp);
+        enemyHpBar.setPreferredSize(new Dimension(150, 15));
+        enemyHpBar.setStringPainted(true);
+
+        // round progress bar percent using BigDecimal
+        BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
+        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+        enemyHpBar.setString("HP: " + enemyTempHp + " / " + enemyMaxHp + " (" + roundedEnemyPercentHp + "%)");
+
+        // set color based on HP percentage
+        // > 25% - 50%: dark orange
+        if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
+            enemyHpBar.setForeground(new Color(255, 140, 0));
+            // 0% - 25%: red / crimson
+        } else if (enemyPercentHp.doubleValue() <= .25) {
+            enemyHpBar.setForeground(new Color(220, 20, 60));
+            // > 50%: malachite / green
+        } else {
+            enemyHpBar.setForeground(new Color(11, 218, 81));
+        }
     }
 }
