@@ -27,6 +27,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JButton move3;
     private final JButton move4;
     private final JButton swap;
+    private final JLabel log;
 
     // color object variables based on type of move
     private final Color bug = new Color(59, 153, 80);
@@ -64,6 +65,12 @@ public class PokeGUI extends JFrame implements ActionListener {
     private int enemyLevel = 50;
 
     /// get methods (would make more sense to have in Player or AI classes)
+
+    // set log/console text on bottom panel
+    public void setLogText(String data) {
+        log.setText(data);
+    }
+
     // gets player's pokemon name
     public String getPlayerPokemonName() {
         return playerPokemonName;
@@ -103,7 +110,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     public int getEnemyLevel() {
         return enemyLevel;
     }
-    
+
     //// set methods that can be accessed by other classes
     /// player
     // set player pokemon name
@@ -167,7 +174,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerTempHp = 76;
         playerMaxHp = 150;
         playerPokemonName = "charizard";
-        String playerPokemonNameCapsFirst = playerPokemonName.substring(0,1).toUpperCase().concat(playerPokemonName.substring(1));
+        String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
 
         // player label
         JLabel playerLabel = new JLabel();
@@ -193,19 +200,19 @@ public class PokeGUI extends JFrame implements ActionListener {
         // round progress bar percent using BigDecimal
         BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
         MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
-        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2,RoundingMode.HALF_UP);
+        BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
         playerHpBar.setString("HP: " + playerTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
 
         // set color based on HP percentage
         // > 25% - 50%: dark orange
         if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
-            playerHpBar.setForeground(new Color(255,140,0));
-        // 0% - 25%: red / crimson
+            playerHpBar.setForeground(new Color(255, 140, 0));
+            // 0% - 25%: red / crimson
         } else if (playerPercentHp.doubleValue() <= .25) {
-            playerHpBar.setForeground(new Color(220,20,60));
-        // > 50%: malachite / green
+            playerHpBar.setForeground(new Color(220, 20, 60));
+            // > 50%: malachite / green
         } else {
-            playerHpBar.setForeground(new Color(11,218,81));
+            playerHpBar.setForeground(new Color(11, 218, 81));
         }
 
         playerPokemonPanel.add(playerHpBar, BorderLayout.WEST);
@@ -215,7 +222,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyTempHp = 30;
         enemyMaxHp = 150;
         String enemyPokemonName = "pikachu";
-        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0,1).toUpperCase().concat(enemyPokemonName.substring(1));
+        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
 
         // enemy label
         JLabel enemyLabel = new JLabel();
@@ -233,19 +240,19 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // round progress bar percent using BigDecimal
         BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
-        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2,RoundingMode.HALF_UP);
+        BigDecimal roundedEnemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
         enemyHpBar.setString("HP: " + enemyTempHp + " / " + enemyMaxHp + " (" + roundedEnemyPercentHp + "%)");
 
         // set color based on HP percentage
         // > 25% - 50%: dark orange
         if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
-            enemyHpBar.setForeground(new Color(255,140,0));
-        // 0% - 25%: red / crimson
+            enemyHpBar.setForeground(new Color(255, 140, 0));
+            // 0% - 25%: red / crimson
         } else if (enemyPercentHp.doubleValue() <= .25) {
-            enemyHpBar.setForeground(new Color(220,20,60));
-        // > 50%: malachite / green
+            enemyHpBar.setForeground(new Color(220, 20, 60));
+            // > 50%: malachite / green
         } else {
-            enemyHpBar.setForeground(new Color(11,218,81));
+            enemyHpBar.setForeground(new Color(11, 218, 81));
         }
 
         // add labels to panels
@@ -287,15 +294,19 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
-        movesPanel.add(move1); movesPanel.add(move2); movesPanel.add(move3); movesPanel.add(move4); movesPanel.add(swap);
+        movesPanel.add(move1);
+        movesPanel.add(move2);
+        movesPanel.add(move3);
+        movesPanel.add(move4);
+        movesPanel.add(swap);
         movesPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         movesPanel.setBackground(Color.cyan);
         movesPanel.setSize(movesPanel.getWidth(), 36);
 
         // add label for log
         JPanel logPanel = new JPanel();
-        JLabel log = new JLabel();
-        log.setText("Charizard launched fireball! (-12 HP for Pikachu)");
+        log = new JLabel();
+        setLogText("Charizard launched fireball! (-12 HP for Pikachu)");
         logPanel.add(log);
 
         // main panel BoxLayout before adding all panels in
@@ -390,7 +401,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move1.setBackground(originalBackground.brighter());
@@ -409,7 +420,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to original
                 move1.setBackground(originalBackground);
                 // set button text to original
@@ -423,7 +434,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move2.setBackground(originalBackground.brighter());
@@ -442,7 +453,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to original
                 move2.setBackground(originalBackground);
                 // set button text to original
@@ -456,7 +467,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move3.setBackground(originalBackground.brighter());
@@ -475,7 +486,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to original
                 move3.setBackground(originalBackground);
                 // set button text to original
@@ -489,7 +500,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     move4.setBackground(originalBackground.brighter());
@@ -508,7 +519,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to original
                 move4.setBackground(originalBackground);
                 // set button text to original
@@ -522,7 +533,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // when button is hovered
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to brighter color if brightness <= 75%
                 if (getColorBrightness(originalBackground) <= .75) {
                     swap.setBackground(originalBackground.brighter());
@@ -541,7 +552,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
             // after button is hovered
             public void mouseExited(java.awt.event.MouseEvent e) {
-                
+
                 // set button background to original
                 swap.setBackground(originalBackground);
                 // set button text to original
