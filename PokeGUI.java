@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,7 +14,7 @@ import java.net.URL;
 import static java.awt.Color.RGBtoHSB;
 
 // main GUI class to handle everything GUI related, like JPanel, JFrame, buttons, & ActionListener
-public class PokeGUI extends JFrame implements ActionListener, MouseMotionListener {
+public class PokeGUI extends JFrame implements ActionListener {
 
     // main method to run constructor
     public static void main(String[] args) {
@@ -588,19 +587,5 @@ public class PokeGUI extends JFrame implements ActionListener, MouseMotionListen
         move3.setCursor(handCursor);
         move4.setCursor(handCursor);
         swap.setCursor(handCursor);
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        move1.addMouseMotionListener(this);
-        move2.addMouseMotionListener(this);
-        move3.addMouseMotionListener(this);
-        move4.addMouseMotionListener(this);
-        swap.addMouseMotionListener(this);
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
     }
 }
