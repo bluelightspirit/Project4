@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Battle {
-
+//does all the logic for a pokemon attack
     public static int attack(Pokemon attacker, Pokemon defender, Move move) {
         move.usePP();
         int damage = 0;
@@ -37,7 +37,7 @@ public class Battle {
         }
         return damage;
     }
-
+//calculates if a move hits or misses
     public static boolean hitOrMiss(Move move) {
         return (Math.random()*100 < move.getAccuracy());
     }
@@ -48,7 +48,7 @@ public class Battle {
 //        Pokemon poke = new Pokemon(2);
 //        return poke;
 //    }
-
+//determines who goes first
     public static boolean priority(Pokemon player, Pokemon ai) {
         return (player.getSpeed() > ai.getSpeed());
     }

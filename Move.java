@@ -74,6 +74,7 @@ public class Move
         this.moveType = getDataFromFile("moveType.txt", numberForFile);
         this.attackType = getDataFromFile("attackType.txt", numberForFile);
     }
+    //gets data from the file
     public String getDataFromFile(String fileName, int number) {
         try {
             String line;
@@ -111,6 +112,7 @@ public class Move
     {
         return attackType;
     }
+    //uses one pp
     public void usePP() {
         pp--;
     }
