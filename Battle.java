@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Battle {
 
-    public int attack(Pokemon attacker, Pokemon defender, Move move) {
+    public static int attack(Pokemon attacker, Pokemon defender, Move move) {
         int damage = 0;
         if(hitOrMiss(move)) {
             double effectiveness = defender.getWeakness(move.getMoveType());
@@ -37,7 +37,7 @@ public class Battle {
         return damage;
     }
 
-    public boolean hitOrMiss(Move move) {
+    public static boolean hitOrMiss(Move move) {
         return (Math.random()*100 < move.getAccuracy());
     }
 
@@ -48,7 +48,7 @@ public class Battle {
 //        return poke;
 //    }
 
-    public boolean priority(Pokemon player, Pokemon ai) {
+    public static boolean priority(Pokemon player, Pokemon ai) {
         return (player.getSpeed() > ai.getSpeed());
     }
 

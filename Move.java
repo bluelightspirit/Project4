@@ -12,7 +12,7 @@ public class Move
     {
         int numberForFile = number -1;
         String tempPower = getDataFromFile("power.txt", numberForFile);
-        if (tempPower.equals("-")) {
+        if (tempPower.equals("—")) {
             this.power = 1;
             variablePower = true;
         } else {
@@ -21,11 +21,11 @@ public class Move
         }
         this.pp =  Integer.parseInt(getDataFromFile("pp.txt", numberForFile));
         String tempAccuracy = getDataFromFile("accuracy.txt", numberForFile);
-        if (tempAccuracy.equals("-")) {
-            this.power = 100;
+        if (tempAccuracy.equals("—")) {
+            this.accuracy = 100;
             cannotMiss = true;
         } else {
-            this.power = Integer.parseInt(tempAccuracy);
+            this.accuracy = Integer.parseInt(tempAccuracy);
             cannotMiss = false;
         }
         this.moveName = getDataFromFile("moveName.txt", numberForFile);

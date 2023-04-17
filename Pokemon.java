@@ -19,7 +19,7 @@ public class Pokemon
             againstFight, againstFire, againstFlying, againstGhost, againstGrass, againstGround,
             againstIce, againstNormal, againstPoison, againstPsychic, againstRock, againstSteel,
             againstWater;
-    private final int IV = 15;
+    private final int IV = 31;
     private final int EV = 0;
     private boolean burned, fainted;
     public Pokemon(int number)//makes pokemon from number
@@ -59,13 +59,13 @@ public class Pokemon
         this.againstSteel = Double.parseDouble(getDataFromFile("againstSteel.txt", numberForFile));
         this.againstWater = Double.parseDouble(getDataFromFile("againstWater.txt", numberForFile));
 
-        hp = ((2*hp*IV+(EV/4)*level)/100)+level+10;
+        hp = (((2*hp+IV)*level)/100)+level+10;
         tempHp = hp;
-        attack = ((2*attack*IV+(EV/4)*level)/100)+5;
-        specialAttack = ((2*specialAttack*IV+(EV/4)*level)/100)+5;
-        defense = ((2*defense*IV+(EV/4)*level)/100)+5;
-        specialDefense = ((2*specialDefense*IV+(EV/4)*level)/100)+5;
-        speed = ((2*speed*IV+(EV/4)*level)/100)+5;
+        attack = (((2*attack+IV)*level)/100)+5;
+        specialAttack = (((2*specialAttack+IV)*level)/100)+5;
+        defense = (((2*defense+IV)*level)/100)+5;
+        specialDefense = (((2*specialDefense+IV)*level)/100)+5;
+        speed = (((2*speed+IV)*level)/100)+5;
 
         burned = false;
         fainted = false;
