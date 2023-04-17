@@ -609,13 +609,6 @@ public class PokeGUI extends JFrame implements ActionListener {
         });
 
         slowFpsTimer.restart();
-        if (enemyPokemon.getFainted()) {
-            enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
-            System.out.println(enemyPokemon.getName());
-            updateEnemyLabel(getEnemyTurn());
-            this.pack();
-            this.revalidate();
-        }
     }
 
     // update label for player pokemon
@@ -852,5 +845,21 @@ public class PokeGUI extends JFrame implements ActionListener {
                 swap.setForeground(originalForeground);
             }
         });
+    }
+
+    // swaps enemy pokemon and updates GUI
+    public void swapEnemyPokemon() {
+        if (enemyPokemon.getFainted()) {
+            enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
+            System.out.println(enemyPokemon.getName());
+            // need giant set method taking in enemyPokemon and resetting the variables at the top
+            // like this:
+            enemyMaxHp = enemyPokemon.getHp();
+            enemyTempHp = enemyPokemon.getHp();
+            enemyPokemonName = enemyPokemon.getName();
+            enemyNumber = enemyPokemon.getNumber();
+            updateEnemyLabel(getEnemyTurn());
+            pack();
+        }
     }
 }
