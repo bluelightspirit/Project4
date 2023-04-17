@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.ObjectInputFilter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -156,6 +157,16 @@ public class PokemonGame
             e.printStackTrace();
             System.err.println("Error: file" + fileName + " has no more line elements to be read???");
         }
+
+        System.out.println(playerPokemonArrayList.get(0).getName());
+        System.out.println(playerPokemonArrayList.get(1).getName());
+        System.out.println(playerPokemonArrayList.get(2).getName());
+
+        System.out.println(enemyPokemonArrayList.get(0).getName());
+        System.out.println(enemyPokemonArrayList.get(1).getName());
+        System.out.println(enemyPokemonArrayList.get(2).getName());
+
+        JFrame pokeGUI = new PokeGUI();
 
     }
 }
