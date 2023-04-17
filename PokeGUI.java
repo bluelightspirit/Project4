@@ -643,13 +643,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     public Color getPokemonMoveTypeColor(String givenColor){
-        for (String colors : colorsHashMap.keySet()) {
-            if (colors.equalsIgnoreCase(givenColor)) {
-                return colorsHashMap.get(colors);
-            }
-        }
-        System.out.println("Color for moveType not found");
-        return new Color(255, 255, 255);
+        return colorsHashMap.get(givenColor.toLowerCase());
     }
 
     public void downloadFont() {
