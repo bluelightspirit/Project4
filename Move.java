@@ -75,12 +75,12 @@ public class Move
     public String getDataFromFile(String fileName, int number) {
         try {
             String line;
-            try (Stream<String> lines = Files.lines(Paths.get(fileName))) {
+            try (Stream<String> lines = Files.lines(Paths.get(".idea/".concat(fileName)))) {
                 line = lines.skip(number).findFirst().get();
                 return line;
             }
         } catch (Exception e) {
-            System.out.println("Error getting data");
+            System.out.println("Error getting data (within Move.java)");
             System.exit(0);
         }
         return "";
