@@ -1,5 +1,4 @@
 import java.io.FileInputStream;
-import java.io.ObjectInputFilter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ public class Pokemon
     private int hp, tempHp, attack, defense, specialAttack, specialDefense, speed, level, number;
     private Move move1,move2,move3,move4;
     // intellij said to import ObjectInputFilter
-    private ObjectInputFilter.Status status;
 
     //private Ability ability;//probably get rid of
     // private ArrayList<Move> = new ArrayList<>();
@@ -140,7 +138,7 @@ public class Pokemon
         move3 = null;
         move4 = null;
     }
-
+//grabs the data from the specified file on the correct line
     public String getDataFromFile(String fileName, int number) {
         try {
             String line;
@@ -220,7 +218,7 @@ public class Pokemon
     public Move getMove4() {
         return move4;
     }
-
+//returns the corresponding weakness value based on string.
     public double getWeakness(String type) {
         switch (type) {
             case "bug":
@@ -263,7 +261,7 @@ public class Pokemon
                 return 1;
         }
     }
-
+//damages pokemon+
     public boolean damage(int damage) {
         tempHp -= damage;
         if (tempHp <= 0) {
@@ -275,7 +273,7 @@ public class Pokemon
     public boolean getFainted() {
         return fainted;
     }
-
+//sets the moves of the pokemon
     public void setMove(Move move, int moveNumber)
     {
         if(moveNumber == 1)
