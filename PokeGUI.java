@@ -622,7 +622,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     public void setColorsHashMap() {
-        colorsHashMap.put("bug", new Color(59, 153, 80));
+        colorsHashMap.put("bug", bug);
         colorsHashMap.put("dark", dark);
         colorsHashMap.put("dragon", dragon);
         colorsHashMap.put("electric", electric);
