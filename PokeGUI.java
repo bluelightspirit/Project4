@@ -37,6 +37,8 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JLabel playerLabel;
     private final JLabel enemyLabel;
     private final MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
+    private Pokemon playerPokemon = new Pokemon(1);
+    private Pokemon enemyPokemon = new Pokemon(1);;
 
     // color object variables based on type of move
     private final Color bug = new Color(59, 153, 80);
@@ -363,38 +365,57 @@ public class PokeGUI extends JFrame implements ActionListener {
         return hsbArr[2];
     }
 
+    public void setPlayerPokemon(Pokemon pokemon) {
+        playerPokemon = pokemon;
+    }
+
+    public void setEnemyPokemon(Pokemon pokemon) {
+        enemyPokemon = pokemon;
+    }
+
+
     // on button click or press do something
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
-            System.out.println("move 1 clicked! -22 dmg for charizard!");
-            playerTempHp = playerTempHp - 22;
+
+            Battle battle = new Battle();
+            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+            System.out.println("move 1 clicked! -" + damage + " dmg for charizard!");
+            playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
-            setLogText("Charizard took 22 damage!");
+            setLogText("Charizard took " + damage + " damage!");
             updatePlayerLabel(getEnemyTurn());
             updateEnemyLabel(getPlayerTurn());
+
         } else if (src == move2) {
-            System.out.println("move 2 clicked! -12 dmg for pikachu!");
-            enemyTempHp = enemyTempHp - 12;
-            updateEnemyHpBar();
-            setLogText("-12 dmg for pikachu!");
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
-        } else if (src == move3) {
-            System.out.println("move 3 clicked! +22 dmg for charizard!");
-            playerTempHp = playerTempHp + 22;
+            Battle battle = new Battle();
+            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
+            System.out.println("move 2 clicked! -" + damage + " dmg for charizard!");
+            playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
-            setLogText("+22 dmg for charizard!");
+            setLogText("Charizard took " + damage + " damage!");
+            updatePlayerLabel(getEnemyTurn());
+            updateEnemyLabel(getPlayerTurn());
+        } else if (src == move3) {
+            Battle battle = new Battle();
+            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
+            System.out.println("move 3 clicked! -" + damage + " dmg for charizard!");
+            playerTempHp = playerTempHp - damage;
+            updatePlayerHpBar();
+            setLogText("Charizard took " + damage + " damage!");
             updatePlayerLabel(getEnemyTurn());
             updateEnemyLabel(getPlayerTurn());
         } else if (src == move4) {
-            System.out.println("move 4 clicked! +30 dmg for pikachu!");
-            enemyTempHp = enemyTempHp + 30;
-            updateEnemyHpBar();
-            setLogText("+30 dmg for pikachu!");
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
+            Battle battle = new Battle();
+            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
+            System.out.println("move 4 clicked! -" + damage + " dmg for charizard!");
+            playerTempHp = playerTempHp - damage;
+            updatePlayerHpBar();
+            setLogText("Charizard took " + damage + " damage!");
+            updatePlayerLabel(getEnemyTurn());
+            updateEnemyLabel(getPlayerTurn());
         } else if (src == swap) {
             System.out.println("swap clicked!");
         }

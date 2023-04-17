@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.ObjectInputFilter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.File;
 import java.util.random.*;
 import java.lang.Math;
+
 public class PokemonGame
 {
     public static void main(String[] args) throws FileNotFoundException {
@@ -167,7 +170,10 @@ public class PokemonGame
         System.out.println(enemyPokemonArrayList.get(2).getName());
 
         JFrame pokeGUI = new PokeGUI();
-        ((PokeGUI) pokeGUI).setPlayerPokemonName(playerPokemonArrayList.get(0).getName());
-        ((PokeGUI) pokeGUI).updatePlayerLabel("WAITING");
+//        ((PokeGUI) pokeGUI).setPlayerPokemonName(playerPokemonArrayList.get(0).getName());
+//        ((PokeGUI) pokeGUI).updatePlayerLabel("WAITING");
+
+        ((PokeGUI) pokeGUI).setPlayerPokemon(playerPokemonArrayList.get(0));
+        ((PokeGUI) pokeGUI).setEnemyPokemon(enemyPokemonArrayList.get(0));
     }
 }
