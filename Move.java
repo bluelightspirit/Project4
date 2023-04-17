@@ -52,7 +52,8 @@ public class Move
             System.out.println("Error finding move name");
         }
         String tempPower = getDataFromFile("power.txt", numberForFile);
-        if (tempPower.equals("-")) {
+        // note: weird dash for power.txt
+        if (tempPower.equals("—")) {
             this.power = 1;
             variablePower = true;
         } else {
@@ -61,7 +62,8 @@ public class Move
         }
         this.pp =  Integer.parseInt(getDataFromFile("pp.txt", numberForFile));
         String tempAccuracy = getDataFromFile("accuracy.txt", numberForFile);
-        if (tempAccuracy.equals("-")) {
+        // note: weird dash for accuracy.txt
+        if (tempAccuracy.equals("—")) {
             this.power = 10000;
             cannotMiss = true;
         } else {
