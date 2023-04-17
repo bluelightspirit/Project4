@@ -299,4 +299,8 @@ public class Pokemon
         }
     }
 
+    public void setFainted() {
+        fainted = true;
+    }
+
 }
