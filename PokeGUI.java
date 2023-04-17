@@ -393,10 +393,13 @@ public class PokeGUI extends JFrame implements ActionListener {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
 
+            // can be enemyPokemon.damage() ?
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
             System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
             enemyTempHp = enemyTempHp - damage;
+
             updateEnemyHpBar();
+
             // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
             // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
             // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
