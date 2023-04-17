@@ -5,10 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.awt.Font;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import static java.awt.Color.RGBtoHSB;
@@ -116,22 +119,22 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void setLogText(String data) {
         long delay = 0;
         // animation
-        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
-        slowFpsTimer.addActionListener(new ActionListener() {
-            int i = 0;
-            // set log text
-            public void actionPerformed(ActionEvent e) {
-                i++;
-                if (i == data.length()) {
-                    slowFpsTimer.stop();
-                } else {
-                    log.setText(data.substring(0, i + 1));
-                }
-            }
-        });
+//        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
+//        slowFpsTimer.addActionListener(new ActionListener() {
+//            int i = 0;
+//            // set log text
+//            public void actionPerformed(ActionEvent e) {
+//                i++;
+//                if (i == data.length()) {
+//                    slowFpsTimer.stop();
+//                } else {
+//                    log.setText(data.substring(0, i + 1));
+//                }
+//            }
+//        });
 
         log.setText(data);
-        slowFpsTimer.start();
+//        slowFpsTimer.restart();
     }
     /// player
     // set player pokemon name
@@ -282,6 +285,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         // add label for log
         JPanel logPanel = new JPanel();
         log = new JLabel();
+
+        String fontUrlString = "https://www.fontsaddict.com/fontface/pokemon-gb.ttf";
+        downloadFont();
+
         setLogText("Welcome to Pokémane Battle Simulator!");
         logPanel.add(log);
 
@@ -709,7 +716,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             }
         });
 
-        slowFpsTimer.start();
+        slowFpsTimer.restart();
     }
 
     // update label for player pokemon
@@ -726,6 +733,24 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
+    }
+
+    public void downloadFont() {
+        GraphicsEnvironment ge = null;
+        try {
+            // Load font file from local file system
+            File fontFile = new File(".idea/fonts/northrup-regular.ttf");
+
+            // Create Font object from the file
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(48f);
+
+            // Register the font with the GraphicsEnvironment
+            ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+            log.setFont(font);
+        } catch (Exception e) {
+            System.out.println("couldn't download font");
+        }
     }
 
     // updates both enemy and player labels
