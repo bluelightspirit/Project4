@@ -266,6 +266,7 @@ public class Pokemon
         tempHp -= damage;
         if (tempHp <= 0) {
             fainted = true;
+            tempHp = 0;
         }
         return fainted;
     }
