@@ -546,6 +546,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // update temp hp in enemyHpBar
     public void updateEnemyHpBar() {
+        swapEnemyPokemon();
         // enemyTempHp = new enemy hp to aim for
 
         // fix initial hp set and when hp is 100%
