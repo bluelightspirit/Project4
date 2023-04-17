@@ -118,10 +118,10 @@ public class PokemonGame
                     print.println(50);
                 }
                 // add response
-                System.out.println("Enter name of move to be added or type R to let RNG decide");
-                response = in.next();
+                //System.out.println("Enter name of move to be added or type R to let RNG decide");
+                //response = in.next();
                 int count2 = 0;
-                if (response.equals("R"))
+              /*  if (response.equals("R"))
                 {//rng decide
                     int mov1 = (int) (Math.random() * 502);
                     int mov2 = (int) (Math.random() * 502);
@@ -133,13 +133,48 @@ public class PokemonGame
                     print.println(moveNames.get(mov4));
                     count++;
                    //  break;
-                }
-                while (!moveNames.contains(response) && count2 < 4) {
-                    System.out.println("Enter name of move to be added");
+                }*/
+                while (!moveNames.contains(response) && count2 < 4)
+                {
+                    System.out.println("Enter name of move to be added or type R to let RNG decide");
                     response = in.next();
                     if (moveNames.contains(response)) {
                         print.println(response);
                         count2++;
+                    }
+                    else if (response.equals("R"))
+                    {//rng decide
+                        int mov1 = (int) (Math.random() * 502);
+                        int mov2 = (int) (Math.random() * 502);
+                        int mov3 = (int) (Math.random() * 502);
+                        int mov4 = (int) (Math.random() * 502);
+                        if(count2 == 0)
+                        {
+                            print.println(moveNames.get(mov1));
+                            count2++;
+                        }
+                        else if(count2 == 1)
+                        {
+                            print.println(moveNames.get(mov2));
+                            count2++;
+
+                        }
+                        else if(count2 == 2)
+                        {
+                            print.println(moveNames.get(mov3));
+                            count2++;
+                        }
+                        else if(count2 == 3)
+                        {
+                            print.println(moveNames.get(mov4));
+                            count2++;
+                        }
+                       // print.println(moveNames.get(mov1));
+                       // print.println(moveNames.get(mov2));
+                        //print.println(moveNames.get(mov3));
+                        //print.println(moveNames.get(mov4));
+                        count++;
+                        //  break;
                     }
                 }
                 count++;
