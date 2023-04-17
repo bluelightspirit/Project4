@@ -598,8 +598,6 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void updatePlayerHpBar() {
         // playerTempHp = new player hp to aim for
 
-        long delay = (1000 / Math.abs(playerHpBar.getValue() - playerTempHp));
-
         // fix initial hp set and when hp is 100%
         if (playerHpBar.getValue() == 0) {
             if (playerTempHp > playerHpBar.getValue()) {
@@ -609,6 +607,13 @@ public class PokeGUI extends JFrame implements ActionListener {
             if (playerTempHp < playerHpBar.getValue()) {
                 playerHpBar.setValue(playerHpBar.getValue()-1);
             }
+        }
+
+        // set delay
+        long delay = 0;
+        int abs = Math.abs(playerHpBar.getValue() - playerTempHp);
+        if (abs != 0) {
+            delay = (1000 / abs);
         }
 
         // remove some repetition in actionPerformed
@@ -661,8 +666,6 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void updateEnemyHpBar() {
         // enemyTempHp = new enemy hp to aim for
 
-        long delay = (1000 / Math.abs(playerHpBar.getValue() - playerTempHp));
-
         // fix initial hp set and when hp is 100%
         if (enemyHpBar.getValue() == 0) {
             if (enemyTempHp > enemyHpBar.getValue()) {
@@ -672,6 +675,13 @@ public class PokeGUI extends JFrame implements ActionListener {
             if (enemyTempHp < enemyHpBar.getValue()) {
                 enemyHpBar.setValue(enemyHpBar.getValue()-1);
             }
+        }
+
+        // set delay
+        long delay = 0;
+        int abs = Math.abs(enemyHpBar.getValue() - enemyTempHp);
+        if (abs != 0) {
+            delay = (1000 / abs);
         }
 
         // remove some repetition in actionPerformed
@@ -742,12 +752,16 @@ public class PokeGUI extends JFrame implements ActionListener {
             File fontFile = new File(".idea/fonts/northrup-regular.ttf");
 
             // Create Font object from the file
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(48f);
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(96f);
 
             // Register the font with the GraphicsEnvironment
             ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font);
-            log.setFont(font);
+            log.setFont(font.deriveFont(48f));
+            enemyLabel.setFont(font.deriveFont(24f));
+            playerLabel.setFont(font.deriveFont(24f));
+            enemyHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+            playerHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
         } catch (Exception e) {
             System.out.println("couldn't download font");
         }
