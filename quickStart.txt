@@ -1,0 +1,36 @@
+Sylveon
+100
+Shadow Ball
+Quick Attack
+Draining Kiss
+Moonblast
+Vaporeon
+100
+Tackle
+Water Pulse
+Hydro Pulse
+Quick Attack
+Deino
+50
+Guardian of Alola
+Dynamic Punch
+Tectonic Rage
+Plasma Fists
+Chesnaught
+50
+Spit Up
+Stomp
+Accelerock
+Dynamic Punch
+Gogoat
+50
+Ice Hammer
+Steam Eruption
+Guardian of Alola
+Absorb
+Piplup
+50
+Bulldoze
+Dynamic Punch
+Zing Zap
+Dive
