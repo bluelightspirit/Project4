@@ -57,7 +57,7 @@ public class PokemonGame
         //adds pokemon
       // while(count < 6) {
            // while(count < 6) {
-    //    for(int ii = 0; ii < 6; ii++) {
+        for(int ii = 0; ii < 6; ii++) {
             //if (count < 3) {
                 System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
            // } else {
@@ -141,6 +141,7 @@ public class PokemonGame
                     if (moveNames.contains(response)) {
                         print.println(response);
                         count2++;
+                        response = "";
                     }
                     else if (response.equals("R"))
                     {//rng decide
@@ -173,7 +174,7 @@ public class PokemonGame
                        // print.println(moveNames.get(mov2));
                         //print.println(moveNames.get(mov3));
                         //print.println(moveNames.get(mov4));
-                        count++;
+                        //count++;
                         //  break;
                     }
                 }
@@ -182,7 +183,7 @@ public class PokemonGame
                 // }
             }
 
-            //}
+            }
        // }
         print.close();
 
