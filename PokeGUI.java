@@ -401,7 +401,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
             // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
-            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
             this.pack();
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
@@ -412,7 +412,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             System.out.println("move 2 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
             enemyTempHp = enemyTempHp - damage;
             updateEnemyHpBar();
-            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
             this.pack();
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
@@ -422,7 +422,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             System.out.println("move 3 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
             enemyTempHp = enemyTempHp - damage;
             updateEnemyHpBar();
-            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
             this.pack();
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
@@ -432,7 +432,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             System.out.println("move 4 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
             enemyTempHp = enemyTempHp - damage;
             updateEnemyHpBar();
-            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
             this.pack();
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
