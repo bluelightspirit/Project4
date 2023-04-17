@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static java.awt.Color.RGBtoHSB;
+import static java.awt.Color.getColor;
 
 // main GUI class to handle everything GUI related, like JPanel, JFrame, buttons, & ActionListener
 public class PokeGUI extends JFrame implements ActionListener {
@@ -22,7 +24,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     // main method to run constructor
     public static void main(String[] args) {
         // base frame for all panels
-        new PokeGUI();
+        new PokeGUI(new Pokemon(1), new Pokemon(1));
     }
 
     // essential variables
@@ -38,7 +40,9 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JLabel enemyLabel;
     private final MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
     private Pokemon playerPokemon = new Pokemon(1);
-    private Pokemon enemyPokemon = new Pokemon(1);;
+    private Pokemon enemyPokemon = new Pokemon(1);
+    private String playerPokemonNameCapsFirst;
+    private String enemyPokemonNameCapsFirst;
 
     // color object variables based on type of move
     private final Color bug = new Color(59, 153, 80);
@@ -59,6 +63,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final Color rock = new Color(139, 62, 33);
     private final Color steel = new Color(66, 189, 148);
     private final Color water = new Color(134, 168, 252);
+    private static HashMap<String, Color> colorsHashMap = new HashMap<>();
 
 
     /// all accessible variables
@@ -68,12 +73,14 @@ public class PokeGUI extends JFrame implements ActionListener {
     private int playerTempHp;
     private int playerMaxHp;
     private int playerLevel = 20;
+    private int playerNumber;
 
     // enemy variables
     private String enemyPokemonName = "pikachu";
     private int enemyTempHp;
     private int enemyMaxHp;
     private int enemyLevel = 50;
+    private int enemyNumber;
 
     /// get methods (would make more sense to have in Player or AI classes)
     // gets player's pokemon name
@@ -136,6 +143,8 @@ public class PokeGUI extends JFrame implements ActionListener {
 //        });
 
         log.setText(data);
+        log.setHorizontalAlignment(SwingConstants.CENTER);
+        log.setVerticalAlignment(SwingConstants.CENTER);
 //        slowFpsTimer.restart();
     }
     /// player
@@ -181,7 +190,10 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     // constructs multiple panels and merges them into one main panel using BoxLayout
-    PokeGUI() {
+    // new addition: uses 2 Pokemon objects
+    PokeGUI(Pokemon playerPoke, Pokemon enemyPoke) {
+        playerPokemon = playerPoke;
+        enemyPokemon = enemyPoke;
 
         // set title
         this.setTitle("Pokémane Battle Simulator");
@@ -197,8 +209,10 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // player panel & variable initialization
         JPanel playerPokemonPanel = new JPanel();
-        playerMaxHp = 150;
-        playerPokemonName = "charizard";
+        playerMaxHp = playerPokemon.getHp();
+        playerTempHp = playerPokemon.getHp();
+        playerPokemonName = playerPokemon.getName();
+        playerNumber = playerPokemon.getNumber();
 
         // player label
         playerLabel = new JLabel();
@@ -215,16 +229,16 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerHpBar = new JProgressBar();
         playerHpBar.setMinimum(0);
         playerHpBar.setMaximum(playerMaxHp);
-        playerTempHp = 120;
         updatePlayerHpBar();
 
         playerPokemonPanel.add(playerHpBar, BorderLayout.EAST);
 
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
-        enemyTempHp = 30;
-        enemyMaxHp = 150;
-        String enemyPokemonName = "pikachu";
+        enemyMaxHp = enemyPokemon.getHp();
+        enemyTempHp = enemyPokemon.getHp();
+        enemyPokemonName = enemyPokemon.getName();
+        enemyNumber = enemyPokemon.getNumber();
 
         // enemy label
         enemyLabel = new JLabel();
@@ -244,10 +258,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyPokemonPanel.add(enemyHpBar, BorderLayout.EAST);
 
         // move buttons so buttons exist
-        move1 = new JButton("Move 1");
-        move2 = new JButton("Move 2");
-        move3 = new JButton("Move 3");
-        move4 = new JButton("Move 4");
+        move1 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 1<br />" + playerPokemon.getMove1().getMoveName() + "</div></html>");
+        move2 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 2<br />" + playerPokemon.getMove2().getMoveName() + "</div></html>");
+        move3 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 3<br />" + playerPokemon.getMove3().getMoveName() + "</div></html>");
+        move4 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 4<br />" + playerPokemon.getMove4().getMoveName() + "</div></html>");
         swap = new JButton("Swap");
 
         // actionListeners so clicking does something
@@ -257,11 +271,11 @@ public class PokeGUI extends JFrame implements ActionListener {
         move4.addActionListener(this);
         swap.addActionListener(this);
 
-        // set color for buttons
-        move1.setBackground(bug);
-        move2.setBackground(dark);
-        move3.setBackground(dragon);
-        move4.setBackground(electric);
+        setColorsHashMap();
+        move1.setBackground(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()));
+        move2.setBackground(getPokemonMoveTypeColor(playerPokemon.getMove2().getMoveType()));
+        move3.setBackground(getPokemonMoveTypeColor(playerPokemon.getMove3().getMoveType()));
+        move4.setBackground(getPokemonMoveTypeColor(playerPokemon.getMove4().getMoveType()));
         swap.setBackground(Color.LIGHT_GRAY);
 
         // set text colors for buttons
@@ -272,8 +286,6 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // change cursor on hover
         setCursor();
-
-        // test
 
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
@@ -290,9 +302,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         JPanel logPanel = new JPanel();
         log = new JLabel();
 
-        String fontUrlString = "https://www.fontsaddict.com/fontface/pokemon-gb.ttf";
+        // download font
         downloadFont();
 
+        // set log panel text & add that to the panel
         setLogText("Welcome to Pokémane Battle Simulator!");
         logPanel.add(log);
 
@@ -338,13 +351,13 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     // get image from Pokémon name given
-    public static BufferedImage getSprite(String pokemonName) {
+    public static BufferedImage getSprite(int pokemonNumber) {
         // PokeAPI sprite (https://github.com/PokeAPI/sprites)
-        // String link = "https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/back/25.png";
+        String link = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/ultra-sun-ultra-moon/".concat(pokemonNumber + ".png");
         // bigger sprite
         //String link = "https://img.pokemondb.net/artwork/vector/".concat(pokemonName + ".png");
         // smaller sprite
-        String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
+        // String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png").replace(' ', '-');
         return getImage(link);
     }
 
@@ -381,44 +394,291 @@ public class PokeGUI extends JFrame implements ActionListener {
         if (src == move1) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
-            System.out.println("move 1 clicked! -" + damage + " dmg for charizard!");
-            playerTempHp = playerTempHp - damage;
-            updatePlayerHpBar();
-            setLogText("Charizard took " + damage + " damage!");
-            updatePlayerLabel(getEnemyTurn());
-            updateEnemyLabel(getPlayerTurn());
+            System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+            enemyTempHp = enemyTempHp - damage;
+            updateEnemyHpBar();
+            // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
+            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
+            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
+            // then "<p>text</p>"
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            this.pack();
+            updatePlayerLabel(getPlayerTurn());
+            updateEnemyLabel(getEnemyTurn());
 
         } else if (src == move2) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
-            System.out.println("move 2 clicked! -" + damage + " dmg for charizard!");
-            playerTempHp = playerTempHp - damage;
-            updatePlayerHpBar();
-            setLogText("Charizard took " + damage + " damage!");
-            updatePlayerLabel(getEnemyTurn());
-            updateEnemyLabel(getPlayerTurn());
+            System.out.println("move 2 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+            enemyTempHp = enemyTempHp - damage;
+            updateEnemyHpBar();
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            this.pack();
+            updatePlayerLabel(getPlayerTurn());
+            updateEnemyLabel(getEnemyTurn());
         } else if (src == move3) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
-            System.out.println("move 3 clicked! -" + damage + " dmg for charizard!");
-            playerTempHp = playerTempHp - damage;
-            updatePlayerHpBar();
-            setLogText("Charizard took " + damage + " damage!");
-            updatePlayerLabel(getEnemyTurn());
-            updateEnemyLabel(getPlayerTurn());
+            System.out.println("move 3 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+            enemyTempHp = enemyTempHp - damage;
+            updateEnemyHpBar();
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            this.pack();
+            updatePlayerLabel(getPlayerTurn());
+            updateEnemyLabel(getEnemyTurn());
         } else if (src == move4) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
-            System.out.println("move 4 clicked! -" + damage + " dmg for charizard!");
-            playerTempHp = playerTempHp - damage;
-            updatePlayerHpBar();
-            setLogText("Charizard took " + damage + " damage!");
-            updatePlayerLabel(getEnemyTurn());
-            updateEnemyLabel(getPlayerTurn());
+            System.out.println("move 4 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+            enemyTempHp = enemyTempHp - damage;
+            updateEnemyHpBar();
+            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonName.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemon.getName().concat(" took " + damage + " damage!</html></p>")))));
+            this.pack();
+            updatePlayerLabel(getPlayerTurn());
+            updateEnemyLabel(getEnemyTurn());
         } else if (src == swap) {
             System.out.println("swap clicked!");
         }
     }
+
+    // set original text colors based on background brightness
+    public void setTextColors() {
+        if (getColorBrightness(move1.getBackground()) <= .60) {
+            move1.setForeground(Color.white);
+        }
+        if (getColorBrightness(move2.getBackground()) <= .60) {
+            move2.setForeground(Color.white);
+        }
+        if (getColorBrightness(move3.getBackground()) <= .60) {
+            move3.setForeground(Color.white);
+        }
+        if (getColorBrightness(move4.getBackground()) <= .60) {
+            move4.setForeground(Color.white);
+        }
+        if (getColorBrightness(swap.getBackground()) <= .60) {
+            swap.setForeground(Color.white);
+        }
+    }
+
+    // set cursor to hand cursor on hover
+    public void setCursor() {
+        Cursor handCursor = new Cursor(HAND_CURSOR);
+        move1.setCursor(handCursor);
+        move2.setCursor(handCursor);
+        move3.setCursor(handCursor);
+        move4.setCursor(handCursor);
+        swap.setCursor(handCursor);
+    }
+
+    // update temp hp in playerHpBar
+    public void updatePlayerHpBar() {
+        // playerTempHp = new player hp to aim for
+
+        // fix initial hp set and when hp is 100%
+        if (playerHpBar.getValue() == 0) {
+            if (playerTempHp > playerHpBar.getValue()) {
+                playerHpBar.setValue(1);
+            }
+        } else if (playerHpBar.getPercentComplete() == 1) {
+            if (playerTempHp < playerHpBar.getValue()) {
+                playerHpBar.setValue(playerHpBar.getValue()-1);
+            }
+        }
+
+        // set delay
+        long delay = 0;
+        int abs = Math.abs(playerHpBar.getValue() - playerTempHp);
+        if (abs != 0) {
+            delay = (1000 / abs);
+        }
+
+        // remove some repetition in actionPerformed
+        playerHpBar.setPreferredSize(new Dimension(150, 15));
+        playerHpBar.setStringPainted(true);
+
+        // animation
+        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
+        slowFpsTimer.addActionListener(new ActionListener() {
+            // if temp hp = max hp or 0, force playerTempHp to stay the same
+            public void actionPerformed(ActionEvent e) {
+                int playerAnimatedTempHp = playerHpBar.getValue();
+                // if temp hp = max hp or 0, force playerTempHp to stay the same
+                if (playerAnimatedTempHp == playerMaxHp || playerAnimatedTempHp == 0) {
+                    playerTempHp = playerAnimatedTempHp;
+                    slowFpsTimer.stop();
+                }
+
+                if (playerAnimatedTempHp > playerTempHp) {
+                    playerAnimatedTempHp--;
+                } else if (playerAnimatedTempHp < playerTempHp) {
+                    playerAnimatedTempHp++;
+                }
+                playerHpBar.setValue(playerAnimatedTempHp);
+
+                // round progress bar percent using BigDecimal
+                BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
+                BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+                playerHpBar.setString("HP: " + playerAnimatedTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
+
+                // set color based on HP percentage
+                // > 25% - 50%: dark orange
+                if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
+                    playerHpBar.setForeground(new Color(255, 140, 0));
+                    // 0% - 25%: red / crimson
+                } else if (playerPercentHp.doubleValue() <= .25) {
+                    playerHpBar.setForeground(new Color(220, 20, 60));
+                    // > 50%: malachite / green
+                } else {
+                    playerHpBar.setForeground(new Color(11, 218, 81));
+                }
+            }
+        });
+
+        slowFpsTimer.start();
+
+    }
+
+    // update temp hp in enemyHpBar
+    public void updateEnemyHpBar() {
+        // enemyTempHp = new enemy hp to aim for
+
+        // fix initial hp set and when hp is 100%
+        if (enemyHpBar.getValue() == 0) {
+            if (enemyTempHp > enemyHpBar.getValue()) {
+                enemyHpBar.setValue(1);
+            }
+        } else if (enemyHpBar.getPercentComplete() == 1) {
+            if (enemyTempHp < enemyHpBar.getValue()) {
+                enemyHpBar.setValue(enemyHpBar.getValue()-1);
+            }
+        }
+
+        // set delay
+        long delay = 0;
+        int abs = Math.abs(enemyHpBar.getValue() - enemyTempHp);
+        if (abs != 0) {
+            delay = (1000 / abs);
+        }
+
+        // remove some repetition in actionPerformed
+        enemyHpBar.setPreferredSize(new Dimension(150, 15));
+        enemyHpBar.setStringPainted(true);
+
+        // animation
+        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
+        slowFpsTimer.addActionListener(new ActionListener() {
+            // if temp hp = max hp or 0, force enemyTempHp to stay the same
+            public void actionPerformed(ActionEvent e) {
+                int enemyAnimatedTempHp = enemyHpBar.getValue();
+                // if temp hp = max hp or 0, force enemyTempHp to stay the same
+                if (enemyAnimatedTempHp == enemyMaxHp || enemyAnimatedTempHp == 0) {
+                    enemyTempHp = enemyAnimatedTempHp;
+                    slowFpsTimer.stop();
+                }
+
+                if (enemyAnimatedTempHp > enemyTempHp) {
+                    enemyAnimatedTempHp--;
+                } else if (enemyAnimatedTempHp < enemyTempHp) {
+                    enemyAnimatedTempHp++;
+                }
+                enemyHpBar.setValue(enemyAnimatedTempHp);
+
+                // round progress bar percent using BigDecimal
+                BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
+                BigDecimal roundedenemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+                enemyHpBar.setString("HP: " + enemyAnimatedTempHp + " / " + enemyMaxHp + " (" + roundedenemyPercentHp + "%)");
+
+                // set color based on HP percentage
+                // > 25% - 50%: dark orange
+                if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
+                    enemyHpBar.setForeground(new Color(255, 140, 0));
+                    // 0% - 25%: red / crimson
+                } else if (enemyPercentHp.doubleValue() <= .25) {
+                    enemyHpBar.setForeground(new Color(220, 20, 60));
+                    // > 50%: malachite / green
+                } else {
+                    enemyHpBar.setForeground(new Color(11, 218, 81));
+                }
+            }
+        });
+
+        slowFpsTimer.restart();
+    }
+
+    // update label for player pokemon
+    public void updatePlayerLabel(String turnInfo) {
+        playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + turnInfo + "</html>"));
+        playerLabel.setForeground(Color.white);
+        playerLabel.setIcon(new ImageIcon(getSprite(playerNumber)));
+    }
+
+    // update label for enemy/AI pokemon
+    public void updateEnemyLabel(String turnInfo) {
+        enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
+        enemyLabel.setForeground(Color.white);
+        enemyLabel.setIcon(new ImageIcon(getSprite(enemyNumber)));
+    }
+
+    public void setColorsHashMap() {
+        colorsHashMap.put("bug", new Color(59, 153, 80));
+        colorsHashMap.put("dark", dark);
+        colorsHashMap.put("dragon", dragon);
+        colorsHashMap.put("electric", electric);
+        colorsHashMap.put("fairy", fairy);
+        colorsHashMap.put("fighting", fighting);
+        colorsHashMap.put("fire", fire);
+        colorsHashMap.put("flying", flying);
+        colorsHashMap.put("ghost", ghost);
+        colorsHashMap.put("grass", grass);
+        colorsHashMap.put("ground", ground);
+        colorsHashMap.put("ice", ice);
+        colorsHashMap.put("normal", normal);
+        colorsHashMap.put("poison", poison);
+        colorsHashMap.put("psychic", psychic);
+        colorsHashMap.put("rock", rock);
+        colorsHashMap.put("steel", steel);
+        colorsHashMap.put("water", water);
+    }
+
+    public Color getPokemonMoveTypeColor(String givenColor){
+        for (String colors : colorsHashMap.keySet()) {
+            if (colors.equalsIgnoreCase(givenColor)) {
+                return colorsHashMap.get(colors);
+            }
+        }
+        System.out.println("Color for moveType not found");
+        return new Color(255, 255, 255);
+    }
+
+    public void downloadFont() {
+        GraphicsEnvironment ge = null;
+        try {
+            // Load font file from local file system
+            File fontFile = new File(".idea/fonts/northrup-regular.ttf");
+
+            // Create Font object from the file
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(96f);
+
+            // Register the font with the GraphicsEnvironment
+            ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+            log.setFont(font.deriveFont(48f));
+            enemyLabel.setFont(font.deriveFont(24f));
+            playerLabel.setFont(font.deriveFont(24f));
+            enemyHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+            playerHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+        } catch (Exception e) {
+            System.out.println("couldn't download font");
+        }
+    }
+
+    // updates both enemy and player labels
+//    public void updateBothLabels() {
+//        updateEnemyLabel();
+//        updatePlayerLabel();
+//    }
 
     // on mouse hover of button do something
     public void mouseHover() {
@@ -586,212 +846,4 @@ public class PokeGUI extends JFrame implements ActionListener {
             }
         });
     }
-
-    // set original text colors based on background brightness
-    public void setTextColors() {
-        if (getColorBrightness(move1.getBackground()) <= .50) {
-            move1.setForeground(Color.white);
-        }
-        if (getColorBrightness(move2.getBackground()) <= .50) {
-            move2.setForeground(Color.white);
-        }
-        if (getColorBrightness(move3.getBackground()) <= .50) {
-            move3.setForeground(Color.white);
-        }
-        if (getColorBrightness(move4.getBackground()) <= .50) {
-            move4.setForeground(Color.white);
-        }
-        if (getColorBrightness(swap.getBackground()) <= .50) {
-            swap.setForeground(Color.white);
-        }
-    }
-
-    // set cursor to hand cursor on hover
-    public void setCursor() {
-        Cursor handCursor = new Cursor(HAND_CURSOR);
-        move1.setCursor(handCursor);
-        move2.setCursor(handCursor);
-        move3.setCursor(handCursor);
-        move4.setCursor(handCursor);
-        swap.setCursor(handCursor);
-    }
-
-    // update temp hp in playerHpBar
-    public void updatePlayerHpBar() {
-        // playerTempHp = new player hp to aim for
-
-        // fix initial hp set and when hp is 100%
-        if (playerHpBar.getValue() == 0) {
-            if (playerTempHp > playerHpBar.getValue()) {
-                playerHpBar.setValue(1);
-            }
-        } else if (playerHpBar.getPercentComplete() == 1) {
-            if (playerTempHp < playerHpBar.getValue()) {
-                playerHpBar.setValue(playerHpBar.getValue()-1);
-            }
-        }
-
-        // set delay
-        long delay = 0;
-        int abs = Math.abs(playerHpBar.getValue() - playerTempHp);
-        if (abs != 0) {
-            delay = (1000 / abs);
-        }
-
-        // remove some repetition in actionPerformed
-        playerHpBar.setPreferredSize(new Dimension(150, 15));
-        playerHpBar.setStringPainted(true);
-
-        // animation
-        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
-        slowFpsTimer.addActionListener(new ActionListener() {
-            // if temp hp = max hp or 0, force playerTempHp to stay the same
-            public void actionPerformed(ActionEvent e) {
-                int playerAnimatedTempHp = playerHpBar.getValue();
-                // if temp hp = max hp or 0, force playerTempHp to stay the same
-                if (playerAnimatedTempHp == playerMaxHp || playerAnimatedTempHp == 0) {
-                    playerTempHp = playerAnimatedTempHp;
-                    slowFpsTimer.stop();
-                }
-
-                if (playerAnimatedTempHp > playerTempHp) {
-                    playerAnimatedTempHp--;
-                } else if (playerAnimatedTempHp < playerTempHp) {
-                    playerAnimatedTempHp++;
-                }
-                playerHpBar.setValue(playerAnimatedTempHp);
-
-                // round progress bar percent using BigDecimal
-                BigDecimal playerPercentHp = new BigDecimal(playerHpBar.getPercentComplete());
-                BigDecimal roundedPlayerPercentHp = playerPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
-                playerHpBar.setString("HP: " + playerAnimatedTempHp + " / " + playerMaxHp + " (" + roundedPlayerPercentHp + "%)");
-
-                // set color based on HP percentage
-                // > 25% - 50%: dark orange
-                if (playerPercentHp.doubleValue() <= .50 && playerPercentHp.doubleValue() > .25) {
-                    playerHpBar.setForeground(new Color(255, 140, 0));
-                    // 0% - 25%: red / crimson
-                } else if (playerPercentHp.doubleValue() <= .25) {
-                    playerHpBar.setForeground(new Color(220, 20, 60));
-                    // > 50%: malachite / green
-                } else {
-                    playerHpBar.setForeground(new Color(11, 218, 81));
-                }
-            }
-        });
-
-        slowFpsTimer.start();
-
-    }
-
-    // update temp hp in enemyHpBar
-    public void updateEnemyHpBar() {
-        // enemyTempHp = new enemy hp to aim for
-
-        // fix initial hp set and when hp is 100%
-        if (enemyHpBar.getValue() == 0) {
-            if (enemyTempHp > enemyHpBar.getValue()) {
-                enemyHpBar.setValue(1);
-            }
-        } else if (enemyHpBar.getPercentComplete() == 1) {
-            if (enemyTempHp < enemyHpBar.getValue()) {
-                enemyHpBar.setValue(enemyHpBar.getValue()-1);
-            }
-        }
-
-        // set delay
-        long delay = 0;
-        int abs = Math.abs(enemyHpBar.getValue() - enemyTempHp);
-        if (abs != 0) {
-            delay = (1000 / abs);
-        }
-
-        // remove some repetition in actionPerformed
-        enemyHpBar.setPreferredSize(new Dimension(150, 15));
-        enemyHpBar.setStringPainted(true);
-
-        // animation
-        javax.swing.Timer slowFpsTimer = new javax.swing.Timer((int) delay, null);
-        slowFpsTimer.addActionListener(new ActionListener() {
-            // if temp hp = max hp or 0, force enemyTempHp to stay the same
-            public void actionPerformed(ActionEvent e) {
-                int enemyAnimatedTempHp = enemyHpBar.getValue();
-                // if temp hp = max hp or 0, force enemyTempHp to stay the same
-                if (enemyAnimatedTempHp == enemyMaxHp || enemyAnimatedTempHp == 0) {
-                    enemyTempHp = enemyAnimatedTempHp;
-                    slowFpsTimer.stop();
-                }
-
-                if (enemyAnimatedTempHp > enemyTempHp) {
-                    enemyAnimatedTempHp--;
-                } else if (enemyAnimatedTempHp < enemyTempHp) {
-                    enemyAnimatedTempHp++;
-                }
-                enemyHpBar.setValue(enemyAnimatedTempHp);
-
-                // round progress bar percent using BigDecimal
-                BigDecimal enemyPercentHp = new BigDecimal(enemyHpBar.getPercentComplete());
-                BigDecimal roundedenemyPercentHp = enemyPercentHp.round(precision).multiply(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
-                enemyHpBar.setString("HP: " + enemyAnimatedTempHp + " / " + enemyMaxHp + " (" + roundedenemyPercentHp + "%)");
-
-                // set color based on HP percentage
-                // > 25% - 50%: dark orange
-                if (enemyPercentHp.doubleValue() <= .50 && enemyPercentHp.doubleValue() > .25) {
-                    enemyHpBar.setForeground(new Color(255, 140, 0));
-                    // 0% - 25%: red / crimson
-                } else if (enemyPercentHp.doubleValue() <= .25) {
-                    enemyHpBar.setForeground(new Color(220, 20, 60));
-                    // > 50%: malachite / green
-                } else {
-                    enemyHpBar.setForeground(new Color(11, 218, 81));
-                }
-            }
-        });
-
-        slowFpsTimer.restart();
-    }
-
-    // update label for player pokemon
-    public void updatePlayerLabel(String turnInfo) {
-        String playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + turnInfo + "</html>"));
-        playerLabel.setForeground(Color.white);
-        playerLabel.setIcon(new ImageIcon(getSprite(playerPokemonName)));
-    }
-
-    // update label for enemy/AI pokemon
-    public void updateEnemyLabel(String turnInfo) {
-        String enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
-        enemyLabel.setForeground(Color.white);
-        enemyLabel.setIcon(new ImageIcon(getSprite(enemyPokemonName)));
-    }
-
-    public void downloadFont() {
-        GraphicsEnvironment ge = null;
-        try {
-            // Load font file from local file system
-            File fontFile = new File(".idea/fonts/northrup-regular.ttf");
-
-            // Create Font object from the file
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile).deriveFont(96f);
-
-            // Register the font with the GraphicsEnvironment
-            ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(font);
-            log.setFont(font.deriveFont(48f));
-            enemyLabel.setFont(font.deriveFont(24f));
-            playerLabel.setFont(font.deriveFont(24f));
-            enemyHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-            playerHpBar.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-        } catch (Exception e) {
-            System.out.println("couldn't download font");
-        }
-    }
-
-    // updates both enemy and player labels
-//    public void updateBothLabels() {
-//        updateEnemyLabel();
-//        updatePlayerLabel();
-//    }
 }

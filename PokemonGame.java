@@ -169,11 +169,11 @@ public class PokemonGame
         System.out.println(enemyPokemonArrayList.get(1).getName());
         System.out.println(enemyPokemonArrayList.get(2).getName());
 
-        JFrame pokeGUI = new PokeGUI();
+        JFrame pokeGUI = new PokeGUI(playerPokemonArrayList.get(0), enemyPokemonArrayList.get(0));
 //        ((PokeGUI) pokeGUI).setPlayerPokemonName(playerPokemonArrayList.get(0).getName());
 //        ((PokeGUI) pokeGUI).updatePlayerLabel("WAITING");
 
-        ((PokeGUI) pokeGUI).setPlayerPokemon(playerPokemonArrayList.get(0));
-        ((PokeGUI) pokeGUI).setEnemyPokemon(enemyPokemonArrayList.get(0));
+//        ((PokeGUI) pokeGUI).setPlayerPokemon(playerPokemonArrayList.get(0));
+//        ((PokeGUI) pokeGUI).setEnemyPokemon(enemyPokemonArrayList.get(0));
     }
 }
