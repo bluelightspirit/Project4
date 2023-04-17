@@ -397,6 +397,9 @@ public class PokeGUI extends JFrame implements ActionListener {
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
             System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
             enemyTempHp = enemyTempHp - damage;
+            if (enemyTempHp == 0) {
+                enemyPokemon.setFainted();
+            }
 
             updateEnemyHpBar();
 
