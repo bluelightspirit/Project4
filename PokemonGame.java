@@ -55,76 +55,100 @@ public class PokemonGame
             System.out.println("error getting data");
         }
         //adds pokemon
-        while(count < 6) {
-            while(count < 6) {
-                if (count < 3) {
-                    System.out.println("Please enter name of pokemon to be added to your team. Or type R to let RNG decide pokemon");
-                } else {
-                    System.out.println("Please enter name of pokemon to be added to enemy team. Or type R to let RNG decide pokemon");
-                }
-                String response = in.next();
+      // while(count < 6) {
+           // while(count < 6) {
+    //    for(int ii = 0; ii < 6; ii++) {
+            //if (count < 3) {
+                System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
+           // } else {
+               // System.out.println("Please enter name of pokemon to be added to enemy team. Or type R to let RNG decide pokemon");
+            //}
+            String response = in.next();
 
-                if (response.equals("R")) {//rng decide
-                    int i = (int) (Math.random() * 801);
-                    int mov1 = (int) (Math.random() * 502);
-                    int mov2 = (int) (Math.random() * 502);
-                    int mov3 = (int) (Math.random() * 502);
-                    int mov4 = (int) (Math.random() * 502);
-                    print.println(names.get(i));
-                    print.println(50);
-                    print.println(moveNames.get(mov1));
-                    print.println(moveNames.get(mov2));
-                    print.println(moveNames.get(mov3));
-                    print.println(moveNames.get(mov4));
-                    count++;
-                    break;
-                } else {
-                    while (!names.contains(response)) {
-                        if (count < 3) {
-                            System.out.println("Please enter name of pokemon to be added to your team");
-                        } else {
-                            System.out.println("Please enter name of pokemon to be added to enemy team");
-                        }
-                        response = in.next();
-                    }
-                    print.println(response);
-                    System.out.println("Enter level of pokemon between 1-100");
-                    int a = in.nextInt();
-                    if (a > 0 && a <= 100) {
-                        print.println(a);
+            if (response.equals("R"))
+            {//rng decide
+                int i = (int) (Math.random() * 801);
+                int mov1 = (int) (Math.random() * 502);
+                int mov2 = (int) (Math.random() * 502);
+                int mov3 = (int) (Math.random() * 502);
+                int mov4 = (int) (Math.random() * 502);
+                print.println(names.get(i));
+                print.println(50);
+                print.println(moveNames.get(mov1));
+                print.println(moveNames.get(mov2));
+                print.println(moveNames.get(mov3));
+                print.println(moveNames.get(mov4));
+                count++;
+                // break;
+            }
+            else
+            {
+                while (!names.contains(response) && !response.equals("R")) {
+                    if (count < 3) {
+                        System.out.println("Please enter name of pokemon to be added to your team");
+                        response = in.nextLine();
                     } else {
-                        print.println(50);
+                        System.out.println("Please enter name of pokemon to be added to enemy team");
+                        response = in.nextLine();
                     }
-                    // add response
-                    System.out.println("Enter name of move to be added or type R to let RNG decide");
-                    response = in.next();
-                    int count2 = 0;
                     if (response.equals("R")) {//rng decide
+                        int i = (int) (Math.random() * 801);
                         int mov1 = (int) (Math.random() * 502);
                         int mov2 = (int) (Math.random() * 502);
                         int mov3 = (int) (Math.random() * 502);
                         int mov4 = (int) (Math.random() * 502);
+                        print.println(names.get(i));
+                        print.println(50);
                         print.println(moveNames.get(mov1));
                         print.println(moveNames.get(mov2));
                         print.println(moveNames.get(mov3));
                         print.println(moveNames.get(mov4));
                         count++;
-                        break;
-                    }
-                    while (!moveNames.contains(response) && count2 < 4) {
-                        System.out.println("Enter name of move to be added");
+                        // break;
+                    } /*else {
                         response = in.next();
-                        if (moveNames.contains(response)) {
-                            print.println(response);
-                            count2++;
-                        }
-                    }
-                    count++;
-                    break;
+                    }*/
                 }
+                print.println(response);
+                System.out.println("Enter level of pokemon between 1-100");
+                int a = in.nextInt();
+                if (a > 0 && a <= 100) {
+                    print.println(a);
+                } else {
+                    print.println(50);
+                }
+                // add response
+                System.out.println("Enter name of move to be added or type R to let RNG decide");
+                response = in.next();
+                int count2 = 0;
+                if (response.equals("R"))
+                {//rng decide
+                    int mov1 = (int) (Math.random() * 502);
+                    int mov2 = (int) (Math.random() * 502);
+                    int mov3 = (int) (Math.random() * 502);
+                    int mov4 = (int) (Math.random() * 502);
+                    print.println(moveNames.get(mov1));
+                    print.println(moveNames.get(mov2));
+                    print.println(moveNames.get(mov3));
+                    print.println(moveNames.get(mov4));
+                    count++;
+                   //  break;
+                }
+                while (!moveNames.contains(response) && count2 < 4) {
+                    System.out.println("Enter name of move to be added");
+                    response = in.next();
+                    if (moveNames.contains(response)) {
+                        print.println(response);
+                        count2++;
+                    }
+                }
+                count++;
+                 // break;
+                // }
             }
 
-        }
+            //}
+       // }
         print.close();
 
         ArrayList<Pokemon> playerPokemonArrayList = new ArrayList<>();
