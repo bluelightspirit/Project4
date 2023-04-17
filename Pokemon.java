@@ -1,6 +1,9 @@
+import java.io.FileInputStream;
 import java.io.ObjectInputFilter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Pokemon
@@ -28,6 +31,69 @@ public class Pokemon
         this.level = 50; //set level
         //sets name
         this.name = getDataFromFile("name.txt", numberForFile);
+        //sets types
+        this.type1 = getDataFromFile("type1.txt", numberForFile);
+        this.type2 = getDataFromFile("type2.txt", numberForFile);
+        //sets stats
+        this.hp = Integer.parseInt(getDataFromFile("hp.txt", numberForFile));
+        this.attack = Integer.parseInt(getDataFromFile("attack.txt", numberForFile));
+        this.defense = Integer.parseInt(getDataFromFile("defense.txt", numberForFile));
+        this.specialAttack = Integer.parseInt(getDataFromFile("specialAttack.txt", numberForFile));
+        this.specialDefense = Integer.parseInt(getDataFromFile("specialDefense.txt", numberForFile));
+        this.speed = Integer.parseInt(getDataFromFile("speed.txt", numberForFile));
+        //gets damage against types
+        this.againstBug = Double.parseDouble(getDataFromFile("againstBug.txt", numberForFile));
+        this.againstDark = Double.parseDouble(getDataFromFile("againstDark.txt", numberForFile));
+        this.againstDragon = Double.parseDouble(getDataFromFile("againstDragon.txt", numberForFile));
+        this.againstElectric = Double.parseDouble(getDataFromFile("againstElectric.txt", numberForFile));
+        this.againstFairy = Double.parseDouble(getDataFromFile("againstFairy.txt", numberForFile));
+        this.againstFight = Double.parseDouble(getDataFromFile("againstFight.txt", numberForFile));
+        this.againstFire = Double.parseDouble(getDataFromFile("againstFire.txt", numberForFile));
+        this.againstFlying = Double.parseDouble(getDataFromFile("againstFlying.txt", numberForFile));
+        this.againstGhost = Double.parseDouble(getDataFromFile("againstGhost.txt", numberForFile));
+        this.againstGrass = Double.parseDouble(getDataFromFile("againstGrass.txt", numberForFile));
+        this.againstGround = Double.parseDouble(getDataFromFile("againstGround.txt", numberForFile));
+        this.againstIce = Double.parseDouble(getDataFromFile("againstIce.txt", numberForFile));
+        this.againstNormal = Double.parseDouble(getDataFromFile("againstNormal.txt", numberForFile));
+        this.againstPoison = Double.parseDouble(getDataFromFile("againstPoison.txt", numberForFile));
+        this.againstPsychic = Double.parseDouble(getDataFromFile("againstPsychic.txt", numberForFile));
+        this.againstRock = Double.parseDouble(getDataFromFile("againstRock.txt", numberForFile));
+        this.againstSteel = Double.parseDouble(getDataFromFile("againstSteel.txt", numberForFile));
+        this.againstWater = Double.parseDouble(getDataFromFile("againstWater.txt", numberForFile));
+
+        hp = ((2*hp*IV+(EV/4)*level)/100)+level+10;
+        tempHp = hp;
+        attack = ((2*attack*IV+(EV/4)*level)/100)+5;
+        specialAttack = ((2*specialAttack*IV+(EV/4)*level)/100)+5;
+        defense = ((2*defense*IV+(EV/4)*level)/100)+5;
+        specialDefense = ((2*specialDefense*IV+(EV/4)*level)/100)+5;
+        speed = ((2*speed*IV+(EV/4)*level)/100)+5;
+
+        burned = false;
+        fainted = false;
+
+        move1 = null;
+        move2 = null;
+        move3 = null;
+        move4 = null;
+    }
+    public Pokemon(String pokeName, int level)//makes pokemon from name
+    {
+        ArrayList<String> names = new ArrayList<String>();
+        try {
+            Scanner fIn = new Scanner(new FileInputStream("name.txt"));
+            while(fIn.hasNext()) {
+                names.add(fIn.nextLine());
+            }
+        }
+        catch(Exception e) {
+            System.out.println("error getting data");
+        }
+        int numberForFile = names.indexOf(pokeName)-1;
+        this.number = numberForFile;
+        this.level = level; //set level
+        //sets name
+        this.name = pokeName;
         //sets types
         this.type1 = getDataFromFile("type1.txt", numberForFile);
         this.type2 = getDataFromFile("type2.txt", numberForFile);
