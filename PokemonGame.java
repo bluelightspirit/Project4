@@ -19,6 +19,8 @@ import java.lang.Math;
 
 public class PokemonGame
 {
+    private static ArrayList<Pokemon> playerPokemonArrayList = new ArrayList<>();
+    private static ArrayList<Pokemon> enemyPokemonArrayList = new ArrayList<>();
     public static void main(String[] args) throws FileNotFoundException {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter name of game file");
@@ -187,8 +189,7 @@ public class PokemonGame
        // }
         print.close();
 
-        ArrayList<Pokemon> playerPokemonArrayList = new ArrayList<>();
-        ArrayList<Pokemon> enemyPokemonArrayList = new ArrayList<>();
+
 
         try {
             Scanner fIn = new Scanner(new FileInputStream(fileName));
@@ -230,10 +231,37 @@ public class PokemonGame
         System.out.println(enemyPokemonArrayList.get(2).getName());
 
         JFrame pokeGUI = new PokeGUI(playerPokemonArrayList.get(0), enemyPokemonArrayList.get(0));
+
 //        ((PokeGUI) pokeGUI).setPlayerPokemonName(playerPokemonArrayList.get(0).getName());
 //        ((PokeGUI) pokeGUI).updatePlayerLabel("WAITING");
 
 //        ((PokeGUI) pokeGUI).setPlayerPokemon(playerPokemonArrayList.get(0));
 //        ((PokeGUI) pokeGUI).setEnemyPokemon(enemyPokemonArrayList.get(0));
+    }
+
+    // determines if enemy team is fully fainted or not
+    public static boolean getEnemyTeamFainted() {
+        int x = 1;
+        for (int i = 0; i <= 2; i++) {
+            if (enemyPokemonArrayList.get(i).getFainted() == true) {
+                x++;
+            }
+        }
+        if (x == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static Pokemon swapEnemyPokemon(Pokemon enemyPoke) {
+        if (enemyPoke.getFainted() == true && getEnemyTeamFainted() == false) {
+            for (int i = 0; i <= 2; i++) {
+                if (enemyPokemonArrayList.get(i).getFainted() == false) {
+                    return enemyPokemonArrayList.get(i);
+                }
+            }
+        }
+        return enemyPoke;
     }
 }

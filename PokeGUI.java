@@ -400,6 +400,11 @@ public class PokeGUI extends JFrame implements ActionListener {
             if (enemyTempHp == 0) {
                 enemyPokemon.setFainted();
             }
+            if (enemyPokemon.getFainted()) {
+                enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
+                System.out.println(enemyPokemon.getName());
+                this.revalidate();
+            }
 
             updateEnemyHpBar();
 
