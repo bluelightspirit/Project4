@@ -598,7 +598,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void updatePlayerHpBar() {
         // playerTempHp = new player hp to aim for
 
-        long delay = 0;
+        long delay = (1000 / Math.abs(playerHpBar.getValue() - playerTempHp));
 
         // fix initial hp set and when hp is 100%
         if (playerHpBar.getValue() == 0) {
@@ -661,7 +661,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void updateEnemyHpBar() {
         // enemyTempHp = new enemy hp to aim for
 
-        long delay = 0;
+        long delay = (1000 / Math.abs(playerHpBar.getValue() - playerTempHp));
 
         // fix initial hp set and when hp is 100%
         if (enemyHpBar.getValue() == 0) {
