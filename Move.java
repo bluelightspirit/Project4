@@ -111,4 +111,7 @@ public class Move
     {
         return attackType;
     }
+    public void usePP() {
+        pp--;
+    }
 }

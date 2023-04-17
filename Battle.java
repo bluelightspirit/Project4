@@ -3,6 +3,7 @@ import java.util.Random;
 public class Battle {
 
     public static int attack(Pokemon attacker, Pokemon defender, Move move) {
+        move.usePP();
         int damage = 0;
         if(hitOrMiss(move)) {
             double effectiveness = defender.getWeakness(move.getMoveType());
