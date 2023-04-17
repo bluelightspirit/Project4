@@ -262,7 +262,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         move2 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 2<br />" + playerPokemon.getMove2().getMoveName() + "</div></html>");
         move3 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 3<br />" + playerPokemon.getMove3().getMoveName() + "</div></html>");
         move4 = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Move 4<br />" + playerPokemon.getMove4().getMoveName() + "</div></html>");
-        swap = new JButton("Swap");
+        swap = new JButton("<html><head><style> div {text-align: center;}</style></head><body><div>Swap<br />Pokémon</div></html>");
 
         // actionListeners so clicking does something
         move1.addActionListener(this);
