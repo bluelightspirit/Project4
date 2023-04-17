@@ -380,8 +380,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
 
-            Battle battle = new Battle();
-            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+            int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
             System.out.println("move 1 clicked! -" + damage + " dmg for charizard!");
             playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
@@ -390,8 +389,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             updateEnemyLabel(getPlayerTurn());
 
         } else if (src == move2) {
-            Battle battle = new Battle();
-            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
+
+            int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
             System.out.println("move 2 clicked! -" + damage + " dmg for charizard!");
             playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
@@ -399,8 +398,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             updatePlayerLabel(getEnemyTurn());
             updateEnemyLabel(getPlayerTurn());
         } else if (src == move3) {
-            Battle battle = new Battle();
-            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
+
+            int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
             System.out.println("move 3 clicked! -" + damage + " dmg for charizard!");
             playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
@@ -408,8 +407,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             updatePlayerLabel(getEnemyTurn());
             updateEnemyLabel(getPlayerTurn());
         } else if (src == move4) {
-            Battle battle = new Battle();
-            int damage = battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
+
+            int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
             System.out.println("move 4 clicked! -" + damage + " dmg for charizard!");
             playerTempHp = playerTempHp - damage;
             updatePlayerHpBar();
