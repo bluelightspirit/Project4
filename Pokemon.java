@@ -17,7 +17,7 @@ public class Pokemon
     //private Ability ability;//probably get rid of
     // private ArrayList<Move> = new ArrayList<>();
    // private Item heldItem;//probably get rid of
-    private double againstBug, againstDark, againstDragon, againstElectric, againstFairy,
+    private final double againstBug, againstDark, againstDragon, againstElectric, againstFairy,
             againstFight, againstFire, againstFlying, againstGhost, againstGrass, againstGround,
             againstIce, againstNormal, againstPoison, againstPsychic, againstRock, againstSteel,
             againstWater;
@@ -200,6 +200,25 @@ public class Pokemon
 
     public String getType2() {
         return type2;
+    }
+
+    public int getTempHp() {
+        return tempHp;
+    }
+
+    public Move getMove1() {
+        return move1;
+    }
+
+    public Move getMove2() {
+        return move2;
+    }
+
+    public Move getMove3() {
+        return move3;
+    }
+    public Move getMove4() {
+        return move4;
     }
 
     public double getWeakness(String type) {

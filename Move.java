@@ -22,7 +22,7 @@ public class Move
         this.pp =  Integer.parseInt(getDataFromFile("pp.txt", numberForFile));
         String tempAccuracy = getDataFromFile("accuracy.txt", numberForFile);
         if (tempAccuracy.equals("-")) {
-            this.power = 10000;
+            this.power = 100;
             cannotMiss = true;
         } else {
             this.power = Integer.parseInt(tempAccuracy);

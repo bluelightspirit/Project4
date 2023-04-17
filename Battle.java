@@ -32,6 +32,11 @@ public class Battle {
         return (int) ((((((2*level)/5)+2)*power*A/D)/50)*burn*critHit*random*STAB*effectiveness);
     }
 
+    public boolean hitOrMiss(Move move) {
+        return (Math.random()*100 < move.getAccuracy());
+    }
+
+
     // broken
 //    public Pokemon switch() {
 //        Pokemon poke = new Pokemon(2);
