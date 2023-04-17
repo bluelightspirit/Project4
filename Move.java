@@ -64,10 +64,10 @@ public class Move
         String tempAccuracy = getDataFromFile("accuracy.txt", numberForFile);
         // note: weird dash for accuracy.txt
         if (tempAccuracy.equals("—")) {
-            this.power = 10000;
+            this.accuracy = 10000;
             cannotMiss = true;
         } else {
-            this.power = Integer.parseInt(tempAccuracy);
+            this.accuracy = Integer.parseInt(tempAccuracy);
             cannotMiss = false;
         }
         this.moveName = getDataFromFile("moveName.txt", numberForFile);
