@@ -271,6 +271,8 @@ public class PokeGUI extends JFrame implements ActionListener {
         // change cursor on hover
         setCursor();
 
+        // test
+
         // add buttons to movesPanel
         JPanel movesPanel = new JPanel();
         movesPanel.add(move1);
@@ -338,9 +340,9 @@ public class PokeGUI extends JFrame implements ActionListener {
         // PokeAPI sprite (https://github.com/PokeAPI/sprites)
         // String link = "https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/back/25.png";
         // bigger sprite
-        String link = "https://img.pokemondb.net/artwork/vector/".concat(pokemonName + ".png");
+        //String link = "https://img.pokemondb.net/artwork/vector/".concat(pokemonName + ".png");
         // smaller sprite
-        // String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
+        String link = "https://img.pokemondb.net/sprites/sword-shield/icon/".concat(pokemonName + ".png");
         return getImage(link);
     }
 

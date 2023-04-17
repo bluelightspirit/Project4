@@ -1,11 +1,9 @@
 import java.io.ObjectInputFilter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Stream;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -22,13 +20,14 @@ public class PokemonGame
         System.out.println("Enter name of game file");
         System.out.println("");
         String input = in.nextLine();
-        File file =new File("./PokemonData/");
+        File file =new File(".idea/PokemonData/");
         input = input.replace(" ", "_");
         input = input.toLowerCase();
-        String fileName = "./PokemonData/"+ input + ".txt";
-        String filename = input + ".txt";
+        String fileName = ".idea/PokemonData/"+ input + ".txt";
+        // why does this exist
+        // String filename = input + ".txt";
         System.out.println("Game file " + fileName + "was made");
-        PrintWriter print = new PrintWriter(filename);
+        PrintWriter print = new PrintWriter(fileName);
         int count = 0;
         //get list of pokemon and list of moves
         ArrayList<String> names = new ArrayList<String>();
@@ -123,5 +122,40 @@ public class PokemonGame
 
         }
         print.close();
+
+        ArrayList<Pokemon> playerPokemonArrayList = new ArrayList<>();
+        ArrayList<Pokemon> enemyPokemonArrayList = new ArrayList<>();
+
+        try {
+            Scanner fIn = new Scanner(new FileInputStream(fileName));
+            int i = 1;
+            while (fIn.hasNext()) {
+                // get pokemon name & pokemon level
+                String pokemonName = fIn.nextLine();
+                int pokemonLevel = Integer.parseInt(fIn.nextLine());
+                Pokemon pokemon = new Pokemon(pokemonName, pokemonLevel);
+
+                // get moves
+                pokemon.setMove(new Move(fIn.nextLine()), 1);
+                pokemon.setMove(new Move(fIn.nextLine()), 2);
+                pokemon.setMove(new Move(fIn.nextLine()), 3);
+                pokemon.setMove(new Move(fIn.nextLine()), 4);
+
+                // add to arraylist
+                if (i > 3) {
+                    enemyPokemonArrayList.add(pokemon);
+                } else {
+                    playerPokemonArrayList.add(pokemon);
+                }
+                i++;
+            }
+            fIn.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: " + fileName + " not found");
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            System.err.println("Error: file" + fileName + " has no more line elements to be read???");
+        }
+
     }
 }
