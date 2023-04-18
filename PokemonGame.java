@@ -269,4 +269,33 @@ public class PokemonGame
         System.out.println("All enemy pokemon were found fainted... You somehow ended up to this print statement too! :(");
         return enemyPoke;
     }
+
+    // determines if player team is fully fainted or not
+    public static boolean getPlayerTeamFainted() {
+        int x = 1;
+        for (int i = 0; i <= 2; i++) {
+            if (playerPokemonArrayList.get(i).getFainted() == true) {
+                x++;
+            }
+        }
+        if (x == 4) {
+            System.out.println(true);
+            return true;
+        } else {
+            System.out.println(false);
+            return false;
+        }
+    }
+
+    public static Pokemon swapPlayerPokemon(Pokemon playerPoke) {
+        for (int i = 0; i <= 2; i++) {
+            System.out.println(i);
+            if (playerPokemonArrayList.get(i).getFainted() == false) {
+                System.out.println("Switching to " + playerPokemonArrayList.get(i).getName());
+                return playerPokemonArrayList.get(i);
+            }
+        }
+        System.out.println("All player pokemon were found fainted... You somehow ended up to this print statement too! :(");
+        return playerPoke;
+    }
 }

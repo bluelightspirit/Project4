@@ -441,7 +441,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
-                if (swapEnemyPokemon() == true) {
+                if (swapPlayerPokemon() == true) {
                     setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updatePlayerHpBar();
@@ -455,7 +455,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
-                if (swapEnemyPokemon() == true) {
+                if (swapPlayerPokemon() == true) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
@@ -938,6 +938,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 enemyTempHp = enemyPokemon.getHp();
                 enemyPokemonName = enemyPokemon.getName();
                 enemyNumber = enemyPokemon.getNumber();
+                enemyLevel = enemyPokemon.getLevel();
                 updateEnemyLabel(getEnemyTurn());
                 this.repaint();
                 // true = success
@@ -957,19 +958,35 @@ public class PokeGUI extends JFrame implements ActionListener {
         return true;
     }
 
-    public void swapPlayerPokemon() {
-        if (enemyPokemon.getFainted()) {
-            enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
-            System.out.println(enemyPokemon.getName());
-            // need giant set method taking in enemyPokemon and resetting the variables at the top
-            // like this:
-            enemyMaxHp = enemyPokemon.getHp();
-            enemyTempHp = enemyPokemon.getHp();
-            enemyPokemonName = enemyPokemon.getName();
-            enemyNumber = enemyPokemon.getNumber();
-            updateEnemyLabel(getEnemyTurn());
-            this.repaint();
+    public boolean swapPlayerPokemon() {
+        if (playerPokemon.getFainted()) {
+            if (PokemonGame.getPlayerTeamFainted() == false) {
+                playerPokemon = PokemonGame.swapPlayerPokemon(playerPokemon);
+                System.out.println(playerPokemon.getName());
+                // need giant set method taking in playerPokemon and resetting the variables at the top
+                // like this:
+                playerMaxHp = playerPokemon.getHp();
+                playerTempHp = playerPokemon.getHp();
+                playerPokemonName = playerPokemon.getName();
+                playerNumber = playerPokemon.getNumber();
+                playerLevel = playerPokemon.getLevel();
+                updatePlayerLabel(getPlayerTurn());
+                this.repaint();
+                // true = success
+                return true;
+            } else {
+                // false = couldn't swap, player lost
+                if (gameOver == false) {
+                    System.out.println("player lost!!!");
+                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonName + "fainted and lost, GG!</p></html>"));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonName + "fainted and lost, GG!</p></html>"));
+                    this.repaint();
+                    gameOver = true;
+                }
+                return false;
+            }
         }
+        return true;
     }
 
     public String getLogText() {
