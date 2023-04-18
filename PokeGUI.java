@@ -436,28 +436,30 @@ public class PokeGUI extends JFrame implements ActionListener {
                 updateEnemyHpBar();
 
                 // enemy attacks second
-                damage = Battle.attack(enemyPokemon, playerPokemon, enemyPokemon.decideMove());
+                Move enemyMoveChoice = enemyPokemon.decideMove();
+                damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
                 System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
                 if (swapPlayerPokemon() == true) {
-                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updatePlayerHpBar();
 
             // if enemy has priority
             } else {
                 // enemy attacks first
-                damage = Battle.attack(enemyPokemon, playerPokemon, enemyPokemon.decideMove());
+                Move enemyMoveChoice = enemyPokemon.decideMove();
+                damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
                 System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
                 if (swapPlayerPokemon() == true) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
 
