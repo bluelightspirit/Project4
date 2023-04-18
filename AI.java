@@ -1,6 +1,6 @@
 // randomize enemy moves math.random then return that move
 public class AI {
-    //picks the move at random
+//picks the move at random
     public static Move decideMove(Pokemon pokemon) {
         int choice = (int)(Math.random()*(4)+1);
         switch (choice) {
@@ -21,9 +21,5 @@ public class AI {
                 return pokemon.getMove1();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        decideMove(new Pokemon(1));
     }
 }

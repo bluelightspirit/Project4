@@ -13,7 +13,7 @@ public class Move
         int numberForFile = number -1;
         String tempPower = getDataFromFile("power.txt", numberForFile);
         if (tempPower.equals("—")) {
-            this.power = 1;
+            this.power = 20;
             variablePower = true;
         } else {
             this.power = Integer.parseInt(tempPower);
@@ -54,7 +54,7 @@ public class Move
         String tempPower = getDataFromFile("power.txt", numberForFile);
         // note: weird dash for power.txt
         if (tempPower.equals("—")) {
-            this.power = 1;
+            this.power = 20;
             variablePower = true;
         } else {
             this.power = Integer.parseInt(tempPower);
@@ -115,5 +115,8 @@ public class Move
     //uses one pp
     public void usePP() {
         pp--;
+    }
+    public boolean getCannotMiss() {
+        return cannotMiss;
     }
 }
