@@ -39,6 +39,9 @@ public class Battle {
     }
 //calculates if a move hits or misses
     public static boolean hitOrMiss(Move move) {
+        if (move.getCannotMiss()) {
+            return true;
+        }
         return (Math.random()*100 < move.getAccuracy());
     }
 
