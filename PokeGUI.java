@@ -433,7 +433,13 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
                     // TODO adam thinks issue is here most likely so far 10:49 AM
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getFainted() == true) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getFainted() == true && PokemonGame.getEnemyPokemonArrayList().get(1).getFainted() == false)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                    }
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
