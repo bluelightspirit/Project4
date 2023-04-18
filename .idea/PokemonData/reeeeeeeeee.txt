@@ -1,0 +1,36 @@
+Cresselia
+50
+Air Cutter
+X-Scissor
+Sky Attack
+Twister
+Grotle
+50
+Multi-Attack
+Freezy Frost
+Thunder Punch
+Acrobatics
+Solrock
+50
+Volt Tackle
+Bulldoze
+Gigavolt Havoc
+Crush Grip
+Farfetch'd
+50
+Water Gun
+Heavy Slam
+Low Kick
+Psyshock
+Hoppip
+50
+Never-Ending Nightmare
+Shattered Psyche
+Twineedle
+Clanging Scales
+Roggenrola
+50
+Scald
+Wrap
+Surf
+Heat Wave
