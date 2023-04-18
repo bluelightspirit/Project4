@@ -431,13 +431,21 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // seems to break the game if not only after
                 updateEnemyHpBar();
                 if (enemyTempHp == 0) {
-                    enemyPokemon.setFainted();
+                   // enemyPokemon.setFainted();
                     // TODO adam thinks issue is here most likely so far 10:49 AM
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        enemyPokemon.setFainted();
+                    }
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
-                }
+               }
                 updateEnemyHpBar();
 
                 // enemy attacks second
