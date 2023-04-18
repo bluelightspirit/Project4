@@ -32,7 +32,8 @@ public class QuickstartGame
         String fileName = ".idea/PokemonData/"+ input + ".txt";
         // why does this exist
         // String filename = input + ".txt";
-        System.out.println("Game file " + fileName + "was made");
+        System.out.println("Game file " + fileName + " was made");
+        //System.out.println()
         PrintWriter print = new PrintWriter(fileName);
         int count = 0;
         //get list of pokemon and list of moves
