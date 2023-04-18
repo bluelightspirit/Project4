@@ -43,6 +43,8 @@ public class QuickstartGame {
             catch(Exception e) {
                 System.out.println("error getting data");
             }
+
+
             try {
                 Scanner fIn = new Scanner(new FileInputStream("quickStart.txt"));
                 int i = 1;
@@ -82,9 +84,9 @@ public class QuickstartGame {
             System.out.println(enemyPokemonArrayList.get(1).getName());
             System.out.println(enemyPokemonArrayList.get(2).getName());
 
-            PokeGUI.setEnemyPokemon(enemyPokemonArrayList.get(0));
-            PokeGUI.setPlayerPokemon(playerPokemonArrayList.get(0));
-            JFrame pokeGUI = new PokeGUI();
+            PokeGUI2.setEnemyPokemon(enemyPokemonArrayList.get(0));
+            PokeGUI2.setPlayerPokemon(playerPokemonArrayList.get(0));
+            JFrame pokeGUI2 = new PokeGUI2();
 
         }
 
