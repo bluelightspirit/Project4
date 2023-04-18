@@ -432,6 +432,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 updateEnemyHpBar();
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
+                    // TODO adam thinks issue is here most likely so far 10:49 AM
                     setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
@@ -467,6 +468,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
+                // TODO adam thinks this is an issue 10:50 AM
                 if (swapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
