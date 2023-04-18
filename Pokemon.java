@@ -303,4 +303,26 @@ public class Pokemon
         fainted = true;
     }
 
+    public  Move decideMove() {
+        int choice = (int)(Math.random()*(4)+1);
+        switch (choice) {
+            case 1 -> {
+                return move1;
+            }
+            case 2 -> {
+                return move2;
+            }
+            case 3 -> {
+                return move3;
+            }
+            case 4 -> {
+                return move4;
+            }
+            default -> {
+                System.out.println("AI class | decideMoveDefault error");
+                return move1;
+            }
+        }
+    }
+
 }
