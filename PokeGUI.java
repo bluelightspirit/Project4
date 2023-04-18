@@ -213,6 +213,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerTempHp = playerPokemon.getHp();
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
+        playerLevel = playerPokemon.getLevel();
 
         // player label
         playerLabel = new JLabel();
@@ -239,6 +240,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyTempHp = enemyPokemon.getHp();
         enemyPokemonName = enemyPokemon.getName();
         enemyNumber = enemyPokemon.getNumber();
+        enemyLevel = enemyPokemon.getLevel();
 
         // enemy label
         enemyLabel = new JLabel();
