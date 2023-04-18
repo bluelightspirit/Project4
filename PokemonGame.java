@@ -299,7 +299,7 @@ public class PokemonGame
         return playerPoke;
     }
 
-    public static ArrayList getPlayerPokemonArrayList() {
+    public static ArrayList<Pokemon> getPlayerPokemonArrayList() {
         return playerPokemonArrayList;
     }
 }
