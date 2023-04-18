@@ -3,9 +3,8 @@ import java.util.Random;
 public class Battle {
 //does all the logic for a pokemon attack
     public static int attack(Pokemon attacker, Pokemon defender, Move move) {
-        move.usePP();
         int damage = 0;
-        if(hitOrMiss(move)) {
+        if(hitOrMiss(move) && move.getPP() > 0) {
             double effectiveness = defender.getWeakness(move.getMoveType());
             int D = 0;
             int A = 0;
@@ -35,6 +34,7 @@ public class Battle {
             damage = (int) ((((((2 * level) / 5) + 2) * power * A / D) / 50) * burn * critHit * random * STAB * effectiveness);
             defender.damage(damage);
         }
+        move.usePP();
         return damage;
     }
 //calculates if a move hits or misses
