@@ -302,4 +302,7 @@ public class PokemonGame
     public static ArrayList<Pokemon> getPlayerPokemonArrayList() {
         return playerPokemonArrayList;
     }
+    public static ArrayList<Pokemon> getEnemyPokemonArrayList() {
+        return enemyPokemonArrayList;
+    }
 }
