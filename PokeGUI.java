@@ -429,7 +429,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 enemyTempHp = enemyTempHp - damage;
 
                 // seems to break the game if not only after
-                //updateEnemyHpBar();
+                updateEnemyHpBar();
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
                     setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
@@ -446,7 +446,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 playerTempHp = playerTempHp - damage;
 
                 // seems to break the game if not only after
-                //updatePlayerHpBar();
+                updatePlayerHpBar();
                 // TODO fix log text
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
@@ -712,6 +712,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerLabel.setIcon(new ImageIcon(getSprite(playerNumber)));
     }
 
+    public String setCapsFirst(String pokeName) {
+        return pokeName.substring(0, 1).toUpperCase().concat(pokeName.substring(1));
+    }
+
     // update label for enemy/AI pokemon
     public void updateEnemyLabel() {//String turnInfo) {
         enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
@@ -965,13 +969,15 @@ public class PokeGUI extends JFrame implements ActionListener {
                     setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverPlayerWin = true;
-                } else if (gameOverEnemyWin == false) {
-                    System.out.println("player lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    this.repaint();
-                    gameOverEnemyWin = true;
-                }
+                    }
+                    // was causing duplicate faint in logText output
+//                } else if (gameOverEnemyWin == false) {
+//                    System.out.println("player lost!!!");
+//                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+//                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+//                    this.repaint();
+//                    gameOverEnemyWin = true;
+//                }
                 return false;
             }
         }
@@ -1007,13 +1013,15 @@ public class PokeGUI extends JFrame implements ActionListener {
                     setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverEnemyWin = true;
-                } else if (gameOverPlayerWin == false) {
-                    System.out.println("Enemy lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    this.repaint();
-                    gameOverPlayerWin = true;
                 }
+                    // was causing duplicate faint in logText output
+//                } else if (gameOverPlayerWin == false) {
+//                    System.out.println("Enemy lost!!!");
+//                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+//                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+//                    this.repaint();
+//                    gameOverPlayerWin = true;
+//                }
                 return false;
             }
         }
