@@ -213,6 +213,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerTempHp = playerPokemon.getHp();
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
+        playerLevel = playerPokemon.getLevel();
 
         // player label
         playerLabel = new JLabel();
@@ -239,6 +240,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         enemyTempHp = enemyPokemon.getHp();
         enemyPokemonName = enemyPokemon.getName();
         enemyNumber = enemyPokemon.getNumber();
+        enemyLevel = enemyPokemon.getLevel();
 
         // enemy label
         enemyLabel = new JLabel();
@@ -457,7 +459,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
-                this.pack();
 
                 // player attacks second
                 damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
