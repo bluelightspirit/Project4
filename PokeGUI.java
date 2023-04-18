@@ -309,7 +309,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         downloadFont();
 
         // set log panel text & add that to the panel
-        setLogText("Welcome to Pokémane Battle Simulator!");
+        //setLogText("Welcome to Pokémane Battle Simulator!");
         logPanel.add(log);
 
         // main panel BoxLayout before adding all panels in
