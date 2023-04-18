@@ -951,8 +951,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // false = couldn't swap, enemy lost
                 if (gameOverPlayerWin == false) {
                     System.out.println("Enemy lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + "fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + "fainted and lost, GG!</p></html>"));
+                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + " fainted and lost, GG!</p></html>"));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverPlayerWin = true;
                 }
@@ -987,8 +987,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // false = couldn't swap, player lost
                 if (gameOverEnemyWin == false) {
                     System.out.println("player lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonName + "fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonName + "fainted and lost, GG!</p></html>"));
+                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonName + " fainted and lost, GG!</p></html>"));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonName + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverEnemyWin = true;
                 }
