@@ -2,7 +2,13 @@
 public class AI {
 
     public static Move decideMove(Pokemon enemyPokemon) {
-        Move move = new Move((int) Math.random()*4 + 1);
+        int randomNum = (int) (1 + (Math.random() * 4));
+        Move move = new Move(randomNum);
+        System.out.println(randomNum);
         return move;
+    }
+
+    public static void main(String[] args) {
+        decideMove(new Pokemon(1));
     }
 }

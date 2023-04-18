@@ -457,7 +457,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
-                this.pack();
 
                 // player attacks second
                 damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
