@@ -298,4 +298,8 @@ public class PokemonGame
         System.out.println("All player pokemon were found fainted... You somehow ended up to this print statement too! :(");
         return playerPoke;
     }
+
+    public static ArrayList getPlayerPokemonArrayList() {
+        return playerPokemonArrayList;
+    }
 }
