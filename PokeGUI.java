@@ -736,7 +736,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     public void downloadFont() {
-        GraphicsEnvironment ge = null;
+        GraphicsEnvironment ge;
         try {
             // Load font file from local file system
             File fontFile = new File(".idea/fonts/northrup-regular.ttf");
@@ -951,8 +951,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // false = couldn't swap, enemy lost
                 if (gameOverPlayerWin == false) {
                     System.out.println("Enemy lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonName + " fainted and lost, GG!</p></html>"));
+                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverPlayerWin = true;
                 }
@@ -987,8 +987,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // false = couldn't swap, player lost
                 if (gameOverEnemyWin == false) {
                     System.out.println("player lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonName + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonName + " fainted and lost, GG!</p></html>"));
+                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
                     this.repaint();
                     gameOverEnemyWin = true;
                 }
