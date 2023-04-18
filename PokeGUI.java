@@ -1033,7 +1033,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerPokemons = PokemonGame.getPlayerPokemonArrayList();
         String[] responses = {playerPokemons.get(0).getName(), playerPokemons.get(1).getName(), playerPokemons.get(2).getName()};
         // double check if user wants to move onto next question
-        int response = JOptionPane.showOptionDialog(null,"What Pokemon would you like to swap to?", "Pokemon Swapper", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, responses, 0);
+        int response = JOptionPane.showOptionDialog(null,"What Pokémon would you like to swap to?", "Pokémon Swapper", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, responses, 0);
         switch (response){
 
             case 0: // also can be JOptionPane.YES_OPTION
