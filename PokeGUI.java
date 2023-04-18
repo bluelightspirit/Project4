@@ -211,7 +211,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         // player panel & variable initialization
         JPanel playerPokemonPanel = new JPanel();
         playerMaxHp = playerPokemon.getHp();
-        playerTempHp = playerPokemon.getHp();
+        playerTempHp = playerPokemon.getTempHp();
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
         playerLevel = playerPokemon.getLevel();
@@ -238,7 +238,7 @@ public class PokeGUI extends JFrame implements ActionListener {
         // enemy panel & variables
         JPanel enemyPokemonPanel = new JPanel();
         enemyMaxHp = enemyPokemon.getHp();
-        enemyTempHp = enemyPokemon.getHp();
+        enemyTempHp = enemyPokemon.getTempHp();
         enemyPokemonName = enemyPokemon.getName();
         enemyNumber = enemyPokemon.getNumber();
         enemyLevel = enemyPokemon.getLevel();
@@ -949,7 +949,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // need giant set method taking in enemyPokemon and resetting the variables at the top
                 // like this:
                 enemyMaxHp = enemyPokemon.getHp();
-                enemyTempHp = enemyPokemon.getHp();
+                enemyTempHp = enemyPokemon.getTempHp();
                 enemyPokemonName = enemyPokemon.getName();
                 enemyNumber = enemyPokemon.getNumber();
                 enemyLevel = enemyPokemon.getLevel();
@@ -986,7 +986,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // need giant set method taking in playerPokemon and resetting the variables at the top
                 // like this:
                 playerMaxHp = playerPokemon.getHp();
-                playerTempHp = playerPokemon.getHp();
+                playerTempHp = playerPokemon.getTempHp();
                 playerPokemonName = playerPokemon.getName();
                 playerNumber = playerPokemon.getNumber();
                 playerLevel = playerPokemon.getLevel();
@@ -1040,7 +1040,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         }
         playerMaxHp = playerPokemon.getHp();
-        playerTempHp = playerPokemon.getHp();
+        playerTempHp = playerPokemon.getTempHp();
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
         playerLevel = playerPokemon.getLevel();
