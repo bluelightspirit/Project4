@@ -19,10 +19,9 @@ import java.lang.Math;
 
 public class QuickstartGame {
 
-
-    //public static void main(String[] args) {
         private static ArrayList<Pokemon> playerPokemonArrayList = new ArrayList<>();
         private static ArrayList<Pokemon> enemyPokemonArrayList = new ArrayList<>();
+
         public static void main (String[]args) throws FileNotFoundException {
 
             try {
