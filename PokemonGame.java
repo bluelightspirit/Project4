@@ -230,7 +230,9 @@ public class PokemonGame
         System.out.println(enemyPokemonArrayList.get(1).getName());
         System.out.println(enemyPokemonArrayList.get(2).getName());
 
-        JFrame pokeGUI = new PokeGUI(playerPokemonArrayList.get(0), enemyPokemonArrayList.get(0));
+        PokeGUI.setEnemyPokemon(enemyPokemonArrayList.get(0));
+        PokeGUI.setPlayerPokemon(playerPokemonArrayList.get(0));
+        JFrame pokeGUI = new PokeGUI();
 
 //        ((PokeGUI) pokeGUI).setPlayerPokemonName(playerPokemonArrayList.get(0).getName());
 //        ((PokeGUI) pokeGUI).updatePlayerLabel("WAITING");
@@ -247,9 +249,11 @@ public class PokemonGame
                 x++;
             }
         }
-        if (x == 3) {
+        if (x == 4) {
+            System.out.println(true);
             return true;
         } else {
+            System.out.println(false);
             return false;
         }
     }
@@ -257,11 +261,14 @@ public class PokemonGame
     public static Pokemon swapEnemyPokemon(Pokemon enemyPoke) {
         if (enemyPoke.getFainted() == true && getEnemyTeamFainted() == false) {
             for (int i = 0; i <= 2; i++) {
+                System.out.println(i);
                 if (enemyPokemonArrayList.get(i).getFainted() == false) {
+                    System.out.println("Switching to " + enemyPokemonArrayList.get(i).getName());
                     return enemyPokemonArrayList.get(i);
                 }
             }
         }
+        System.out.println("All enemy pokemon was found fainted :(");
         return enemyPoke;
     }
 }
