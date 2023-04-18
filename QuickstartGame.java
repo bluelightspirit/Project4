@@ -23,7 +23,26 @@ public class QuickstartGame {
         private static ArrayList<Pokemon> enemyPokemonArrayList = new ArrayList<>();
 
         public static void main (String[]args) throws FileNotFoundException {
-
+            ArrayList<String> names = new ArrayList<String>();
+            ArrayList<String> moveNames = new ArrayList<String>();
+            try {
+                Scanner fIn = new Scanner(new FileInputStream("name.txt"));
+                while(fIn.hasNext()) {
+                    names.add(fIn.nextLine());
+                }
+            }
+            catch(Exception e) {
+                System.out.println("error getting data");
+            }
+            try {
+                Scanner fIn = new Scanner(new FileInputStream("moveName.txt"));
+                while(fIn.hasNext()) {
+                    moveNames.add(fIn.nextLine());
+                }
+            }
+            catch(Exception e) {
+                System.out.println("error getting data");
+            }
             try {
                 Scanner fIn = new Scanner(new FileInputStream("quickStart.txt"));
                 int i = 1;
