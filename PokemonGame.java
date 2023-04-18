@@ -259,16 +259,14 @@ public class PokemonGame
     }
 
     public static Pokemon swapEnemyPokemon(Pokemon enemyPoke) {
-        if (enemyPoke.getFainted() == true && getEnemyTeamFainted() == false) {
-            for (int i = 0; i <= 2; i++) {
-                System.out.println(i);
-                if (enemyPokemonArrayList.get(i).getFainted() == false) {
-                    System.out.println("Switching to " + enemyPokemonArrayList.get(i).getName());
-                    return enemyPokemonArrayList.get(i);
-                }
+        for (int i = 0; i <= 2; i++) {
+            System.out.println(i);
+            if (enemyPokemonArrayList.get(i).getFainted() == false) {
+                System.out.println("Switching to " + enemyPokemonArrayList.get(i).getName());
+                return enemyPokemonArrayList.get(i);
             }
         }
-        System.out.println("All enemy pokemon was found fainted :(");
+        System.out.println("All enemy pokemon were found fainted... You somehow ended up to this print statement too! :(");
         return enemyPoke;
     }
 }
