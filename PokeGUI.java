@@ -428,16 +428,9 @@ public class PokeGUI extends JFrame implements ActionListener {
                     enemyPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updateEnemyHpBar();
-                this.pack();
-
-                try {
-                    Thread.sleep(7500);
-                } catch (Exception f) {
-                    System.out.println("couldn't sleep");
-                }
 
                 // enemy attacks second
                 damage = Battle.attack(enemyPokemon, playerPokemon, AI.decideMove(enemyPokemon));
@@ -447,7 +440,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     playerPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                    setLogText(log.getText().replace("</html></p>", enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>"))))));
                 }
                 updatePlayerHpBar();
 
@@ -466,13 +459,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                 updatePlayerHpBar();
                 this.pack();
 
-
-                try {
-                    Thread.sleep(7500);
-                } catch (Exception f) {
-                    System.out.println("couldn't sleep");
-                }
-
                 // player attacks second
                 damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
                 System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
@@ -481,7 +467,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     enemyPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                    setLogText(log.getText().replace("</html></p>", playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>"))))));
                 }
                 updateEnemyHpBar();
             }
