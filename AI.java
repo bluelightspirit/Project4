@@ -22,4 +22,8 @@ public class AI {
             }
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(decideMove(new Pokemon(1)).getMoveName());
+    }
 }
