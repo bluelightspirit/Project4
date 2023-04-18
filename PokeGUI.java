@@ -523,26 +523,48 @@ public class PokeGUI extends JFrame implements ActionListener {
             // if playerPokemon priority is true, have player pokemon go first
             if (Battle.priority(playerPokemon, enemyPokemon)) {
                 // player attacks first
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
-                System.out.println("move 2 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
 
                 // seems to break the game if not only after
                 updateEnemyHpBar();
                 if (enemyTempHp == 0) {
-                    enemyPokemon.setFainted();
-                    // TODO adam thinks issue is here most likely so far 20:49 AM
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // enemyPokemon.setFainted();
+                    // TODO adam thinks issue is here most likely so far 10:49 AM
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("Problem 3?");
+                        enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 4?");
+                        enemyPokemon.setFainted();
+                    }
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    System.out.println("Problem 5?");
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        //  System.out.println("Problem 8?");
+                        // enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 7?");
+                        //enemyPokemon.setFainted();
+                    }
                 }
                 updateEnemyHpBar();
 
                 // enemy attacks second
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 2 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
 
                 // seems to break the game if not only after
@@ -562,33 +584,33 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // enemy attacks first
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 2 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
-                // TODO adam thinks this is an issue 20:50 AM
+                // TODO adam thinks this is an issue 10:50 AM
                 if (swapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
 
                 // player attacks second
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove2());
-                System.out.println("move 2 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updateEnemyHpBar();
             }
 
             // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
-            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove2().getMoveType()).getRed());
-            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove2.getMoveType().getRGB).concat(")") } </style>"
+            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
+            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
             this.pack();
             updatePlayerLabel();
@@ -599,26 +621,48 @@ public class PokeGUI extends JFrame implements ActionListener {
             // if playerPokemon priority is true, have player pokemon go first
             if (Battle.priority(playerPokemon, enemyPokemon)) {
                 // player attacks first
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
-                System.out.println("move 3 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
 
                 // seems to break the game if not only after
                 updateEnemyHpBar();
                 if (enemyTempHp == 0) {
-                    enemyPokemon.setFainted();
-                    // TODO adam thinks issue is here most likely so far 30:49 AM
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // enemyPokemon.setFainted();
+                    // TODO adam thinks issue is here most likely so far 10:49 AM
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("Problem 3?");
+                        enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 4?");
+                        enemyPokemon.setFainted();
+                    }
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    System.out.println("Problem 5?");
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        //  System.out.println("Problem 8?");
+                        // enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 7?");
+                        //enemyPokemon.setFainted();
+                    }
                 }
                 updateEnemyHpBar();
 
                 // enemy attacks second
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 3 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
 
                 // seems to break the game if not only after
@@ -638,33 +682,33 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // enemy attacks first
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 3 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
-                // TODO adam thinks this is an issue 30:50 AM
+                // TODO adam thinks this is an issue 10:50 AM
                 if (swapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
 
                 // player attacks second
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
-                System.out.println("move 3 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updateEnemyHpBar();
             }
 
             // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
-            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove3().getMoveType()).getRed());
-            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove3.getMoveType().getRGB).concat(")") } </style>"
+            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
+            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
             this.pack();
             updatePlayerLabel();
@@ -675,26 +719,48 @@ public class PokeGUI extends JFrame implements ActionListener {
             // if playerPokemon priority is true, have player pokemon go first
             if (Battle.priority(playerPokemon, enemyPokemon)) {
                 // player attacks first
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
-                System.out.println("move 4 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
 
                 // seems to break the game if not only after
                 updateEnemyHpBar();
                 if (enemyTempHp == 0) {
-                    enemyPokemon.setFainted();
-                    // TODO adam thinks issue is here most likely so far 40:49 AM
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // enemyPokemon.setFainted();
+                    // TODO adam thinks issue is here most likely so far 10:49 AM
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("Problem 3?");
+                        enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 4?");
+                        enemyPokemon.setFainted();
+                    }
                 }
                 else if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    System.out.println("Problem 5?");
+                    if(PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        //  System.out.println("Problem 8?");
+                        // enemyPokemon.setFainted();
+                    }
+                    else if(PokemonGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 7?");
+                        //enemyPokemon.setFainted();
+                    }
                 }
                 updateEnemyHpBar();
 
                 // enemy attacks second
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 4 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
 
                 // seems to break the game if not only after
@@ -702,11 +768,9 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // TODO fix log text
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
-                    System.out.println("Problem 1?");
                     setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 else if (swapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    System.out.println("Problem 2?");
                     setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updatePlayerHpBar();
@@ -716,33 +780,33 @@ public class PokeGUI extends JFrame implements ActionListener {
                 // enemy attacks first
                 Move enemyMoveChoice = enemyPokemon.decideMove();
                 damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
-                System.out.println("move 4 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
                     playerPokemon.setFainted();
                 }
-                // TODO adam thinks this is an issue 40:50 AM
+                // TODO adam thinks this is an issue 10:50 AM
                 if (swapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                 }
                 updatePlayerHpBar();
 
                 // player attacks second
-                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
-                System.out.println("move 4 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
                 enemyTempHp = enemyTempHp - damage;
                 if (enemyTempHp == 0) {
                     enemyPokemon.setFainted();
                 }
                 if (swapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
+                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                 }
                 updateEnemyHpBar();
             }
 
             // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
-            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove4().getMoveType()).getRed());
-            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove4.getMoveType().getRGB).concat(")") } </style>"
+            // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
+            // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
             this.pack();
             updatePlayerLabel();
