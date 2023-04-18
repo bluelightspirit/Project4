@@ -436,7 +436,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 updateEnemyHpBar();
 
                 // enemy attacks second
-                damage = Battle.attack(enemyPokemon, playerPokemon, AI.decideMove(enemyPokemon));
+                damage = Battle.attack(enemyPokemon, playerPokemon, enemyPokemon.decideMove());
                 System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
@@ -450,7 +450,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             // if enemy has priority
             } else {
                 // enemy attacks first
-                damage = Battle.attack(enemyPokemon, playerPokemon, AI.decideMove(enemyPokemon));
+                damage = Battle.attack(enemyPokemon, playerPokemon, enemyPokemon.decideMove());
                 System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
                 playerTempHp = playerTempHp - damage;
                 if (playerTempHp == 0) {
