@@ -53,13 +53,16 @@ public class QuickstartGame {
                     String pokemonName = fIn.nextLine();
                     int pokemonLevel = Integer.parseInt(fIn.nextLine());
                     Pokemon pokemon = new Pokemon(pokemonName, pokemonLevel);
-
+                    System.out.println("issue here");
                     // get moves
                     pokemon.setMove(new Move(fIn.nextLine()), 1);
+                    System.out.println("issue there");
                     pokemon.setMove(new Move(fIn.nextLine()), 2);
+                    System.out.println("issue here?");
                     pokemon.setMove(new Move(fIn.nextLine()), 3);
+                    System.out.println("issue here??");
                     pokemon.setMove(new Move(fIn.nextLine()), 4);
-
+                    System.out.println("issue");
                     // add to arraylist
                     if (i > 3) {
                         enemyPokemonArrayList.add(pokemon);

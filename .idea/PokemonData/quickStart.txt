@@ -10,17 +10,11 @@ Tackle
 Water Pulse
 Hydro Pulse
 Quick Attack
-Deino
-50
-Guardian of Alola
-Dynamic Punch
-Tectonic Rage
-Plasma Fists
 Chesnaught
 50
 Spit Up
 Stomp
-Accelerock
+Tackle
 Dynamic Punch
 Gogoat
 50
@@ -34,3 +28,9 @@ Bulldoze
 Dynamic Punch
 Zing Zap
 Dive
+Deino
+50
+Guardian of Alola
+Dynamic Punch
+Tectonic Rage
+Plasma Fists
