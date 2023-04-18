@@ -417,24 +417,79 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         if (src == move1) {
+            int damage = 0;
+            // if playerPokemon priority is true, have player pokemon go first
+            if (Battle.priority(playerPokemon, enemyPokemon)) {
+                // player attacks first
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                enemyTempHp = enemyTempHp - damage;
+                if (enemyTempHp == 0) {
+                    enemyPokemon.setFainted();
+                }
+                if (swapEnemyPokemon() == true) {
+                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                }
+                updateEnemyHpBar();
+                this.pack();
 
-            // can be enemyPokemon.damage() ?
-            int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
-            System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
-            enemyTempHp = enemyTempHp - damage;
-            if (enemyTempHp == 0) {
-                enemyPokemon.setFainted();
+                try {
+                    Thread.sleep(7500);
+                } catch (Exception f) {
+                    System.out.println("couldn't sleep");
+                }
+
+                // enemy attacks second
+                damage = Battle.attack(enemyPokemon, playerPokemon, AI.decideMove(enemyPokemon));
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                playerTempHp = playerTempHp - damage;
+                if (playerTempHp == 0) {
+                    playerPokemon.setFainted();
+                }
+                if (swapEnemyPokemon() == true) {
+                    setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                }
+                updatePlayerHpBar();
+
+            // if enemy has priority
+            } else {
+                // enemy attacks first
+                damage = Battle.attack(enemyPokemon, playerPokemon, AI.decideMove(enemyPokemon));
+                System.out.println("move 1 clicked! -" + damage + " for " + playerPokemon.getName() + "!");
+                playerTempHp = playerTempHp - damage;
+                if (playerTempHp == 0) {
+                    playerPokemon.setFainted();
+                }
+                if (swapEnemyPokemon() == true) {
+                    setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                }
+                updatePlayerHpBar();
+                this.pack();
+
+
+                try {
+                    Thread.sleep(7500);
+                } catch (Exception f) {
+                    System.out.println("couldn't sleep");
+                }
+
+                // player attacks second
+                damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove1());
+                System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
+                enemyTempHp = enemyTempHp - damage;
+                if (enemyTempHp == 0) {
+                    enemyPokemon.setFainted();
+                }
+                if (swapEnemyPokemon() == true) {
+                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
+                }
+                updateEnemyHpBar();
             }
-
-            updateEnemyHpBar();
 
             // will need StringBuilder possibly, this is too long if Green and Blue are also needed...
             // System.out.println(getPokemonMoveTypeColor(playerPokemon.getMove1().getMoveType()).getRed());
             // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
-            if (swapEnemyPokemon() == true) {
-                setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</html></p>")))));
-            }
             this.pack();
             updatePlayerLabel(getPlayerTurn());
             updateEnemyLabel(getEnemyTurn());
