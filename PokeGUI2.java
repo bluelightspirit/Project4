@@ -444,7 +444,19 @@ public class PokeGUI2 extends JFrame implements ActionListener {
                     }
                 }
                 else if (swapEnemyPokemon() == true && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
-                    setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+                    System.out.println("Problem 5?");
+                    if(QuickstartGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(QuickstartGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        //  System.out.println("Problem 8?");
+                        // enemyPokemon.setFainted();
+                    }
+                    else if(QuickstartGame.getEnemyPokemonArrayList().get(0).getTempHp() == 0 && QuickstartGame.getEnemyPokemonArrayList().get(1).getTempHp() > 0)
+                    {
+                        setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(QuickstartGame.getEnemyPokemonArrayList().get(0).getName().concat(" took " + damage + " damage!</p></html>")))));
+                        // System.out.println("problem 7?");
+                        //enemyPokemon.setFainted();
+                    }
                 }
                 updateEnemyHpBar();
 
