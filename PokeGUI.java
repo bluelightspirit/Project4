@@ -218,7 +218,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // player label
         playerLabel = new JLabel();
-        updatePlayerLabel(getPlayerTurn());
+        updatePlayerLabel();
 
         // set text color to always be white & background outside of bar's highlight to be black
         UIManager.put("ProgressBar.selectionBackground", Color.WHITE);
@@ -245,7 +245,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // enemy label
         enemyLabel = new JLabel();
-        updateEnemyLabel(getEnemyTurn());
+        updateEnemyLabel();
 
         // enemy hp bar
         enemyHpBar = new JProgressBar();
@@ -479,8 +479,8 @@ public class PokeGUI extends JFrame implements ActionListener {
             // can do "<style> p { text-align:center; color:rgb(".concat(playerPokemon.getMove1.getMoveType().getRGB).concat(")") } </style>"
             // then "<p>text</p>"
             this.pack();
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
+            updatePlayerLabel();
+            updateEnemyLabel();
 
         } else if (src == move2) {
 
@@ -492,8 +492,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove2().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
             }
             this.pack();
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
+            updatePlayerLabel();
+            updateEnemyLabel();
         } else if (src == move3) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove3());
@@ -504,8 +504,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
             }
             this.pack();
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
+            updatePlayerLabel();
+            updateEnemyLabel();
         } else if (src == move4) {
 
             int damage = Battle.attack(playerPokemon, enemyPokemon, playerPokemon.getMove4());
@@ -516,8 +516,8 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
             }
             this.pack();
-            updatePlayerLabel(getPlayerTurn());
-            updateEnemyLabel(getEnemyTurn());
+            updatePlayerLabel();
+            updateEnemyLabel();
         } else if (src == swap) {
             System.out.println("swap clicked!");
         }
@@ -693,17 +693,17 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     // update label for player pokemon
-    public void updatePlayerLabel(String turnInfo) {
+    public void updatePlayerLabel() {//String turnInfo) {
         playerPokemonNameCapsFirst = playerPokemonName.substring(0, 1).toUpperCase().concat(playerPokemonName.substring(1));
-        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "<br />" + turnInfo + "</html>"));
+        playerLabel.setText("<html>".concat(playerPokemonNameCapsFirst + "<br />Level: " + playerLevel + "</html>"));
         playerLabel.setForeground(Color.white);
         playerLabel.setIcon(new ImageIcon(getSprite(playerNumber)));
     }
 
     // update label for enemy/AI pokemon
-    public void updateEnemyLabel(String turnInfo) {
+    public void updateEnemyLabel() {//String turnInfo) {
         enemyPokemonNameCapsFirst = enemyPokemonName.substring(0, 1).toUpperCase().concat(enemyPokemonName.substring(1));
-        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "<br />" + turnInfo + "</html>"));
+        enemyLabel.setText("<html>".concat(enemyPokemonNameCapsFirst + "<br />Level: " + enemyLevel + "</html>"));
         enemyLabel.setForeground(Color.white);
         enemyLabel.setIcon(new ImageIcon(getSprite(enemyNumber)));
     }
@@ -941,7 +941,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 enemyPokemonName = enemyPokemon.getName();
                 enemyNumber = enemyPokemon.getNumber();
                 enemyLevel = enemyPokemon.getLevel();
-                updateEnemyLabel(getEnemyTurn());
+                updateEnemyLabel();
                 this.repaint();
                 // true = success
                 return true;
@@ -972,7 +972,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 playerPokemonName = playerPokemon.getName();
                 playerNumber = playerPokemon.getNumber();
                 playerLevel = playerPokemon.getLevel();
-                updatePlayerLabel(getPlayerTurn());
+                updatePlayerLabel();
                 this.repaint();
                 // true = success
                 return true;
