@@ -24,7 +24,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     // main method to run constructor
     public static void main(String[] args) {
         // base frame for all panels
-        new PokeGUI(new Pokemon(1), new Pokemon(1));
+        new PokeGUI();
     }
 
     // essential variables
@@ -39,8 +39,8 @@ public class PokeGUI extends JFrame implements ActionListener {
     private final JLabel playerLabel;
     private final JLabel enemyLabel;
     private final MathContext precision = new MathContext(4, RoundingMode.HALF_UP);
-    private Pokemon playerPokemon = new Pokemon(1);
-    private Pokemon enemyPokemon = new Pokemon(1);
+    private static Pokemon playerPokemon = new Pokemon(1);
+    private static Pokemon enemyPokemon = new Pokemon(1);
     private String playerPokemonNameCapsFirst;
     private String enemyPokemonNameCapsFirst;
 
@@ -191,9 +191,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // constructs multiple panels and merges them into one main panel using BoxLayout
     // new addition: uses 2 Pokemon objects
-    PokeGUI(Pokemon playerPoke, Pokemon enemyPoke) {
-        playerPokemon = playerPoke;
-        enemyPokemon = enemyPoke;
+    PokeGUI() {
 
         // set title
         this.setTitle("Pokémane Battle Simulator");
@@ -378,11 +376,11 @@ public class PokeGUI extends JFrame implements ActionListener {
         return hsbArr[2];
     }
 
-    public void setPlayerPokemon(Pokemon pokemon) {
+    public static void setPlayerPokemon(Pokemon pokemon) {
         playerPokemon = pokemon;
     }
 
-    public void setEnemyPokemon(Pokemon pokemon) {
+    public static void setEnemyPokemon(Pokemon pokemon) {
         enemyPokemon = pokemon;
     }
 
@@ -546,7 +544,9 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // update temp hp in enemyHpBar
     public void updateEnemyHpBar() {
+        swapEnemyPokemon();
         // enemyTempHp = new enemy hp to aim for
+        enemyHpBar.setMaximum(enemyMaxHp);
 
         // fix initial hp set and when hp is 100%
         if (enemyHpBar.getValue() == 0) {
@@ -859,7 +859,7 @@ public class PokeGUI extends JFrame implements ActionListener {
             enemyPokemonName = enemyPokemon.getName();
             enemyNumber = enemyPokemon.getNumber();
             updateEnemyLabel(getEnemyTurn());
-            pack();
+            this.repaint();
         }
     }
 }
