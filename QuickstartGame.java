@@ -33,7 +33,6 @@ public class QuickstartGame
         // why does this exist
         // String filename = input + ".txt";
         System.out.println("Game file " + fileName + " was made");
-        //System.out.println()
         PrintWriter print = new PrintWriter(fileName);
         int count = 0;
         //get list of pokemon and list of moves
@@ -44,6 +43,7 @@ public class QuickstartGame
             while(fIn.hasNext()) {
                 names.add(fIn.nextLine());
             }
+            fIn.close();
         }
         catch(Exception e) {
             System.out.println("error getting data");
@@ -53,6 +53,7 @@ public class QuickstartGame
             while(fIn.hasNext()) {
                 moveNames.add(fIn.nextLine());
             }
+            fIn.close();
         }
         catch(Exception e) {
             System.out.println("error getting data");
@@ -60,8 +61,20 @@ public class QuickstartGame
         //adds pokemon
         // while(count < 6) {
         // while(count < 6) {
+    /*    System.out.println(moveNames.size());
+        for(int i = 0; i < moveNames.size(); i++)
+        {
+            System.out.println(moveNames.get(i));
+        }*/
         for(int ii = 0; ii < 6; ii++) {
+            //if (count < 3) {
+          //  System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
+            // } else {
+            // System.out.println("Please enter name of pokemon to be added to enemy team. Or type R to let RNG decide pokemon");
+            //}
+        //    String response = in.next();
 
+            //rng decide
                 int i = (int) (Math.random() * 801);
                 int mov1 = (int) (Math.random() * 502);
                 int mov2 = (int) (Math.random() * 502);
@@ -74,6 +87,7 @@ public class QuickstartGame
                 print.println(moveNames.get(mov3));
                 print.println(moveNames.get(mov4));
                 count++;
+                // break;
 
         }
         // }
