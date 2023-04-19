@@ -430,15 +430,15 @@ public class PokeGUI extends JFrame implements ActionListener {
             if (src == move1 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false && gameRunning == true) {
                 // if playerPokemon priority is true, have player pokemon go first
                 if (Battle.priority(playerPokemon, enemyPokemon)) {
-                    // player attacks first
+                    // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
                     playerAttacksEnemy(playerPokemon.getMove1(), true);
+
 
                     // enemy attacks second
                     enemyAttacksPlayer(1, false);
 
                 // if enemy has priority
                 } else {
-
                     // enemy attacks first
                     enemyAttacksPlayer(1, true);
 
@@ -482,7 +482,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                             setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         }
 
-                    } else if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         System.out.println("Problem 5?");
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
@@ -512,7 +512,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (playerTempHp == 0) {
                         playerPokemon.setFainted();
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
-                    } else if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                     } else
                     {
@@ -539,7 +539,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                         playerPokemon.setFainted();
                     }
                     // TODO adam thinks this is an issue 10:50 AM
-                    if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(PokemonGame.getPlayerPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
@@ -569,7 +569,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (enemyTempHp == 0) {
                         enemyPokemon.setFainted();
                     }
-                    if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>"))))));
@@ -618,7 +618,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                         } else {
                             setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         }
-                    } else if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         System.out.println("Problem 5?");
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
@@ -649,7 +649,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (playerTempHp == 0) {
                         playerPokemon.setFainted();
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
-                    } else if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                     } else {
                         setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
@@ -667,7 +667,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                         playerPokemon.setFainted();
                     }
                     // TODO adam thinks this is an issue 30:50 AM
-                    if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(PokemonGame.getPlayerPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
@@ -698,7 +698,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (enemyTempHp == 0) {
                         enemyPokemon.setFainted();
                     }
-                    if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove3().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>"))))));
@@ -746,7 +746,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                         } else {
                             setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         }
-                    } else if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         System.out.println("Problem 5?");
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
@@ -777,7 +777,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (playerTempHp == 0) {
                         playerPokemon.setFainted();
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
-                    } else if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    } else if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                     }
                     else
@@ -805,7 +805,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                         playerPokemon.setFainted();
                     }
                     // TODO adam thinks this is an issue 40:50 AM
-                    if (canSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapPlayerPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         //setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyMoveChoice.getMoveName().concat("!<br />".concat(PokemonGame.getPlayerPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>")))));
@@ -835,7 +835,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                     if (enemyTempHp == 0) {
                         enemyPokemon.setFainted();
                     }
-                    if (canSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+                    if (checkSwapEnemyPokemon() == true && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                         // setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove4().getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>"))))));
                         if (PokemonGame.getEnemyPokemonArrayList().get(1).getTempHp() == 0) {
                             setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst.concat(" casted " + playerPokemon.getMove1().getMoveName().concat("!<br />".concat(PokemonGame.getEnemyPokemonArrayList().get(1).getName().concat(" took " + damage + " damage!</p></html>"))))));
@@ -962,7 +962,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // update temp hp in enemyHpBar
     public void updateEnemyHpBar() {
-        if (!canSwapEnemyPokemon()) {
+        if (!checkSwapEnemyPokemon()) {
             gameRunning = false;
         }
         // enemyTempHp = new enemy hp to aim for
@@ -1273,51 +1273,39 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     // swaps enemy pokemon and updates GUI
     public void swapEnemyPokemon() {
-                enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
-                enemyMaxHp = enemyPokemon.getHp();
-                enemyTempHp = enemyPokemon.getTempHp();
-                enemyPokemonName = enemyPokemon.getName();
-                enemyNumber = enemyPokemon.getNumber();
-                enemyLevel = enemyPokemon.getLevel();
-                updateEnemyLabel();
-                this.repaint();
+        enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
+        enemyMaxHp = enemyPokemon.getHp();
+        enemyTempHp = enemyPokemon.getTempHp();
+        enemyPokemonName = enemyPokemon.getName();
+        enemyNumber = enemyPokemon.getNumber();
+        enemyLevel = enemyPokemon.getLevel();
+        updateEnemyLabel();
+        updateEnemyHpBar();
+        this.repaint();
+    }
+
+    // swaps player pokemon and updates GUI
+    public void swapPlayerPokemon() {
+        playerPokemon = PokemonGame.swapPlayerPokemon(playerPokemon);
+        playerMaxHp = playerPokemon.getHp();
+        playerTempHp = playerPokemon.getTempHp();
+        playerPokemonName = playerPokemon.getName();
+        playerNumber = playerPokemon.getNumber();
+        playerLevel = playerPokemon.getLevel();
+        updatePlayerLabel();
+        updatePlayerHpBar();
+        this.repaint();
     }
 
     // checks if enemy pokemon can be swapped
     // TODO disassemble and fix anything that calls this method
-    public boolean canSwapEnemyPokemon() {
+    public boolean checkSwapEnemyPokemon() {
         if (enemyPokemon.getFainted()) {
             if (PokemonGame.getEnemyTeamFainted() == false) {
-//                enemyPokemon = PokemonGame.swapEnemyPokemon(enemyPokemon);
-//                System.out.println(enemyPokemon.getName());
-//                // need giant set method taking in enemyPokemon and resetting the variables at the top
-//                // like this:
-//                enemyMaxHp = enemyPokemon.getHp();
-//                enemyTempHp = enemyPokemon.getTempHp();
-//                enemyPokemonName = enemyPokemon.getName();
-//                enemyNumber = enemyPokemon.getNumber();
-//                enemyLevel = enemyPokemon.getLevel();
-//                updateEnemyLabel();
-//                this.repaint();
                 // true = success
                 return true;
             } else {
                 // false = couldn't swap, enemy lost
-                if (gameOverPlayerWin == false) {
-                    System.out.println("Enemy lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    this.repaint();
-                    gameOverPlayerWin = true;
-                    }
-                    // was causing duplicate faint in logText output
-//                } else if (gameOverEnemyWin == false) {
-//                    System.out.println("player lost!!!");
-//                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-//                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-//                    this.repaint();
-//                    gameOverEnemyWin = true;
-//                }
                 return false;
             }
         }
@@ -1325,44 +1313,13 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     // TODO disassemble and fix anything that calls this method
-    public boolean canSwapPlayerPokemon() {
+    public boolean checkSwapPlayerPokemon() {
         if (playerPokemon.getFainted()) {
             if (PokemonGame.getPlayerTeamFainted() == false) {
-//                playerPokemon = PokemonGame.swapPlayerPokemon(playerPokemon);
-//                System.out.println(playerPokemon.getName());
-//                // need giant set method taking in playerPokemon and resetting the variables at the top
-//                // like this:
-//                playerMaxHp = playerPokemon.getHp();
-//                playerTempHp = playerPokemon.getTempHp();
-//                playerPokemonName = playerPokemon.getName();
-//                playerNumber = playerPokemon.getNumber();
-//                playerLevel = playerPokemon.getLevel();
-//                // move buttons so buttons exist
-//                move1.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 1<br />" + playerPokemon.getMove1().getMoveName() + "</div></html>");
-//                move2.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 2<br />" + playerPokemon.getMove2().getMoveName() + "</div></html>");
-//                move3.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 3<br />" + playerPokemon.getMove3().getMoveName() + "</div></html>");
-//                move4.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 4<br />" + playerPokemon.getMove4().getMoveName() + "</div></html>");
-//                updatePlayerLabel();
-//                this.repaint();
                 // true = success
                 return true;
             } else {
                 // false = couldn't swap, player lost
-                if (gameOverEnemyWin == false) {
-                    System.out.println("player lost!!!");
-                    System.out.println(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    setLogText(log.getText().replace("</p></html>", "<br />" + playerPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-                    this.repaint();
-                    gameOverEnemyWin = true;
-                }
-                    // was causing duplicate faint in logText output
-//                } else if (gameOverPlayerWin == false) {
-//                    System.out.println("Enemy lost!!!");
-//                    System.out.println(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-//                    setLogText(log.getText().replace("</p></html>", "<br />" + enemyPokemonNameCapsFirst + " fainted and lost, GG!</p></html>"));
-//                    this.repaint();
-//                    gameOverPlayerWin = true;
-//                }
                 return false;
             }
         }
@@ -1436,10 +1393,18 @@ public class PokeGUI extends JFrame implements ActionListener {
         // now worry about swapping pokemon and faints
         if (playerTempHp == 0) {
             playerPokemon.setFainted();
+            if (!checkSwapPlayerPokemon()) {
+                // game is over if enemy cannot swap pokemon
+                setEnemyLost();
+            } else {
+                swapPlayerPokemon();
+                this.repaint();
+                this.pack();
+            }
         }
     }
 
-    public void playerAttacksEnemy(Move moveToPlay, boolean firstAttack) {
+    public boolean playerAttacksEnemy(Move moveToPlay, boolean firstAttack) {
         // do the battle stuff first
         int damage = Battle.attack(playerPokemon, enemyPokemon, moveToPlay);
         System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
@@ -1456,19 +1421,31 @@ public class PokeGUI extends JFrame implements ActionListener {
         // now worry about swapping pokemon and faints
         if (enemyTempHp == 0) {
             enemyPokemon.setFainted();
-            if (canSwapEnemyPokemon()) {
-                swapEnemyPokemon();
-            } else {
-                // game is over if enemy cannot swap pokemon
+            if (!checkSwapEnemyPokemon()) {
+                // game is over if player cannot swap pokemon
                 setEnemyLost();
+            } else {
+                swapPlayerPokemon();
+                this.repaint();
+                this.pack();
             }
         }
-        return;
+        return true;
     }
 
     public void setEnemyLost() {
         System.out.println("GG. ENEMY LOST!!!");
-        setLogText(getLogText().replace("</p></html>", "<br />ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMIES LEFT! PLAYER WINS!</p></html>"));
+        setLogText(getLogText().replace("</p></html>", "<br />ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMY POKEMONS LEFT! PLAYER WINS!</p></html>"));
+        move1.setEnabled(false);
+        move2.setEnabled(false);
+        move3.setEnabled(false);
+        move4.setEnabled(false);
+        log.setEnabled(false);
+    }
+
+    public void setPlayerLost() {
+        System.out.println("GG. YOU LOST!!!");
+        setLogText(getLogText().replace("</p></html>", "<br />PLAYER POKEMON " + playerPokemonNameCapsFirst + "FAINTED!<br />NO MORE PLAYER POKEMONS LEFT! ENEMY WINS!</p></html>"));
         move1.setEnabled(false);
         move2.setEnabled(false);
         move3.setEnabled(false);
