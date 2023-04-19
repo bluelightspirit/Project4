@@ -1,6 +1,36 @@
-Ferroseed
+Espeon
 50
-Inferno
-Super Fang
-Oceanic Operetta
-Fairy Wind
+Bug Bite
+Leaf Tornado
+Magnet Bomb
+Energy Ball
+Inkay
+50
+Disarming Voice
+Electro Ball
+Icicle Spear
+Crush Grip
+Vaporeon
+50
+Splishy Splash
+Scratch
+Parabolic Charge
+Sucker Punch
+Zubat
+50
+Genesis Supernova
+Flame Wheel
+Luster Purge
+Dark Pulse
+Mudsdale
+50
+Judgment
+Steamroller
+Light That Burns the Sky
+Clangorous Soulblaze
+Gourgeist
+50
+Sappy Seed
+Rolling Kick
+Horn Drill
+Hold Back

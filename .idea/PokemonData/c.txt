@@ -1,36 +1,36 @@
-Magneton
+Diglett
 50
-Ice Ball
-Zippy Zap
-Extrasensory
-Fling
-Sunkern
+Chatter
+Bullet Seed
+Splintered Stormshards
+Buzzy Buzz
+Skorupi
 50
-Play Rough
-Wing Attack
-Boomburst
-Blizzard
-Primeape
+Blue Flare
+Aurora Beam
+Focus Punch
+Veevee Volley
+Rotom
 50
-Megahorn
-Rolling Kick
-Continental Crush
-Hydro Vortex
-Cleffa
-50
+Rock Smash
+Jump Kick
 Poison Jab
-Frustration
-Glitzy Glow
-Zen Headbutt
-Chikorita
+Thunderbolt
+Golem
 50
+Bullet Seed
+High Jump Kick
+Smart Strike
+Poison Jab
+Gliscor
+50
+Corkscrew Crash
+Thunder Punch
+Belch
+Solar Blade
+Spritzee
+50
+High Jump Kick
 Overheat
-Brine
-Karate Chop
-Ice Beam
-Mesprit
-50
-Mud Bomb
-Black Hole Eclipse
-Rock Throw
-Steamroller
+Pollen Puff
+Fury Attack

@@ -1,36 +1,36 @@
-Minun
+Doublade
 50
-Gyro Ball
-Low Kick
-Flying Press
-Devastating Drake
-Wimpod
+Zap Cannon
+Psybeam
+Guardian of Alola
+Future Sight
+Remoraid
 50
-Play Rough
-Sunsteel Strike
-Savage Spin-Out
-Ice Ball
-Spoink
+Brine
+Comet Punch
+Blaze Kick
+Ice Hammer
+Quagsire
 50
-Razor Shell
-Whirlpool
-Volt Tackle
-Sludge
-Lilligant
+Return
+Comet Punch
+Accelerock
+Icicle Spear
+Cranidos
 50
-Power-Up Punch
-High Jump Kick
-Play Rough
+Nuzzle
+Dual Chop
+Guardian of Alola
+Thunder
+Ariados
+50
+Circle Throw
+Continental Crush
+Genesis Supernova
+Dragon Pulse
+Diggersby
+50
+Fire Fang
+Sparkling Aria
 Fiery Dance
-Durant
-50
-Iron Tail
-Poison Jab
-Clear Smog
-Knock Off
-Piplup
-50
-Psyshock
-Petal Blizzard
-Steel Wing
-Aeroblast
+Hex

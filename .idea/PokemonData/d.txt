@@ -1,36 +1,36 @@
-Meloetta
+Kecleon
 50
-Lick
-Nature's Madness
-Tectonic Rage
-Sparkly Swirl
-Slaking
+Ember
+Sludge
+Water Pledge
+Blaze Kick
+Lampent
 50
-Searing Sunraze Smash
-All-Out Pummeling
-Spacial Rend
-Draco Meteor
-Pumpkaboo
-50
-Feint Attack
-Triple Kick
 Bubble
-Water Shuriken
-Cryogonal
+Smelling Salts
+Low Kick
+Poison Jab
+Prinplup
 50
-Gear Grind
-Frustration
-Hyper Fang
-Double Kick
-Tepig
+Aqua Jet
+Veevee Volley
+Sacred Fire
+Water Gun
+Jolteon
 50
-Flare Blitz
-Icicle Spear
-Fire Spin
-Petal Dance
-Treecko
+Trop Kick
+Signal Beam
+Cross Poison
+Low Sweep
+Mothim
 50
-Oblivion Wing
-Feint Attack
-Baddy Bad
-Head Charge
+Low Sweep
+Land's Wrath
+Shattered Psyche
+Bullet Punch
+Haxorus
+50
+Low Sweep
+Shattered Psyche
+Super Fang
+Hold Back

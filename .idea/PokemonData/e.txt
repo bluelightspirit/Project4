@@ -1,36 +1,36 @@
-Pidgeot
+Mr. Mime
 50
-Liquidation
-Hyperspace Hole
-Psychic Fangs
-Confusion
-Wooper
+Volt Tackle
+Sky Uppercut
+Luster Purge
+Slash
+Granbull
 50
-Focus Blast
-Tectonic Rage
-Ice Fang
-Brave Bird
-Skiploom
+Foul Play
+Uproar
+Mud Bomb
+Plasma Fists
+Tentacruel
 50
-Pin Missile
-Leaf Tornado
-Wake-Up Slap
-Needle Arm
-Ninetales
+Sucker Punch
+Dragon Ascent
+Pika Papow
+Hydro Vortex
+Pidgeotto
 50
-Vise Grip
-Seed Bomb
-Attack Order
-Round
-Ledian
+Bubble
+Quick Attack
+Sky Drop
+Solar Blade
+Lunatone
 50
+Boomburst
+Stomp
 Reversal
-Thief
-Leaf Tornado
-Fire Pledge
-Lugia
+Gunk Shot
+Weezing
 50
-Inferno Overdrive
-Explosion
-Self-Destruct
-Triple Kick
+Multi-Attack
+Giga Impact
+Muddy Water
+Dynamic Punch
