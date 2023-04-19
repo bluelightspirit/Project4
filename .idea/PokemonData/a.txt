@@ -1,36 +1,36 @@
-Doublade
+Gurdurr
 50
-Zap Cannon
-Psybeam
-Guardian of Alola
-Future Sight
-Remoraid
+Submission
+Bonemerang
+Acrobatics
+Fury Cutter
+Zigzagoon
 50
-Brine
-Comet Punch
-Blaze Kick
-Ice Hammer
-Quagsire
+Rock Throw
+Signal Beam
+Ice Punch
+Sludge
+Herdier
 50
-Return
-Comet Punch
-Accelerock
-Icicle Spear
-Cranidos
+Core Enforcer
+Heat Crash
+Spectral Thief
+High Jump Kick
+Toucannon
 50
-Nuzzle
-Dual Chop
-Guardian of Alola
-Thunder
-Ariados
+Shadow Force
+Origin Pulse
+Earth Power
+Rock Wrecker
+Tangela
 50
-Circle Throw
-Continental Crush
-Genesis Supernova
+Leech Life
+Double Hit
+Tackle
+Feint Attack
+Houndour
+50
+Moonblast
 Dragon Pulse
-Diggersby
-50
-Fire Fang
-Sparkling Aria
-Fiery Dance
-Hex
+Shattered Psyche
+Fire Pledge

@@ -1,36 +1,36 @@
-Espeon
+Kricketot
 50
-Bug Bite
-Leaf Tornado
-Magnet Bomb
-Energy Ball
-Inkay
+Vital Throw
+Mind Blown
+Moonblast
+Night Shade
+Wimpod
 50
-Disarming Voice
-Electro Ball
-Icicle Spear
-Crush Grip
-Vaporeon
-50
-Splishy Splash
-Scratch
-Parabolic Charge
-Sucker Punch
-Zubat
-50
+Acid
+Gigavolt Havoc
+Chatter
 Genesis Supernova
-Flame Wheel
-Luster Purge
-Dark Pulse
-Mudsdale
+Tynamo
 50
-Judgment
-Steamroller
-Light That Burns the Sky
-Clangorous Soulblaze
-Gourgeist
+Icy Wind
+Veevee Volley
+Fell Stinger
+Comet Punch
+Bibarel
 50
-Sappy Seed
-Rolling Kick
-Horn Drill
-Hold Back
+Shattered Psyche
+Twineedle
+Psychic Fangs
+Dragon Breath
+Fletchinder
+50
+Struggle Bug
+Shattered Psyche
+Smelling Salts
+Double-Edge
+Spritzee
+50
+Chatter
+Wild Charge
+Fusion Flare
+Mud Shot
