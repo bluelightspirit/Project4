@@ -1,36 +1,36 @@
-Gurdurr
+Luvdisc
 50
-Submission
-Bonemerang
-Acrobatics
-Fury Cutter
-Zigzagoon
+Leafage
+Fury Attack
+Poison Fang
+Ice Ball
+Eevee
 50
-Rock Throw
-Signal Beam
+Sinister Arrow Raid
+Earthquake
+Energy Ball
+Infestation
+Dewgong
+50
+Dragon Hammer
+Fissure
+Poison Jab
+Acid Downpour
+Zapdos
+50
+Freeze Shock
+Meteor Mash
+Electroweb
+Snarl
+Reuniclus
+50
+Chatter
+Thunder Shock
+Bite
 Ice Punch
-Sludge
-Herdier
+Jellicent
 50
-Core Enforcer
-Heat Crash
-Spectral Thief
-High Jump Kick
-Toucannon
-50
-Shadow Force
-Origin Pulse
-Earth Power
-Rock Wrecker
-Tangela
-50
-Leech Life
-Double Hit
-Tackle
-Feint Attack
-Houndour
-50
-Moonblast
-Dragon Pulse
-Shattered Psyche
-Fire Pledge
+Stoked Sparksurfer
+Aqua Jet
+Multi-Attack
+Trump Card
