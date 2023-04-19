@@ -427,7 +427,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         //while ((PokemonGame.getPlayerTeamFainted() == false)) {
-            if (src == move1 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
+            if (src == move1 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false && gameRunning == true) {
                     // if playerPokemon priority is true, have player pokemon go first
                     if (Battle.priority(playerPokemon, enemyPokemon)) {
                         // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
@@ -1026,6 +1026,11 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     public void enemyAttacksPlayer(int moveNumberToPrint, boolean firstAttack) {
+        // don't run method if game is over
+        if (gameRunning == false) {
+            return;
+        }
+
         // do the battle stuff first
         Move enemyMoveChoice = enemyPokemon.decideMove();
         int damage = Battle.attack(enemyPokemon, playerPokemon, enemyMoveChoice);
@@ -1056,6 +1061,11 @@ public class PokeGUI extends JFrame implements ActionListener {
     }
 
     public void playerAttacksEnemy(Move moveToPlay, boolean firstAttack) {
+        // don't run method if game is over
+        if (gameRunning == false) {
+            return;
+        }
+
         // do the battle stuff first
         int damage = Battle.attack(playerPokemon, enemyPokemon, moveToPlay);
         System.out.println("move 1 clicked! -" + damage + " for " + enemyPokemon.getName() + "!");
@@ -1086,22 +1096,26 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     public void setEnemyLost() {
         System.out.println("GG. ENEMY LOST!!!");
-        setLogText(getLogText().replace("</p></html>", "<br />ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMY POKEMONS LEFT! PLAYER WINS!</p></html>"));
+        setLogText(getLogText().replace("</p></html>", "<br />ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMY POKEMONS LEFT!<br />PLAYER WINS!</p></html>"));
         move1.setEnabled(false);
         move2.setEnabled(false);
         move3.setEnabled(false);
         move4.setEnabled(false);
-        log.setEnabled(false);
+        gameRunning = false;
+        //swap.setEnabled(false);
+        //log.setEnabled(false);
     }
 
     public void setPlayerLost() {
         System.out.println("GG. YOU LOST!!!");
-        setLogText(getLogText().replace("</p></html>", "<br />PLAYER POKEMON " + playerPokemonNameCapsFirst + "FAINTED!<br />NO MORE PLAYER POKEMONS LEFT! ENEMY WINS!</p></html>"));
+        setLogText(getLogText().replace("</p></html>", "<br />PLAYER POKEMON " + playerPokemonNameCapsFirst + "FAINTED!<br />NO MORE PLAYER POKEMONS LEFT!<br />ENEMY WINS!</p></html>"));
         move1.setEnabled(false);
         move2.setEnabled(false);
         move3.setEnabled(false);
         move4.setEnabled(false);
-        log.setEnabled(false);
+        gameRunning = false;
+        //swap.setEnabled(false);
+        //log.setEnabled(false);
     }
 
     public String getLogText() {
