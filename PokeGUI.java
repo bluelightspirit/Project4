@@ -430,73 +430,81 @@ public class PokeGUI extends JFrame implements ActionListener {
             if (src == move1 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     // if playerPokemon priority is true, have player pokemon go first
                     if (Battle.priority(playerPokemon, enemyPokemon)) {
-                        // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
-                        playerAttacksEnemy(playerPokemon.getMove1(), true);
 
-                        // enemy attacks second
-                        enemyAttacksPlayer(1, false);
+                        // player attacks first
+                        if (playerAttacksEnemy(playerPokemon.getMove1(), true)) {
+                            // enemy attacks second if not dead
+                            enemyAttacksPlayer(1, false);
+                        }
 
-                        // if enemy has priority
+                    // if enemy has priority
                     } else {
-                        // enemy attacks first
-                        enemyAttacksPlayer(1, true);
 
-                        // player attacks second
-                        playerAttacksEnemy(playerPokemon.getMove1(), false);
+                        // enemy attacks first
+                        if (enemyAttacksPlayer(1, true)) {
+                            // player attacks second if not dead
+                            playerAttacksEnemy(playerPokemon.getMove1(), false);
+                        }
 
                     }
                  } else if (src == move2 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     // if playerPokemon priority is true, have player pokemon go first
                     if (Battle.priority(playerPokemon, enemyPokemon)) {
-                        // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
-                        playerAttacksEnemy(playerPokemon.getMove2(), true);
 
-                        // enemy attacks second
-                        enemyAttacksPlayer(2, false);
+                        // player attacks first
+                        if (playerAttacksEnemy(playerPokemon.getMove2(), true)) {
+                            // enemy attacks second if not dead
+                            enemyAttacksPlayer(2, false);
+                        }
 
                     // if enemy has priority
                     } else {
-                        // enemy attacks first
-                        enemyAttacksPlayer(2, true);
 
-                        // player attacks second
-                        playerAttacksEnemy(playerPokemon.getMove2(), false);
+                        // enemy attacks first
+                        if (enemyAttacksPlayer(2, true)) {
+                            // player attacks second if not dead
+                            playerAttacksEnemy(playerPokemon.getMove2(), false);
+                        }
 
                     }
                 } else if (src == move3 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     // if playerPokemon priority is true, have player pokemon go first
                     if (Battle.priority(playerPokemon, enemyPokemon)) {
-                        // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
-                        playerAttacksEnemy(playerPokemon.getMove3(), true);
 
-                        // enemy attacks second
-                        enemyAttacksPlayer(3, false);
+                        // player attacks first
+                        if (playerAttacksEnemy(playerPokemon.getMove3(), true)) {
+                            // enemy attacks second if not dead
+                            enemyAttacksPlayer(3, false);
+                        }
 
                     // if enemy has priority
                     } else {
-                        // enemy attacks first
-                        enemyAttacksPlayer(3, true);
 
-                        // player attacks second
-                        playerAttacksEnemy(playerPokemon.getMove3(), false);
+                        // enemy attacks first
+                        if (enemyAttacksPlayer(3, true)) {
+                            // player attacks second if not dead
+                            playerAttacksEnemy(playerPokemon.getMove3(), false);
+                        }
 
                     }
                 } else if (src == move4 && PokemonGame.getPlayerTeamFainted() == false && PokemonGame.getEnemyTeamFainted() == false) {
                     // if playerPokemon priority is true, have player pokemon go first
                     if (Battle.priority(playerPokemon, enemyPokemon)) {
-                        // player attacks first, if determines if checkSwapEnemyPokemon() is true or false
-                        playerAttacksEnemy(playerPokemon.getMove4(), true);
 
-                        // enemy attacks second
-                        enemyAttacksPlayer(4, false);
+                        // player attacks first
+                        if (playerAttacksEnemy(playerPokemon.getMove4(), true)) {
+                            // enemy attacks second if not dead
+                            enemyAttacksPlayer(4, false);
+                        }
 
                     // if enemy has priority
                     } else {
-                        // enemy attacks first
-                        enemyAttacksPlayer(4, true);
 
-                        // player attacks second
-                        playerAttacksEnemy(playerPokemon.getMove4(), false);
+                        // enemy attacks first
+                        if (enemyAttacksPlayer(4, true)) {
+                            // player attacks second if not dead
+                            playerAttacksEnemy(playerPokemon.getMove4(), false);
+                        }
 
                     }
 
@@ -942,6 +950,10 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
         playerLevel = playerPokemon.getLevel();
+        move1.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 1<br />" + playerPokemon.getMove1().getMoveName() + "</div></html>");
+        move2.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 2<br />" + playerPokemon.getMove2().getMoveName() + "</div></html>");
+        move3.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 3<br />" + playerPokemon.getMove3().getMoveName() + "</div></html>");
+        move4.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 4<br />" + playerPokemon.getMove4().getMoveName() + "</div></html>");
         updatePlayerLabel();
         updatePlayerHpBar();
         this.repaint();
@@ -1025,10 +1037,11 @@ public class PokeGUI extends JFrame implements ActionListener {
         this.pack();
     }
 
-    public void enemyAttacksPlayer(int moveNumberToPrint, boolean firstAttack) {
+    // returns true if no swap is done after attack
+    public boolean enemyAttacksPlayer(int moveNumberToPrint, boolean firstAttack) {
         // don't run method if game is over
         if (gameRunning == false) {
-            return;
+            return false;
         }
 
         // do the battle stuff first
@@ -1053,17 +1066,21 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setPlayerLost();
             } else {
                 System.out.println("reached swap player pokemon method call");
+                setLogText(getLogText().replace("</p></html>", "<br />".concat(playerPokemonNameCapsFirst + " fainted!</p></html>")));
                 swapPlayerPokemon();
                 this.repaint();
                 this.pack();
+                return false;
             }
         }
+        return true;
     }
 
-    public void playerAttacksEnemy(Move moveToPlay, boolean firstAttack) {
+    // returns true if no swap is done after attack
+    public boolean playerAttacksEnemy(Move moveToPlay, boolean firstAttack) {
         // don't run method if game is over
         if (gameRunning == false) {
-            return;
+            return false;
         }
 
         // do the battle stuff first
@@ -1087,11 +1104,14 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setEnemyLost();
             } else {
                 System.out.println("reached swap enemy pokemon method call");
+                setLogText(getLogText().replace("</p></html>", "<br />".concat(enemyPokemonNameCapsFirst + " fainted!</p></html>")));
                 swapEnemyPokemon();
                 this.repaint();
                 this.pack();
+                return false;
             }
         }
+        return true;
     }
 
     public void setEnemyLost() {
