@@ -1,42 +1,36 @@
-Hitmonlee
+Zubat
+50
+Psychic Fangs
+Comet Punch
+Ice Beam
+Poison Sting
+Braviary
 50
 Inferno Overdrive
-Comet Punch
-Eruption
-Ice Hammer
-Wurmple
+Explosion
+High Jump Kick
+Counter
+Emolga
 50
-Sacred Fire
-Continental Crush
-Electroweb
-Icicle Spear
-Dialga
+Gigavolt Havoc
+Shadow Ball
+Aeroblast
+Freeze Shock
+Solosis
 50
-Vine Whip
-Psywave
-Take Down
-Electro Ball
-Whimsicott
+Soul-Stealing 7-Star Strike
+Poison Jab
+Bulldoze
+Egg Bomb
+Nidoqueen
 50
-Outrage
-Self-Destruct
-Psyshock
-Drill Run
-R
-50
-Power Trip
-Horn Leech
-Shadow Claw
-Snore
-Yveltal
-50
-Eruption
-Low Sweep
-Headbutt
-Mud-Slap
-Scizor
-50
-Frenzy Plant
-Extrasensory
+Mirror Shot
 V-create
-Ice Fang
+Cross Chop
+Multi-Attack
+Ludicolo
+50
+Thousand Waves
+Sinister Arrow Raid
+10,000,000 Volt Thunderbolt
+Spark

@@ -68,11 +68,6 @@ public class QuickstartGame
         }*/
         for(int ii = 0; ii < 6; ii++) {
             //if (count < 3) {
-          //  System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
-            // } else {
-            // System.out.println("Please enter name of pokemon to be added to enemy team. Or type R to let RNG decide pokemon");
-            //}
-        //    String response = in.next();
 
             //rng decide
                 int i = (int) (Math.random() * 801);
@@ -87,10 +82,8 @@ public class QuickstartGame
                 print.println(moveNames.get(mov3));
                 print.println(moveNames.get(mov4));
                 count++;
-                // break;
 
-        }
-        // }
+         }
         print.close();
 
 
