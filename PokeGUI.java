@@ -425,7 +425,7 @@ public class PokeGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         //while ((PokemonGame.getPlayerTeamFainted() == false)) {
-            if (src == move1) {
+            if (src == move1 && PokemonGame.getPlayerTeamFainted() == false) {
                 int damage = 0;
                 // if playerPokemon priority is true, have player pokemon go first
                 if (Battle.priority(playerPokemon, enemyPokemon)) {
@@ -537,7 +537,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 updatePlayerLabel();
                 updateEnemyLabel();
 
-            } else if (src == move2) {
+            } else if (src == move2 && PokemonGame.getPlayerTeamFainted() == false) {
 
                 int damage = 0;
                 // if playerPokemon priority is true, have player pokemon go first
@@ -653,7 +653,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 this.pack();
                 updatePlayerLabel();
                 updateEnemyLabel();
-            } else if (src == move3) {
+            } else if (src == move3 && PokemonGame.getPlayerTeamFainted() == false) {
 
                 int damage = 0;
                 // if playerPokemon priority is true, have player pokemon go first
@@ -769,7 +769,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 this.pack();
                 updatePlayerLabel();
                 updateEnemyLabel();
-            } else if (src == move4) {
+            } else if (src == move4 && PokemonGame.getPlayerTeamFainted() == false) {
 
                 int damage = 0;
                 // if playerPokemon priority is true, have player pokemon go first
