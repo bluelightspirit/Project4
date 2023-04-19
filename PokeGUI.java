@@ -1053,9 +1053,9 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // then add logText lines of enemy's move only if it is not the firstAttack
         if (firstAttack == false) {
-            setLogText(getLogText().replace("</p></html>", "<br />".concat(enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))))));
+            setLogText(getLogText().replace("</p></html>", "<br /><font color=\"red\">".concat(enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat("<font color=\"blue\">" + playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))))));
         } else {
-            setLogText("<html><p style=\"text-align:center\"><html>" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat(playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+            setLogText("<html><p style=\"text-align:center\"><html> <font color=\"red\">" + enemyPokemonNameCapsFirst.concat(" casted " + enemyPokemon.getMove1().getMoveName().concat("!<br />".concat("<font color=\"blue\">" + playerPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
         }
 
         // now worry about swapping pokemon and faints
@@ -1066,7 +1066,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setPlayerLost();
             } else {
                 System.out.println("reached swap player pokemon method call");
-                setLogText(getLogText().replace("</p></html>", "<br />".concat(playerPokemonNameCapsFirst + " fainted!</p></html>")));
+                setLogText(getLogText().replace("</p></html>", "<br /><font color=\"blue\">".concat(playerPokemonNameCapsFirst + " fainted!</p></html>")));
                 swapPlayerPokemon();
                 this.repaint();
                 this.pack();
@@ -1091,9 +1091,9 @@ public class PokeGUI extends JFrame implements ActionListener {
 
         // then add logText lines of player's move only if it is not the firstAttack
         if (firstAttack == false) {
-            setLogText(getLogText().replace("</p></html>", "<br />".concat(playerPokemonNameCapsFirst.concat(" casted " + moveToPlay.getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))))));
+            setLogText(getLogText().replace("</p></html>", "<font color=\"blue\"><br />".concat(playerPokemonNameCapsFirst.concat(" casted " + moveToPlay.getMoveName().concat("!<br />".concat("<font color=\"red\">" + enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))))));
         } else {
-            setLogText("<html><p style=\"text-align:center\"><html>" + playerPokemonNameCapsFirst.concat(" casted " + moveToPlay.getMoveName().concat("!<br />".concat(enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
+            setLogText("<html><p style=\"text-align:center\"><html><font color=\"blue\">" + playerPokemonNameCapsFirst.concat(" casted " + moveToPlay.getMoveName().concat("!<br />".concat("<font color=\"red\">" + enemyPokemonNameCapsFirst.concat(" took " + damage + " damage!</p></html>")))));
         }
 
         // now worry about swapping pokemon and faints
@@ -1104,7 +1104,7 @@ public class PokeGUI extends JFrame implements ActionListener {
                 setEnemyLost();
             } else {
                 System.out.println("reached swap enemy pokemon method call");
-                setLogText(getLogText().replace("</p></html>", "<br />".concat(enemyPokemonNameCapsFirst + " fainted!</p></html>")));
+                setLogText(getLogText().replace("</p></html>", "<br /><font color=\"red\">".concat(enemyPokemonNameCapsFirst + " fainted!</p></html>")));
                 swapEnemyPokemon();
                 this.repaint();
                 this.pack();
@@ -1116,7 +1116,7 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     public void setEnemyLost() {
         System.out.println("GG. ENEMY LOST!!!");
-        setLogText(getLogText().replace("</p></html>", "<br />ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMY POKEMONS LEFT!<br />PLAYER WINS!</p></html>"));
+        setLogText(getLogText().replace("</p></html>", "<br /><font color=\"red\">ENEMY POKEMON " + enemyPokemonNameCapsFirst + "FAINTED!<br />NO MORE ENEMY POKEMONS LEFT!<br /><font color=\"blue\">PLAYER WINS!</p></html>"));
         move1.setEnabled(false);
         move2.setEnabled(false);
         move3.setEnabled(false);
@@ -1128,13 +1128,13 @@ public class PokeGUI extends JFrame implements ActionListener {
 
     public void setPlayerLost() {
         System.out.println("GG. YOU LOST!!!");
-        setLogText(getLogText().replace("</p></html>", "<br />PLAYER POKEMON " + playerPokemonNameCapsFirst + "FAINTED!<br />NO MORE PLAYER POKEMONS LEFT!<br />ENEMY WINS!</p></html>"));
+        setLogText(getLogText().replace("</p></html>", "<br /><font color=\"blue\">PLAYER POKEMON " + playerPokemonNameCapsFirst + "FAINTED!<br />NO MORE PLAYER POKEMONS LEFT!<br /><font color=\"red\">ENEMY WINS!</p></html>"));
         move1.setEnabled(false);
         move2.setEnabled(false);
         move3.setEnabled(false);
         move4.setEnabled(false);
         gameRunning = false;
-        //swap.setEnabled(false);
+        swap.setEnabled(false);
         //log.setEnabled(false);
     }
 
