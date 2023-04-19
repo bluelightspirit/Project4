@@ -1384,7 +1384,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (!playerPokemons.get(0).getFainted()) {
                     playerPokemon = playerPokemons.get(0);
                 } else {
-                    JOptionPane.getRootFrame().dispose();
                     JOptionPane.showOptionDialog(null, "You cannot swap to " + playerPokemons.get(0).getName() + " because it is fainted!", "Error!", JOptionPane.YES_OPTION, JOptionPane.ERROR_MESSAGE, null, ok, 0);
                 }
                 break;
@@ -1392,7 +1391,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (!playerPokemons.get(1).getFainted()) {
                     playerPokemon = playerPokemons.get(1);
                 } else {
-                    JOptionPane.getRootFrame().dispose();
                     JOptionPane.showOptionDialog(null, "You cannot swap to " + playerPokemons.get(1).getName() + " because it is fainted!", "Error!", JOptionPane.YES_OPTION, JOptionPane.ERROR_MESSAGE, null, ok, 0);
                 }
                 break;
@@ -1400,7 +1398,6 @@ public class PokeGUI extends JFrame implements ActionListener {
                 if (!playerPokemons.get(2).getFainted()) {
                     playerPokemon = playerPokemons.get(2);
                 } else {
-                    JOptionPane.getRootFrame().dispose();
                     JOptionPane.showOptionDialog(null, "You cannot swap to " + playerPokemons.get(2).getName() + " because it is fainted!", "Error!", JOptionPane.YES_OPTION, JOptionPane.ERROR_MESSAGE, null, ok, 0);
                 }
                 break;
