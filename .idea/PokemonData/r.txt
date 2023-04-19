@@ -1,36 +1,42 @@
-Kricketot
+Hitmonlee
 50
-Vital Throw
-Mind Blown
-Moonblast
-Night Shade
-Wimpod
-50
-Acid
-Gigavolt Havoc
-Chatter
-Genesis Supernova
-Tynamo
-50
-Icy Wind
-Veevee Volley
-Fell Stinger
+Inferno Overdrive
 Comet Punch
-Bibarel
+Eruption
+Ice Hammer
+Wurmple
 50
-Shattered Psyche
-Twineedle
-Psychic Fangs
-Dragon Breath
-Fletchinder
+Sacred Fire
+Continental Crush
+Electroweb
+Icicle Spear
+Dialga
 50
-Struggle Bug
-Shattered Psyche
-Smelling Salts
-Double-Edge
-Spritzee
+Vine Whip
+Psywave
+Take Down
+Electro Ball
+Whimsicott
 50
-Chatter
-Wild Charge
-Fusion Flare
-Mud Shot
+Outrage
+Self-Destruct
+Psyshock
+Drill Run
+R
+50
+Power Trip
+Horn Leech
+Shadow Claw
+Snore
+Yveltal
+50
+Eruption
+Low Sweep
+Headbutt
+Mud-Slap
+Scizor
+50
+Frenzy Plant
+Extrasensory
+V-create
+Ice Fang

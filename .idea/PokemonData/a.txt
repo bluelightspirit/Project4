@@ -1,36 +1,36 @@
-Luvdisc
+Blitzle
 50
-Leafage
-Fury Attack
-Poison Fang
-Ice Ball
-Eevee
+Pika Papow
+Struggle Bug
+Ice Burn
+Steamroller
+Banette
 50
-Sinister Arrow Raid
-Earthquake
-Energy Ball
-Infestation
-Dewgong
+Natural Gift
+Water Pledge
+Ember
+Razor Leaf
+Cobalion
 50
-Dragon Hammer
-Fissure
-Poison Jab
-Acid Downpour
-Zapdos
+Zap Cannon
+Tackle
+Ice Shard
+Future Sight
+Exeggcute
 50
-Freeze Shock
-Meteor Mash
-Electroweb
-Snarl
-Reuniclus
+Veevee Volley
+Shadow Punch
+Savage Spin-Out
+Seismic Toss
+Chatot
 50
-Chatter
-Thunder Shock
-Bite
-Ice Punch
-Jellicent
+Brave Bird
+Hyperspace Fury
+Hyperspace Fury
+Ice Beam
+Plusle
 50
-Stoked Sparksurfer
-Aqua Jet
-Multi-Attack
-Trump Card
+V-create
+Hydro Vortex
+Mega Punch
+Mirror Shot
