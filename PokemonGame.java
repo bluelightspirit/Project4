@@ -43,6 +43,7 @@ public class PokemonGame
             while(fIn.hasNext()) {
                 names.add(fIn.nextLine());
             }
+            fIn.close();
         }
         catch(Exception e) {
             System.out.println("error getting data");
@@ -52,6 +53,7 @@ public class PokemonGame
             while(fIn.hasNext()) {
                 moveNames.add(fIn.nextLine());
             }
+            fIn.close();
         }
         catch(Exception e) {
             System.out.println("error getting data");
@@ -59,6 +61,11 @@ public class PokemonGame
         //adds pokemon
       // while(count < 6) {
            // while(count < 6) {
+    /*    System.out.println(moveNames.size());
+        for(int i = 0; i < moveNames.size(); i++)
+        {
+            System.out.println(moveNames.get(i));
+        }*/
         for(int ii = 0; ii < 6; ii++) {
             //if (count < 3) {
                 System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
@@ -139,7 +146,7 @@ public class PokemonGame
                 while (!moveNames.contains(response) && count2 < 4)
                 {
                     System.out.println("Enter name of move to be added or type R to let RNG decide");
-                    response = in.next();
+                    response = in.nextLine();
                     if (moveNames.contains(response)) {
                         print.println(response);
                         count2++;

@@ -37,9 +37,10 @@ public class Move
     {
         int numberForFile = 0;
         try {
+
             Scanner in = new Scanner(new FileReader("moveName.txt"));
             String findName = "";
-            while(in.hasNext() && !findName.equals(name))
+            while(in.hasNextLine() && !findName.equals(name))
             {
                 findName = in.nextLine();
                 if(!findName.equals(name))
@@ -47,6 +48,7 @@ public class Move
                     numberForFile++;
                 }
             }
+            in.close();
         }catch(Exception e)
         {
             System.out.println("Error finding move name");
