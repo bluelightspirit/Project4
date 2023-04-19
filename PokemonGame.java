@@ -68,7 +68,7 @@ public class PokemonGame
         }*/
         for(int ii = 0; ii < 6; ii++) {
             //if (count < 3) {
-                System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon");
+                System.out.println("Please enter name of pokemon to be added first 3 are your team next three are enemy. Or type R to let RNG decide pokemon (Capitalization of name perfectly and optional symbols dependent on the Pokemon name are REQUIRED).");
            // } else {
                // System.out.println("Please enter name of pokemon to be added to enemy team. Or type R to let RNG decide pokemon");
             //}
@@ -94,10 +94,10 @@ public class PokemonGame
             {
                 while (!names.contains(response) && !response.equals("R")) {
                     if (count < 3) {
-                        System.out.println("Please enter name of pokemon to be added to your team");
+                        System.out.println("Please enter name of pokemon to be added to your team (Capitalization of name perfectly and optional symbols dependent on the Pokemon name are REQUIRED).");
                         response = in.nextLine();
                     } else {
-                        System.out.println("Please enter name of pokemon to be added to enemy team");
+                        System.out.println("Please enter name of pokemon to be added to enemy team (Capitalization of name perfectly and optional symbols dependent on the Pokemon name are REQUIRED).");
                         response = in.nextLine();
                     }
                     if (response.equals("R")) {//rng decide
@@ -145,7 +145,7 @@ public class PokemonGame
                 }*/
                 while (!moveNames.contains(response) && count2 < 4)
                 {
-                    System.out.println("Enter name of move to be added or type R to let RNG decide");
+                    System.out.println("Enter name of move to be added or type R to let RNG decide (Capitalization of move perfectly and optional symbols dependent on the Pokemon move are REQUIRED).");
                     response = in.nextLine();
                     if (moveNames.contains(response)) {
                         print.println(response);
