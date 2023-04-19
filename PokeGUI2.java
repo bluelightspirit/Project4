@@ -425,7 +425,7 @@ public class PokeGUI2 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource(); // choice/button selected
         //while ((QuickstartGame.getPlayerTeamFainted() == false)) {
-        if (src == move1 && QuickstartGame.getPlayerTeamFainted() == false) {
+        if (src == move1 && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
             int damage = 0;
             // if playerPokemon priority is true, have player pokemon go first
             if (Battle.priority(playerPokemon, enemyPokemon)) {
@@ -537,7 +537,7 @@ public class PokeGUI2 extends JFrame implements ActionListener {
             updatePlayerLabel();
             updateEnemyLabel();
 
-        } else if (src == move2 && QuickstartGame.getPlayerTeamFainted() == false) {
+        } else if (src == move2 && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
 
             int damage = 0;
             // if playerPokemon priority is true, have player pokemon go first
@@ -653,7 +653,7 @@ public class PokeGUI2 extends JFrame implements ActionListener {
             this.pack();
             updatePlayerLabel();
             updateEnemyLabel();
-        } else if (src == move3 && QuickstartGame.getPlayerTeamFainted() == false) {
+        } else if (src == move3 && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
 
             int damage = 0;
             // if playerPokemon priority is true, have player pokemon go first
@@ -769,7 +769,7 @@ public class PokeGUI2 extends JFrame implements ActionListener {
             this.pack();
             updatePlayerLabel();
             updateEnemyLabel();
-        } else if (src == move4 && QuickstartGame.getPlayerTeamFainted() == false) {
+        } else if (src == move4 && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
 
             int damage = 0;
             // if playerPokemon priority is true, have player pokemon go first
@@ -883,7 +883,7 @@ public class PokeGUI2 extends JFrame implements ActionListener {
             this.pack();
             updatePlayerLabel();
             updateEnemyLabel();
-        } else if (src == swap) {
+        } else if (src == swap && QuickstartGame.getPlayerTeamFainted() == false && QuickstartGame.getEnemyTeamFainted() == false) {
             showOptionPane();
             System.out.println("swap clicked!");
         }
