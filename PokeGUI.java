@@ -1407,9 +1407,14 @@ public class PokeGUI extends JFrame implements ActionListener {
         playerPokemonName = playerPokemon.getName();
         playerNumber = playerPokemon.getNumber();
         playerLevel = playerPokemon.getLevel();
+        move1.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 1<br />" + playerPokemon.getMove1().getMoveName() + "</div></html>");
+        move2.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 2<br />" + playerPokemon.getMove2().getMoveName() + "</div></html>");
+        move3.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 3<br />" + playerPokemon.getMove3().getMoveName() + "</div></html>");
+        move4.setText("<html><head><style> div {text-align: center;}</style></head><body><div>Move 4<br />" + playerPokemon.getMove4().getMoveName() + "</div></html>");
         updatePlayerLabel();
         updatePlayerHpBar();
         this.repaint();
+        this.pack();
     }
 
     public String getLogText() {
