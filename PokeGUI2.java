@@ -206,7 +206,8 @@ public class PokeGUI2 extends JFrame implements ActionListener {
         this.setResizable(false);
 
         // set icon
-        BufferedImage urlImage = getImage("https://cdn.discordapp.com/avatars/262317813396537345/7f5d50988b402fbd1c853e37ab3c27a1?size=1024");
+       // BufferedImage urlImage = getImage("https://cdn.discordapp.com/avatars/262317813396537345/7f5d50988b402fbd1c853e37ab3c27a1?size=1024");
+        BufferedImage urlImage = getImage("https://ianfinlayson.net/images/me.jpg");
         ImageIcon image = new ImageIcon(urlImage);
         this.setIconImage(image.getImage());
 
