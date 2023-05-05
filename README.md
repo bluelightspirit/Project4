@@ -101,7 +101,7 @@ The moves will automatically be disabled after any side wins and the Swap Pokemo
 
 ## Why is the game titled "Pokémane Battle Simulator" at the top?
 
-Because one of my friends was debating to name it "Pokimane Battle Simulator," another was debating to name it "Pokémon Battle Simulator," and I settled for an in-between.
+Because one of my friends was debating to name it "Pokimane Battle Simulator," another was debating to name it "Pokémane Battle Simulator," I settled for a name between those two.
 
 ## What did I (bluelightspirit) learn?
 
