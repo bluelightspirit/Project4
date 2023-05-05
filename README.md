@@ -120,7 +120,7 @@ Because one of my friends was debating to name it "Pokimane Battle Simulator," a
 13) How to use BoxLayout by having four JPanel's be connected by a main JPanel, which then could be organized with BoxLayout.
 14) How to use the internet to get sprite images from the PokeAPI's sprites.
 15) How to change the cursor on mouse hover.
-16) How to make the panels pack using this.pack() and CSS to align the text to the center.
+16) How to make the panels pack using this.pack() combined with CSS to align the new text to the center and eliminate extra spaces from the left and right sides.
 17) (Subset of 1) How to connect colors of moves given from a Pokemon to the background.
 18) (Subset of 1) How to swap Pokemon given from a Pokemon ArrayList.
 19) (Subset of 1) How to overall connect Pokemon objects in an ArrayList from a class outside of the GUI and get and use those within the GUI.
