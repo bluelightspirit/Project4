@@ -5,10 +5,10 @@
 
 This is based on using `JFrame` & `JOptionPane` from Java, along with the console to take in input on what player pokemon and enemy pokemon to play with.
 The console asks for the file name to store data within the PokemonData folder, then two things can happen:
-1) Within [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java), the game is started with randomized Pokemon moves. For more details on the GUI portion specifics, check the [GUI Portion](https://github.com/bluelightspirit/Project4/new/main?readme=1#gui-portion).
+1) Within [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java), the game is started with randomized Pokemon moves. For more details on the GUI portion specifics, check the [GUI Portion](https://github.com/bluelightspirit/Project4#gui-portion).
 
 2) Within [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java), the console continues to ask for Pokemon names, levels, and move names until 6 total Pokemon are inputted, then the game is started.
-For more details on the console portion specifics, check the [Console Portion](https://github.com/bluelightspirit/Project4/new/main?readme=1#console-portion).
+For more details on the console portion specifics, check the [Console Portion](https://github.com/bluelightspirit/Project4#console-portion).
 
 NOTE: The internet is required for the sprites to show properly on the screen.
 
@@ -17,7 +17,7 @@ First, for the console portion before the game starts, the name of the game file
 
 ![image](https://user-images.githubusercontent.com/22280271/236382805-fb5a3a39-b85a-4c15-b33c-58e9915c2157.png)
 
-Then, with [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java), the game will automatically start from then on. Skip to [here](https://github.com/bluelightspirit/Project4/new/main?readme=1#gui-portion) if you plan to run with QuickstartGame rather than PokemonGame.
+Then, with [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java), the game will automatically start from then on. Skip to [here](https://github.com/bluelightspirit/Project4#gui-portion) if you plan to run with QuickstartGame rather than PokemonGame.
 
 Second, within [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) only, the name of the pokemon is requested to be added. Capitalization of the name perfectly along with the symbols dependent on the Pokemon name are required. This can be found in [name.txt](https://github.com/bluelightspirit/Project4/blob/main/.idea/name.txt).
 Inputting "R" will randomize the Pokemon name, set the level to 50 automatically, AND randomize the moves, skipping the third and fourth steps.
