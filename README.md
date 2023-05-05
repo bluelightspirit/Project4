@@ -81,7 +81,7 @@ The Swap Pokemon button would display a `JOptionPane` looking like this:
 
 ![image](https://user-images.githubusercontent.com/22280271/236384604-42a5f9a0-728b-4236-932f-59594f3ddf0e.png)
 
-Swapping to a dead Pokemon will not swap your Pokemon, as shown here:
+Swapping to a fainted Pokemon will not swap your Pokemon, as shown here:
 
 ![image](https://user-images.githubusercontent.com/22280271/236384726-50d387d0-b451-49e4-b1ac-97abc1ad16b8.png)
 
