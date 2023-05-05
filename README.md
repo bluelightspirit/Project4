@@ -1,5 +1,5 @@
 # Pokémane Battle Simulator (Project 4 as a Group Project)
-## A Java game displayed in JFrame where the player chooses their own 3 Pokemon to battle against another 3 enemy Pokemon also selectable, then battles until all 3 Pokemon on either side faint
+## A Java game displayed in JFrame where the player chooses their own 3 Pokemon to battle against another 3 enemy Pokemon also selectable, then battle until all 3 Pokemon on either side faint
 
 ## How does anyone start the game?
 
