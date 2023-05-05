@@ -1,6 +1,12 @@
 # Pokémane Battle Simulator (Group Project 4)
 ## A Java game displayed in JFrame where the player chooses their own 3 pokemon to battle against another 3 enemy pokemon also selectable, unless when running from QuickstartGame instead
 
+## How does anyone start the game?
+
+First, the player must download the game and it's files. To do that, it is suggested to download the ZIP file from [Releases](https://github.com/bluelightspirit/Project4/releases) or copy the repo from a console like Git. It is also suggested to double check if the [.idea](https://github.com/bluelightspirit/Project4/tree/main/.idea) folder has all of the same folders shown on GitHub (with the exception of the files within the PokemonData folder) and that the organization of the files are exactly the same as shown as GitHub. Then, either [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) should be compiled. After that, either of those classes's main method should be ran using any IDE that supports Java such as [IntelliJ](https://www.jetbrains.com/idea/download/) or [BlueJ](https://www.bluej.org/) -- IntelliJ is strongly suggested as that is where the game was developed from, as [BlueJ](https://www.bluej.org/) would require .class files to be in the same folder as the .java files.
+
+After that, to play this game, refer to [How does it work and how does anyone play?](https://github.com/bluelightspirit/Project4/tree/main#how-does-it-work-and-how-does-anyone-play).
+
 ## How does it work and how does anyone play?
 
 This is based on using `JFrame` & `JOptionPane` from Java, along with the console to take in input on what player pokemon and enemy pokemon to play with.
