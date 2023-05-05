@@ -5,7 +5,7 @@
 
 First, the player must download the game and it's files. To do that, it is suggested to download the ZIP file from [Releases](https://github.com/bluelightspirit/Project4/releases) and extract it into a new folder, or copy the repo from a console like Git. It is also suggested to double check if the [.idea](https://github.com/bluelightspirit/Project4/tree/main/.idea) folder has all of the same folders shown on GitHub (with the exception of the files within the PokemonData folder) and that the organization of the directories of the files are exactly the same as shown as GitHub. Then, either [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) should be compiled. After that, either of those classes's main method should be ran using any IDE that supports Java such as [IntelliJ](https://www.jetbrains.com/idea/download/) or [BlueJ](https://www.bluej.org/) -- note [IntelliJ](https://www.jetbrains.com/idea/download/) is strongly suggested as that is where the game was developed from, as [BlueJ](https://www.bluej.org/) would require .class files to be in the same folder as the .java files. 
 
-In [IntelliJ](https://www.jetbrains.com/idea/download/), right clicking and opening any of the [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) files through IntelliJ using the file explorer assuming no other projects are open should be done like this:
+In [IntelliJ](https://www.jetbrains.com/idea/download/), right clicking and opening any of the [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) files through [IntelliJ](https://www.jetbrains.com/idea/download/) using the file explorer assuming no other projects are open should be done like this:
 
 ![image](https://user-images.githubusercontent.com/22280271/236398926-9ebf9600-0252-4f8b-860a-d4f4d7ac4836.png)
 
@@ -13,7 +13,7 @@ If there is any other projects open in [IntelliJ](https://www.jetbrains.com/idea
 
 ![image](https://user-images.githubusercontent.com/22280271/236399315-edd1f689-fb0e-4151-ac16-e0bdcfdc1a90.png)
 
-Then, this should appear in [IntelliJ](https://www.jetbrains.com/idea/download/), and pressing this button at the top right of IntelliJ should make something like this appear:
+Then, this should appear in [IntelliJ](https://www.jetbrains.com/idea/download/), and pressing this button at the top right of [IntelliJ](https://www.jetbrains.com/idea/download/) should make something like this appear:
 
 ![image](https://user-images.githubusercontent.com/22280271/236397478-e34dcac0-df10-461b-918f-c966c2d797ec.png)
 
