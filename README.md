@@ -3,7 +3,17 @@
 
 ## How does anyone start the game?
 
-First, the player must download the game and it's files. To do that, it is suggested to download the ZIP file from [Releases](https://github.com/bluelightspirit/Project4/releases) or copy the repo from a console like Git. It is also suggested to double check if the [.idea](https://github.com/bluelightspirit/Project4/tree/main/.idea) folder has all of the same folders shown on GitHub (with the exception of the files within the PokemonData folder) and that the organization of the files are exactly the same as shown as GitHub. Then, either [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) should be compiled. After that, either of those classes's main method should be ran using any IDE that supports Java such as [IntelliJ](https://www.jetbrains.com/idea/download/) or [BlueJ](https://www.bluej.org/) -- IntelliJ is strongly suggested as that is where the game was developed from, as [BlueJ](https://www.bluej.org/) would require .class files to be in the same folder as the .java files.
+First, the player must download the game and it's files. To do that, it is suggested to download the ZIP file from [Releases](https://github.com/bluelightspirit/Project4/releases) and extract it into a new folder, or copy the repo from a console like Git. It is also suggested to double check if the [.idea](https://github.com/bluelightspirit/Project4/tree/main/.idea) folder has all of the same folders shown on GitHub (with the exception of the files within the PokemonData folder) and that the organization of the directories of the files are exactly the same as shown as GitHub. Then, either [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) should be compiled. After that, either of those classes's main method should be ran using any IDE that supports Java such as [IntelliJ](https://www.jetbrains.com/idea/download/) or [BlueJ](https://www.bluej.org/) -- IntelliJ is strongly suggested as that is where the game was developed from, as [BlueJ](https://www.bluej.org/) would require .class files to be in the same folder as the .java files. 
+
+In IntelliJ, right clicking and opening any of the [QuickstartGame](https://github.com/bluelightspirit/Project4/blob/main/QuickstartGame.java) or [PokemonGame](https://github.com/bluelightspirit/Project4/blob/main/PokemonGame.java) files through IntelliJ assuming no other projects are open into pressing this button at the top right of IntelliJ:
+
+![image](https://user-images.githubusercontent.com/22280271/236397478-e34dcac0-df10-461b-918f-c966c2d797ec.png)
+
+OR this button that performs similarly:
+
+![image](https://user-images.githubusercontent.com/22280271/236397768-0f2e6bea-b367-4a6f-a17c-3da2ff795691.png)
+
+should make the console appear from there asking for the name of the game file, which can be referred on what to do next below.
 
 After that, to play this game, refer to [How does it work and how does anyone play?](https://github.com/bluelightspirit/Project4/tree/main#how-does-it-work-and-how-does-anyone-play).
 
