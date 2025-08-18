@@ -112,7 +112,7 @@ Because one of my friends was debating to name it "Pokimane Battle Simulator," w
 5) How to use a HashMap.
 6) How to use BigDecimal for the percentages in the Pokemon health bars.
 7) How to use JProgressBar.
-8) How to make animations using a Java Swing Timer ActionListener within JProgessBar.
+8) How to make animations using a Java Swing Timer ActionListener within JProgressBar.
 9) How to change the text color from white to black if the brightness of a move's background was high enough.
 10) How to disable buttons.
 11) How to set fonts outside of system-default fonts using Java's GraphicsEnvironment.registerFont() method.
