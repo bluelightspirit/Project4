@@ -19,6 +19,7 @@ The refactored code after the major rework commit looked like this:
 
 <img width="1151" height="906" alt="image" src="https://github.com/user-attachments/assets/11fbf706-4581-4322-bf5d-935a6275d278" />
 
-Note the final version of this actionPerformed found [here](https://github.com/bluelightspirit/Project4/blob/main/PokeGUI.java) is at 96 lines. The purpose of this write-up is to show it was drastically easier to write these lines and track down swapping and damage issues in the earlier if-else paradise.
+Note the final version of this actionPerformed found [here](https://github.com/bluelightspirit/Project4/blob/main/PokeGUI.java) is at 96 lines. The purpose of this write-up is to show it was drastically easier to write these lines and track down swapping and log text displaying issues in the earlier if-else paradise.
 
 <img width="540" height="101" alt="image" src="https://github.com/user-attachments/assets/effb2fec-9c96-4d51-ae2e-ff00ab435992" />
+
